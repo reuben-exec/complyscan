@@ -7,14 +7,14 @@
   <title>ComplyScan — NABH Compliance Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
   <!-- Navigation -->
   <header class="nav" role="banner">
     <div class="nav-brand">
-      <span class="nav-brand-icon" aria-hidden="true">CS</span>
+      <span class="nav-brand-icon" id="nav-brand-icon" aria-hidden="true"></span>
       ComplyScan
       <small>NABH</small>
     </div>
@@ -45,8 +45,9 @@
     <!-- View A: Chapter Selection -->
     <section id="view-chapters" class="view active" role="tabpanel">
       <div class="chapter-hero">
+        <div class="hero-pill">Clinical compliance workspace</div>
         <h1>NABH Compliance Engine</h1>
-        <p>Upload or paste hospital policy documents and check compliance against NABH standards.</p>
+        <p>Review hospital policy documents with structured evidence, scoring, and a clinician-friendly dashboard.</p>
       </div>
       <div class="chapter-grid" id="chapter-grid">
         <!-- Cards injected by JS -->
@@ -89,12 +90,29 @@
       </nav>
 
       <div class="analysis-layout">
+        <aside class="analysis-sidebar" aria-label="Audit workflow navigator">
+          <div class="sidebar-card">
+            <div class="sidebar-card-header">
+              <h3>Audit navigator</h3>
+              <span class="sidebar-pill">Fast review</span>
+            </div>
+            <div id="evidence-navigator" class="navigator-list"></div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sidebar-card-header">
+              <h3>Review timeline</h3>
+              <span class="sidebar-pill">Session history</span>
+            </div>
+            <div id="review-timeline" class="timeline-list"></div>
+          </div>
+        </aside>
+
         <!-- Left: Text Input -->
         <div class="analysis-panel text-panel">
           <h3>Document Text</h3>
           <div class="file-upload-area" id="file-upload-area">
             <div class="file-upload-dropzone" id="file-dropzone">
-              <span class="upload-icon" aria-hidden="true">📄</span>
+              <span class="upload-icon" id="upload-icon" aria-hidden="true"></span>
               <p class="upload-text">Drop a file here or <span class="upload-link" id="file-browse-link">browse</span></p>
               <p class="upload-hint">Supports .txt, .pdf, .docx</p>
               <input type="file" id="file-input" accept=".txt,.pdf,.docx" hidden>
@@ -135,22 +153,97 @@
         <div class="analysis-panel results-panel">
           <h3>Compliance Results</h3>
           <div id="results-empty" class="results-panel-empty">
-            <div class="empty-icon" aria-hidden="true">📋</div>
-            <p>Run an analysis above to see compliance results.</p>
+            <div class="empty-icon" id="empty-state-icon" aria-hidden="true"></div>
+            <h4>Review workspace ready</h4>
+            <p>Select a requirement, paste your document text, and run the analysis to view a structured compliance dashboard with evidence-level audit context.</p>
           </div>
           <div id="results-content" style="display:none;">
-            <!-- Score -->
-            <div class="score-section">
-              <div class="score-header">
-                <span class="score-label">Overall Score</span>
-                <span class="score-pct" id="score-pct">0%</span>
+            <div class="results-dashboard">
+              <div class="score-card">
+                <div class="score-ring" id="score-ring">
+                  <div class="score-ring-inner">
+                    <span class="score-pct" id="score-pct">0%</span>
+                    <small>compliant</small>
+                  </div>
+                </div>
+                <div class="score-card-content">
+                  <div class="score-header">
+                    <div>
+                      <span class="score-label">Overall compliance</span>
+                      <div class="score-subtitle" id="score-subtitle">Deterministic review summary</div>
+                    </div>
+                    <span class="badge" id="status-badge">NOT FOUND</span>
+                  </div>
+                  <div class="score-bar-track">
+                    <div class="score-bar-fill" id="score-bar" style="width:0%;"></div>
+                  </div>
+                  <div class="score-meta-row">
+                    <span id="analysis-meta"></span>
+                  </div>
+                </div>
               </div>
-              <div class="score-bar-track">
-                <div class="score-bar-fill" id="score-bar" style="width:0%;"></div>
+
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-icon" id="metric-evidence-icon"></div>
+                  <div>
+                    <strong id="metric-evidence-count">0</strong>
+                    <span>Evidence items</span>
+                  </div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-icon" id="metric-critical-icon"></div>
+                  <div>
+                    <strong id="metric-critical-count">0</strong>
+                    <span>Critical checks</span>
+                  </div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-icon" id="metric-override-icon"></div>
+                  <div>
+                    <strong id="metric-override-count">0</strong>
+                    <span>Overrides</span>
+                  </div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-icon" id="metric-llm-icon"></div>
+                  <div>
+                    <strong id="metric-llm-count">0</strong>
+                    <span>LLM assisted</span>
+                  </div>
+                </div>
               </div>
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <span class="badge" id="status-badge">NOT FOUND</span>
-                <span style="font-size:11px;color:var(--ink-secondary);" id="analysis-meta"></span>
+
+              <div class="analytics-card">
+                <div class="analytics-card-header">
+                  <h4>Findings by status</h4>
+                  <span class="analytics-note" id="analytics-note">Live analysis breakdown for audit review</span>
+                </div>
+                <div class="status-breakdown" id="status-breakdown"></div>
+              </div>
+
+              <div class="summary-card">
+                <div class="summary-card-header">
+                  <div>
+                    <h4>Executive review summary</h4>
+                    <p>Leadership-ready view of control strength and follow-up priority.</p>
+                  </div>
+                  <span class="sidebar-pill">Leadership</span>
+                </div>
+                <div class="summary-grid">
+                  <div class="summary-item">
+                    <strong id="summary-confidence">High confidence</strong>
+                    <span>Review confidence</span>
+                  </div>
+                  <div class="summary-item">
+                    <strong id="summary-strength">Strong evidence alignment</strong>
+                    <span>Evidence strength</span>
+                  </div>
+                  <div class="summary-item">
+                    <strong id="summary-priority">Priority follow-up</strong>
+                    <span>Recommended action</span>
+                  </div>
+                </div>
               </div>
             </div>
 

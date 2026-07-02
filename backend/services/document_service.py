@@ -1,11 +1,12 @@
 """Business logic services."""
 import uuid
 from pathlib import Path
-from backend.ocr import PDFTextExtractor, get_ocr_client
-from backend.matcher import requirement_matcher
-from backend.report import save_report
-from backend.models.schemas import RequirementResult, UploadResponse
 from typing import Optional
+
+from backend.matcher import requirement_matcher
+from backend.models.schemas import RequirementResult, UploadResponse
+from backend.ocr import PDFTextExtractor, get_ocr_client
+from backend.report import save_report
 
 
 class DocumentService:
@@ -27,8 +28,16 @@ class DocumentService:
         document_id = uuid.uuid4().hex
         self._documents[document_id] = file_bytes
         
-        # Quick page estimate (rough)
-        pages = file_bytes.count(b"%PDF") if b"%PDF" in file_bytes else 1
+        # Quick page estimate using PyMuPDF when the input is a PDF.
+        pages = 1
+        if file_bytes.startswith(b"%PDF"):
+            try:
+                import fitz
+
+                with fitz.open(stream=file_bytes, filetype="pdf") as doc:
+                    pages = len(doc)
+            except Exception:
+                pages = max(1, file_bytes.count(b"%PDF"))
         
         return UploadResponse(
             document_id=document_id,

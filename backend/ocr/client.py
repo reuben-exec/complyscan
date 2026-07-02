@@ -1,5 +1,6 @@
 """PDF text extraction with PyMuPDF (digital PDFs) + Tesseract (scanned fallback)."""
 import os
+import shutil
 from typing import Optional
 
 import pytesseract
@@ -7,13 +8,9 @@ from PIL import Image
 
 
 # ── Tesseract path configuration ──────────────────────────────────────────
-_TESSERACT_PATHS = [
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe",
-]
-for _p in _TESSERACT_PATHS:
-    if os.path.isfile(_p):
-        pytesseract.pytesseract.tesseract_cmd = _p
-        break
+_tesseract_cmd = shutil.which("tesseract")
+if _tesseract_cmd:
+    pytesseract.pytesseract.tesseract_cmd = _tesseract_cmd
 
 
 class PDFTextExtractor:

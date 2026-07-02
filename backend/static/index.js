@@ -4,8 +4,29 @@
    ============================================================== */
 
 /* ==============================================================
-   File Upload Handler
+   UI Helpers
    ============================================================== */
+const ICONS = {
+  shield: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.3-2.6 8.2-7 10-4.4-1.8-7-5.7-7-10V6l7-3Z"/><path d="M9.5 12.2l1.6 1.6 3.4-3.4"/></svg>',
+  clipboard: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6a2 2 0 0 1 2 2v1H7V6a2 2 0 0 1 2-2Z"/><path d="M7 7h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><path d="M9 11h6"/><path d="M9 15h4"/></svg>',
+  upload: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10"/><path d="m8 8 4-4 4 4"/><path d="M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg>',
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+  alert: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 3 19h18L12 4Z"/><path d="M12 9v4"/><path d="M12 16h.01"/></svg>',
+  spark: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3Z"/><path d="m18 15 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/></svg>',
+  chart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V10"/><path d="M12 19V5"/><path d="M19 19v-7"/></svg>',
+  pulse: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h3l2-5 3 10 2-5h8"/></svg>',
+  file: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h6l4 4v14H7z"/><path d="M13 3v5h5"/></svg>'
+};
+
+function iconMarkup(name) {
+  return `<span class="icon-svg">${ICONS[name] || ''}</span>`;
+}
+
+function setIcon(elementId, name) {
+  const el = document.getElementById(elementId);
+  if (el) el.innerHTML = iconMarkup(name);
+}
+
 const FileUpload = (() => {
   const dropzone = document.getElementById('file-dropzone');
   const fileInput = document.getElementById('file-input');
@@ -17,12 +38,14 @@ const FileUpload = (() => {
   const dismissBtn = document.getElementById('file-upload-dismiss');
   const textarea = document.getElementById('analysis-text');
   const uploadArea = document.getElementById('file-upload-area');
+  const uploadIcon = document.getElementById('upload-icon');
 
   function showProgress(msg) {
     dropzone.style.display = 'none';
     successArea.style.display = 'none';
     progressArea.style.display = 'flex';
     statusText.textContent = msg || 'Extracting text...';
+    if (uploadIcon) uploadIcon.innerHTML = iconMarkup('pulse');
   }
 
   function showSuccess(filename) {
@@ -30,12 +53,14 @@ const FileUpload = (() => {
     successArea.style.display = 'flex';
     filenameSpan.textContent = filename;
     dropzone.style.display = 'none';
+    if (uploadIcon) uploadIcon.innerHTML = iconMarkup('check');
   }
 
   function showDropzone() {
     progressArea.style.display = 'none';
     successArea.style.display = 'none';
     dropzone.style.display = 'block';
+    if (uploadIcon) uploadIcon.innerHTML = iconMarkup('upload');
   }
 
   function reset() {
@@ -339,7 +364,8 @@ const App = (() => {
     currentResults: null,
     focusedIndex: 0,
     searchQuery: '',
-    isAnalyzing: false
+    isAnalyzing: false,
+    reviewHistory: []
   };
 
   /* --- View switching --- */
@@ -362,11 +388,15 @@ const App = (() => {
       card.className = 'chapter-card';
       card.setAttribute('data-chapter', ch.code);
       card.setAttribute('aria-label', `${ch.code}: ${ch.title}`);
+      const iconName = ch.code === 'HIC' ? 'shield' : 'clipboard';
       card.innerHTML = `
-        <span class="chapter-code">${ch.code}</span>
+        <div class="chapter-card-top">
+          <span class="chapter-icon">${iconMarkup(iconName)}</span>
+          <span class="chapter-code">${ch.code}</span>
+        </div>
         <h2>${ch.title}</h2>
         <p>${ch.description}</p>
-        <div class="chapter-meta"><span>📋 ${ch.count} requirements</span></div>
+        <div class="chapter-meta"><span>${iconMarkup('file')} ${ch.count} requirements</span></div>
       `;
       card.addEventListener('click', () => goToRequirements(ch.code));
       grid.appendChild(card);
@@ -509,6 +539,114 @@ const App = (() => {
     renderResults(data);
   }
 
+  function normalizeStatus(status) {
+    const value = String(status || 'Not Found').replace(/_/g, ' ').trim();
+    if (!value) return 'Not Found';
+    const lowered = value.toLowerCase();
+    if (lowered === 'compliant') return 'Compliant';
+    if (lowered === 'partial') return 'Partial';
+    if (lowered === 'non compliant' || lowered === 'non-compliant') return 'Non-Compliant';
+    if (lowered === 'not found' || lowered === 'not_found' || lowered === 'not-found') return 'Not Found';
+    return value;
+  }
+
+  function getStatusClass(status) {
+    const normalized = normalizeStatus(status);
+    return normalized === 'Compliant' ? 'badge-compliant'
+      : normalized === 'Partial' ? 'badge-partial'
+      : normalized === 'Non-Compliant' ? 'badge-non-compliant'
+      : 'badge-not-found';
+  }
+
+  function renderStatusBreakdown(evidence) {
+    const container = document.getElementById('status-breakdown');
+    container.innerHTML = '';
+
+    if (!evidence.length) {
+      container.innerHTML = '<div class="status-breakdown-empty">No evidence items were returned for this review.</div>';
+      return;
+    }
+
+    const counts = {
+      Compliant: 0,
+      Partial: 0,
+      'Non-Compliant': 0,
+      'Not Found': 0
+    };
+
+    evidence.forEach(ev => {
+      const status = normalizeStatus(ev.status || 'Not Found');
+      counts[status] = (counts[status] || 0) + 1;
+    });
+
+    ['Compliant', 'Partial', 'Non-Compliant', 'Not Found'].forEach(label => {
+      const value = counts[label] || 0;
+      const pct = evidence.length ? Math.round((value / evidence.length) * 100) : 0;
+      const row = document.createElement('div');
+      row.className = 'status-row';
+      row.innerHTML = `
+        <span class="status-row-label">${label}</span>
+        <div class="status-row-bar"><span style="width:${pct}%"></span></div>
+        <strong>${value}</strong>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function renderEvidenceNavigator(evidence) {
+    const container = document.getElementById('evidence-navigator');
+    if (!container) return;
+
+    if (!evidence.length) {
+      container.innerHTML = '<div class="navigator-empty">Evidence will appear here as soon as the review completes.</div>';
+      return;
+    }
+
+    container.innerHTML = '';
+    evidence.forEach((ev) => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'navigator-item';
+      item.dataset.evidenceId = ev.evidence_id || '';
+      const evStatus = normalizeStatus(ev.status || 'Not Found');
+      const badgeClass = getStatusClass(evStatus);
+      item.innerHTML = `
+        <span class="navigator-title">${escapeHtml(ev.name || ev.evidence_id || 'Evidence')}</span>
+        <span class="badge ${badgeClass}">${escapeHtml(evStatus)}</span>
+      `;
+      item.addEventListener('click', () => {
+        const row = document.querySelector(`tr[data-evidence-id="${CSS.escape(ev.evidence_id || '')}"]`);
+        if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      container.appendChild(item);
+    });
+  }
+
+  function renderReviewTimeline() {
+    const container = document.getElementById('review-timeline');
+    if (!container) return;
+
+    if (!state.reviewHistory.length) {
+      container.innerHTML = '<div class="timeline-empty">Repeated reviews will appear here after you run the analysis more than once.</div>';
+      return;
+    }
+
+    container.innerHTML = '';
+    state.reviewHistory.slice().reverse().forEach((entry) => {
+      const item = document.createElement('div');
+      item.className = 'timeline-item';
+      item.innerHTML = `
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <strong>${escapeHtml(entry.requirementId || 'Review')}</strong>
+          <span>${escapeHtml(entry.timestamp || '')}</span>
+          <small>${entry.score}% • ${escapeHtml(entry.status || 'Review')}</small>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
   function renderResults(data) {
     if (!data) return;
 
@@ -517,56 +655,83 @@ const App = (() => {
     document.getElementById('results-error').style.display = 'none';
     document.getElementById('results-content').style.display = 'block';
 
-    // Score: compliance_score is 0-1, display as 0-100
+    const evidence = data.evidence_items || [];
     const scoreRaw = data.compliance_score != null ? data.compliance_score : 0;
     const score = Math.round(scoreRaw * 100);
+    const cappedScore = Math.min(100, Math.max(0, score));
+
     const pctEl = document.getElementById('score-pct');
     const barEl = document.getElementById('score-bar');
+    const ringEl = document.getElementById('score-ring');
     const badgeEl = document.getElementById('status-badge');
     const metaEl = document.getElementById('analysis-meta');
+    const subtitleEl = document.getElementById('score-subtitle');
+    const analyticsNoteEl = document.getElementById('analytics-note');
+    const summaryConfidenceEl = document.getElementById('summary-confidence');
+    const summaryStrengthEl = document.getElementById('summary-strength');
+    const summaryPriorityEl = document.getElementById('summary-priority');
+    const evidenceCountEl = document.getElementById('metric-evidence-count');
+    const criticalCountEl = document.getElementById('metric-critical-count');
+    const overrideCountEl = document.getElementById('metric-override-count');
+    const llmCountEl = document.getElementById('metric-llm-count');
 
-    pctEl.textContent = `${score}%`;
+    pctEl.textContent = `${cappedScore}%`;
 
-    const scoreColor = score >= 85 ? 'var(--success)'
-      : score >= 40 ? 'var(--warning)'
+    const scoreColor = cappedScore >= 85 ? 'var(--success)'
+      : cappedScore >= 40 ? 'var(--warning)'
       : 'var(--danger)';
     pctEl.style.color = scoreColor;
     barEl.style.background = scoreColor;
+    ringEl.style.setProperty('--score-color', scoreColor);
+    ringEl.style.setProperty('--score-degree', String(cappedScore));
 
     requestAnimationFrame(() => {
-      barEl.style.width = `${Math.min(100, Math.max(0, score))}%`;
+      barEl.style.width = `${cappedScore}%`;
     });
 
-    // Overall status badge
-    const status = data.overall_status || 'NOT_FOUND';
-    const badgeClass = status === 'Compliant' ? 'badge-compliant'
-      : status === 'Partial' ? 'badge-partial'
-      : status === 'Non-Compliant' ? 'badge-non-compliant'
-      : 'badge-not-found';
+    const status = normalizeStatus(data.overall_status || data.status || 'NOT_FOUND');
+    const badgeClass = getStatusClass(status);
     badgeEl.className = `badge ${badgeClass}`;
     badgeEl.textContent = status;
 
-    // Meta info
-    const evidence = data.evidence_items || [];
     const hasLLM = evidence.some(e => e.llm_evaluated);
     const hasOverride = evidence.some(e => e.manually_overridden);
+    const criticalCount = evidence.filter(e => e.critical).length;
     const tags = [];
     if (hasLLM) tags.push('LLM-enhanced');
     if (hasOverride) tags.push('includes overrides');
-    metaEl.textContent = tags.length ? tags.join(' · ') : '';
+    metaEl.textContent = tags.length ? tags.join(' · ') : 'Deterministic review summary';
 
-    // Evidence table
+    const subtitle = cappedScore >= 85 ? 'Strong alignment with policy intent' : cappedScore >= 40 ? 'Targeted follow-up recommended' : 'Immediate review and remediation advised';
+    subtitleEl.textContent = subtitle;
+    analyticsNoteEl.textContent = `${evidence.length} evidence points • ${criticalCount} critical checks`;
+
+    const confidenceLabel = cappedScore >= 85 ? 'High confidence' : cappedScore >= 60 ? 'Moderate confidence' : 'Lower confidence';
+    const strengthLabel = cappedScore >= 85 ? 'Strong evidence alignment' : cappedScore >= 40 ? 'Mixed evidence clarity' : 'Needs stronger evidence';
+    const priorityLabel = cappedScore >= 85 ? 'Maintain monitoring' : cappedScore >= 40 ? 'Prioritize remediation' : 'Escalate for immediate action';
+
+    summaryConfidenceEl.textContent = confidenceLabel;
+    summaryStrengthEl.textContent = strengthLabel;
+    summaryPriorityEl.textContent = priorityLabel;
+
+    evidenceCountEl.textContent = evidence.length;
+    criticalCountEl.textContent = criticalCount;
+    overrideCountEl.textContent = evidence.filter(e => e.manually_overridden).length;
+    llmCountEl.textContent = evidence.filter(e => e.llm_evaluated).length;
+
+    renderStatusBreakdown(evidence);
+    renderEvidenceNavigator(evidence);
+    renderReviewTimeline();
+
     const tbody = document.getElementById('evidence-body');
     tbody.innerHTML = '';
 
     evidence.forEach(ev => {
       const tr = document.createElement('tr');
+      tr.dataset.evidenceId = ev.evidence_id || '';
 
-      const evStatus = ev.status || 'Not Found';
-      const statusClass = evStatus === 'Compliant' ? 'badge-compliant'
-        : evStatus === 'Partial' ? 'badge-partial'
-        : evStatus === 'Non-Compliant' ? 'badge-non-compliant'
-        : 'badge-not-found';
+      const evStatus = normalizeStatus(ev.status || 'Not Found');
+      const statusClass = getStatusClass(evStatus);
 
       const tagsHtml = [];
       if (ev.llm_evaluated) tagsHtml.push('<span class="tag tag-llm">LLM</span>');
@@ -593,7 +758,6 @@ const App = (() => {
       tbody.appendChild(tr);
     });
 
-    // Wire override buttons
     tbody.querySelectorAll('.override-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         OverrideModal.open(
@@ -662,6 +826,13 @@ const App = (() => {
         throw new Error(errText || `Analysis failed (${resp.status})`);
       }
       const data = await resp.json();
+      state.reviewHistory.push({
+        requirementId: state.currentRequirement || 'Review',
+        score: Math.round((data.compliance_score != null ? data.compliance_score : 0) * 100),
+        status: normalizeStatus(data.overall_status || data.status || 'NOT_FOUND'),
+        timestamp: new Date().toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+      });
+      state.reviewHistory = state.reviewHistory.slice(-6);
       state.currentResults = data;
       renderResults(data);
     } catch (err) {
@@ -800,6 +971,13 @@ const App = (() => {
    ============================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   Theme.init();
+  setIcon('nav-brand-icon', 'shield');
+  setIcon('upload-icon', 'upload');
+  setIcon('empty-state-icon', 'clipboard');
+  setIcon('metric-evidence-icon', 'clipboard');
+  setIcon('metric-critical-icon', 'alert');
+  setIcon('metric-override-icon', 'spark');
+  setIcon('metric-llm-icon', 'chart');
   App.renderChapters();
 
   // Breadcrumb clicks

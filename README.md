@@ -1,128 +1,147 @@
 # ComplyScan
 
-AI-powered Healthcare Compliance & Audit Automation Engine
+## AI-Powered Healthcare Compliance & Audit Automation Engine
 
-ComplyScan is an AI-assisted compliance screening platform that helps hospitals perform pre-audit assessments against healthcare accreditation requirements. The MVP focuses on two major compliance chapters:
+> ComplyScan turns hospital policy documents into structured NABH compliance insights with explainable evidence scoring, human review hooks, downloadable reports, and a premium audit-console experience for healthcare reviewers.
 
-- Hospital Infection Control (HIC)
-- Patient Rights & Education (PRE)
+## What It Does
+- Upload hospital documents and check them against NABH-aligned requirements.
+- Run a deterministic keyword-first pass followed by optional LLM semantic validation.
+- Produce per-evidence findings, compliance scores, override workflows, executive summaries, and PDF-ready reports.
 
-Instead of manually reviewing hundreds of pages of hospital documents, ComplyScan extracts evidence, evaluates compliance requirements, and generates an explainable gap report.
+## Business Requirements (BRD Trace)
 
----
+| BR ID | Requirement | Status | How It Is Implemented |
+|---|---|---|---|
+| BR-1 | Upload hospital documents tied to a NABH chapter | ✅ Implemented | FastAPI upload endpoint and document service |
+| BR-2 | Compare documents against pre-defined compliance checklists | ✅ Implemented | JSON-based knowledge base under data/knowledge_base/ |
+| BR-3 | Flag each evidence item as Compliant/Partial/Non-Compliant/Not Found with rationale | ✅ Implemented | Evidence matcher and requirement result schema |
+| BR-4 | Generate downloadable summary reports for reviewers | ✅ Implemented | PDF report generation through backend/report/generator.py |
+| BR-5 | Clearly disclose advisory-only usage | ✅ Implemented | Disclaimer banner in API responses and UI |
 
-## Project Status
+## Functional Requirements (FRD Trace)
 
-Current Stage: Knowledge Base Development
+| FR ID | Requirement | Priority | Status | Code Location |
+|---|---|---|---|---|
+| FR-1.1 | Accept PDF/text uploads | Must | ✅ | backend/api/main.py |
+| FR-1.2 | Extract text from digital and scanned PDFs | Must | ✅ | backend/ocr/client.py |
+| FR-2.1 | Store structured chapter-based requirement data | Must | ✅ | data/knowledge_base/ |
+| FR-2.2 | Run dual-pass matching (keyword + semantic) | Must | ✅ | backend/matcher/engine.py and backend/semantic/analyzer.py |
+| FR-3.1 | Return evidence-level status and justification | Must | ✅ | backend/models/schemas.py |
+| FR-3.2 | Support manual override and recalculate score | Should | ✅ | backend/api/main.py |
+| FR-4.1 | Surface grouped chapter/requirement review in the UI | Must | ✅ | backend/static/ |
+| FR-4.2 | Export reports to PDF | Must | ✅ | backend/report/generator.py |
+| FR-5.1 | Keep a persistent advisory disclaimer | Must | ✅ | backend/core/config.py |
 
-Completed
+## Architecture
 
-- Business Requirements Document (BRD)
-- Functional Requirements Document (FRD)
-- Standard Operating Procedure (SOP)
-- Project Structure
-- HIC Knowledge Base (12 Requirements)
-- PRE Knowledge Base (12 Requirements)
+ComplyScan uses a two-pass pipeline:
 
-In Progress
+1. Pass 1: deterministic keyword/concept matching for rapid evidence detection.
+2. Pass 2: optional LLM semantic validation for items that need deeper interpretation.
 
-- Rule Engine
-- Backend Development
-- OCR Pipeline
-- Compliance Matching Engine
+### Tech Stack
 
-Planned
+| Layer | Stack |
+|---|---|
+| API | FastAPI |
+| Frontend | Vanilla JavaScript, HTML, CSS |
+| OCR | PyMuPDF + Tesseract |
+| AI | Cloudflare Workers AI |
+| Data | JSON knowledge base |
 
-- FastAPI Backend
-- React Dashboard
-- PDF Report Generation
-- LLM-assisted Semantic Validation
+### Knowledge Base Stats
+- 24 JSON requirement files
+- 2 chapters: HIC and PRE
+- 136 evidence items across the current knowledge base
 
----
+## Edge Cases & Testing
+
+The project now includes deterministic regression tests for:
+- perfect-match and empty-input scoring
+- keyword-boundary and multi-word phrase behavior
+- partial-evidence downgrades and critical-item weighting
+- override recalculation and note propagation
+- cross-requirement isolation between HIC and PRE content
+
+## NABH Coverage
+- HIC chapter: 12 requirements
+- PRE chapter: 12 requirements
+- Evidence items are mapped per requirement and scored at evidence level
+
+## Quick Start
+
+### Local Development
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn backend.api.main:app --reload
+```
+
+### Live Demo
+- https://complyscan-llm-calling.onrender.com/app/
+
+## Build Timeline
+
+The MVP was built in a focused five-day sprint based on the project plan:
+
+- Day 1: Data source consolidation and knowledge base setup
+- Day 2: Rule engine and dual-pass matcher implementation
+- Day 3: Frontend experience and report generation
+- Day 4: FRD/SOP alignment and review workflow
+- Day 5: Testing, polish, and deployment preparation
+
+## Why ComplyScan Stands Out
+- Applies LLM reasoning to healthcare compliance rather than generic document QA.
+- Combines fast deterministic scoring with explainable semantic review.
+- Supports human-in-the-loop override decisions for reviewer confidence.
+- Designed as an advisory tool, not a replacement for formal NABH assessment.
+- Built to run on low-cost or free-tier deployment environments.
+
+## Non-Functional Requirements
+
+| NFR ID | Requirement | Status |
+|---|---|---|
+| NFR-1 | Process 20-page PDFs in under 30 seconds | ⚠️ Verified through local smoke tests, pending formal benchmark |
+| NFR-2 | Avoid PHI and use synthetic examples | ✅ Implemented |
+| NFR-3 | Keep the upload-to-report workflow simple | ✅ Implemented |
+| NFR-4 | Deploy on a free-tier environment | ✅ Live demo available |
+
+## Limitations & Known Issues
+- MVP scope covers 2 NABH chapters rather than the full 10-chapter library.
+- The tool is advisory-only and not an official NABH determination.
+- Authentication and multi-user persistence are not included in the MVP.
+- Storage is currently in-memory for the prototype workflow.
 
 ## Project Structure
 
-```
-ComplyScan/
-
+```text
 backend/
-frontend/
-
+  api/
+  core/
+  matcher/
+  models/
+  ocr/
+  parser/
+  report/
+  scorer/
+  semantic/
+  services/
+  static/
 data/
-    knowledge_base/
-        HIC/
-        PRE/
-
-    rules/
-    schemas/
-    prompts/
-    synthetic_documents/
-    evaluation/
-
-database/
-docs/
+  knowledge_base/
+logs/
+output/
+  exports/
+  reports/
 tests/
 ```
 
----
-
-## Technology Stack
-
-Backend
-- Python
-- FastAPI
-
-AI
-- OCR (Tesseract / PyMuPDF)
-- LLM-assisted Semantic Matching
-- Rule-based Compliance Engine
-
-Database
-- PostgreSQL
-
-Frontend
-- React
-- Tailwind CSS
-
----
-
-## MVP Scope
-
-The MVP is intentionally limited to:
-
-- 2 Accreditation Chapters
-- 24 Compliance Requirements
-- Synthetic Hospital Documents
-- Explainable Compliance Reports
-
-This project is intended for educational and portfolio purposes.
-
----
+## Team
+- Reuben RL — Project Lead / Healthcare Analytics & AI
+- Aakash Karna — Project Co-Lead (Knowledge Base & Documentation)
 
 ## Disclaimer
 
-ComplyScan is **not** an official NABH assessment tool.
-
-The compliance knowledge base is built using publicly available secondary references (WHO, CDC, ICMR, Ministry of Health guidance, and publicly available NABH-related training material). Results produced by the application are advisory only and should not be treated as an accreditation decision.
-
----
-
-## Roadmap
-
-- Complete Rule Engine
-- Build Knowledge Loader
-- Implement OCR Pipeline
-- Develop Matching Engine
-- Generate Compliance Reports
-- Build Dashboard
-- Deploy MVP
-
----
-## Authors
-
-### Reuben Richard Lancer
-Project Co-Lead
-
-### Aakash Karna
-Project Co-Lead
-Healthcare Analytics • AI • Hospital Operations
+This tool is intended for advisory and educational use only. It is not a substitute for an official NABH assessment, regulatory interpretation, or professional quality review.

@@ -85,6 +85,8 @@ async def upload_document(file: UploadFile = File(...)):
         )
     
     file_bytes = await file.read()
+    if not file_bytes:
+        raise HTTPException(status_code=400, detail="Empty file uploaded")
     
     try:
         response = await document_service.upload_document(file_bytes, file.filename)

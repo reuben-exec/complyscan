@@ -24,9 +24,14 @@ Thumbs.db
 logs/
 output/reports/
 output/exports/
+
+# Sensitive/personal artifacts (not needed in repo)
 *.pdf
-!tests/*.pdf
-!sample_*.pdf
+*.docx
+*.jpeg
+*.ps1
+plan.jpeg
+start-kimi-auto-v7.ps1
 
 # Kimi
 kimi_config.toml

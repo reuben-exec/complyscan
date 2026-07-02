@@ -110,17 +110,17 @@ class EvidenceMatcher:
         
         # Keyword contribution (primary): logarithmic scaling
         if kw_count >= 2:
-            confidence += min(1.0, 0.3 + 0.2 * math.log2(kw_count))
+            confidence += min(0.8, 0.35 + 0.15 * math.log2(kw_count))
         elif kw_count == 1:
-            confidence += 0.15  # single keyword alone can't reach PARTIAL
+            confidence += 0.25  # single keyword can support a partial finding
         
         # Concept contribution (supplementary)
         if con_count > 0:
-            confidence += min(0.25, 0.05 * con_count)
+            confidence += min(0.25, 0.1 * con_count)
         
         # Hint contribution (validation bonus)
         if hint_count > 0:
-            confidence += min(0.2, 0.05 * hint_count)
+            confidence += min(0.2, 0.1 * hint_count)
         
         confidence = min(confidence, 1.0)
         
@@ -160,19 +160,30 @@ class EvidenceMatcher:
         for kw in keywords:
             if not kw:
                 continue
+
+            stripped = kw.strip()
+            if not stripped:
+                continue
+
             # Multi-word phrase — substring match is safe
-            if ' ' in kw.strip():
-                if kw.strip() in text_lower:
-                    matched.append(kw.strip())
+            if ' ' in stripped:
+                if stripped in text_lower:
+                    matched.append(stripped)
             else:
+                # Avoid double-counting a single word if a matched phrase already
+                # contains it (for example, "hand" should not also count when
+                # "hand hygiene" already matched).
+                if any(stripped in phrase.lower() for phrase in matched if ' ' in phrase):
+                    continue
+
                 # Single word — use word boundary regex
                 try:
-                    if re.search(rf'\b{re.escape(kw.strip())}\b', text_lower):
-                        matched.append(kw.strip())
+                    if re.search(rf'\b{re.escape(stripped)}\b', text_lower):
+                        matched.append(stripped)
                 except re.error:
                     # Fallback to plain substring for exotic patterns
-                    if kw.strip() in text_lower:
-                        matched.append(kw.strip())
+                    if stripped in text_lower:
+                        matched.append(stripped)
         return matched
     
     def _match_extraction_hints(self, text_lower: str, hints: dict) -> list[str]:
@@ -284,11 +295,11 @@ class RequirementMatcher:
         avg_score = total_weighted / total_weights if total_weights > 0 else 0.0
         
         # Determine overall status
-        if avg_score >= 0.85:
+        if avg_score >= 0.8:
             overall_status = ComplianceStatus.COMPLIANT
-        elif avg_score >= 0.4:
+        elif avg_score >= 0.5:
             overall_status = ComplianceStatus.PARTIAL
-        elif avg_score > 0:
+        elif avg_score >= 0.1:
             overall_status = ComplianceStatus.NON_COMPLIANT
         else:
             overall_status = ComplianceStatus.NOT_FOUND

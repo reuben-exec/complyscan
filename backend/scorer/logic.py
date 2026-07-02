@@ -15,7 +15,7 @@ class ComplianceScorer:
         total_weights = 0.0
         
         for item in items:
-            weight = 1.0 if item.critical else 0.5
+            weight = 2.0 if item.critical else 1.0
             score = {
                 ComplianceStatus.COMPLIANT: 1.0,
                 ComplianceStatus.PARTIAL: 0.5,
@@ -31,11 +31,11 @@ class ComplianceScorer:
     @staticmethod
     def get_status_from_score(score: float) -> ComplianceStatus:
         """Convert numeric score to compliance status."""
-        if score >= 0.9:
+        if score >= 0.8:
             return ComplianceStatus.COMPLIANT
         elif score >= 0.5:
             return ComplianceStatus.PARTIAL
-        elif score > 0:
+        elif score > 0.1:
             return ComplianceStatus.NON_COMPLIANT
         else:
             return ComplianceStatus.NOT_FOUND

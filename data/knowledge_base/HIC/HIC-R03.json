@@ -1,0 +1,160 @@
+{
+  "requirement_id": "HIC-R03",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Biomedical Waste Management and Documentation",
+  "description": "The hospital must segregate, handle, transport, and dispose of biomedical waste per regulatory requirements with complete documentation including daily registers, disposal logs, and CBWTF verification.",
+  "business_objective": "Ensure regulatory compliance, prevent environmental contamination, and protect staff and community from infectious waste exposure.",
+  "criticality": "Critical",
+  "confidence_weight": 0.90,
+  "source_reference": "Biomedical Waste Management Rules, 2016 (India); Generic hospital operational documentation",
+  "evidence_schema": {
+    "total_evidence_items": 7,
+    "critical_items": 5,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R03-001",
+        "name": "Colour-Coded Segregation at Point of Generation",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["colour coding", "colour coded", "yellow bag", "red bag", "blue bag", "black bag", "white container", "sharps container", "waste segregation"],
+          "semantic_concepts": ["waste segregation", "colour coded waste", "point of generation segregation", "biomedical waste categories"],
+          "document_types": ["Policy", "SOP", "Manual"],
+          "expected_locations": ["Section 1.0", "Segregation", "Waste Categories", "Colour Coding"],
+          "validation_rules": ["yellow_category_defined", "red_category_defined", "white_category_defined", "blue_category_defined", "black_category_defined"]
+        },
+        "extraction_hints": {
+          "colour_patterns": ["yellow", "red", "blue", "black", "white", "puncture proof"],
+          "category_patterns": ["human anatomical waste", "soiled waste", "microbiological waste", "contaminated recyclable", "sharps", "broken glass", "general waste"],
+          "container_patterns": ["bag", "container", "bin", "box", "carton"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-002",
+        "name": "Daily Waste Generation Register with Ward-Wise Breakdown",
+        "type": "register",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["waste register", "biomedical waste register", "daily waste log", "waste generation register", "BMW register"],
+          "semantic_concepts": ["waste generation record", "daily waste tracking", "ward wise waste data", "biomedical waste documentation"],
+          "document_types": ["Register", "Log"],
+          "expected_locations": ["Waste Register", "Daily Log", "Generation Register"],
+          "validation_rules": ["daily_entries_present", "ward_wise_breakdown", "colour_wise_quantities", "date_range_complete"]
+        },
+        "extraction_hints": {
+          "column_patterns": ["Date", "Ward", "Department", "Yellow", "Red", "White", "Blue", "Black", "Total", "Quantity", "kg"],
+          "row_patterns": ["General Medicine", "Surgery", "ICU", "OT", "Emergency", "OPD", "Laboratory", "Pharmacy"],
+          "total_patterns": ["Total", "Grand Total", "Daily Total", "Monthly Total"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-003",
+        "name": "Disposal and Transport Log with CBWTF Details",
+        "type": "register",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["disposal log", "transport log", "CBWTF", "common biomedical waste treatment facility", "waste disposal record", "waste transport"],
+          "semantic_concepts": ["waste disposal tracking", "transport documentation", "CBWTF receipt", "waste chain of custody", "disposal verification"],
+          "document_types": ["Register", "Log", "Receipt"],
+          "expected_locations": ["Disposal Log", "Transport Register", "CBWTF Records"],
+          "validation_rules": ["cbwtf_name_present", "vehicle_number_present", "driver_name_present", "quantity_reconciled"]
+        },
+        "extraction_hints": {
+          "transport_patterns": ["Vehicle", "Vehicle Reg", "Registration", "Driver", "Transported by", "Collected by"],
+          "cbwtf_patterns": ["CBWTF", "Common Biomedical Waste Treatment Facility", "Treatment Facility", "Disposal Facility", "Authorised Facility"],
+          "receipt_patterns": ["Receipt", "Challan", "Manifest", "Waybill", "Tracking Number"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-004",
+        "name": "Authorised CBWTF Registration and Validity",
+        "type": "certificate",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["CBWTF authorisation", "authorisation number", "valid until", "BMW authorisation", "waste treatment licence", "CPCB authorisation"],
+          "semantic_concepts": ["CBWTF authorisation", "regulatory approval", "waste treatment licence", "environmental clearance", "validity certificate"],
+          "document_types": ["Certificate", "Letter", "Register"],
+          "expected_locations": ["CBWTF Details", "Authorisation Certificate", "Regulatory Documents"],
+          "validation_rules": ["authorisation_number_present", "validity_date_present", "issuing_authority_identified", "treatment_methods_specified"]
+        },
+        "extraction_hints": {
+          "number_patterns": ["Authorisation No", "Licence No", "Registration No", "KA/BMW", "CPCB", "SPCB"],
+          "validity_patterns": ["Valid Until", "Valid Upto", "Expiry Date", "Valid From", "Date of Issue"],
+          "method_patterns": ["Autoclave", "Incineration", "Microwave", "Hydroclave", "Shredding", "Deep Burial", "Chemical Treatment"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-005",
+        "name": "Monthly Waste Quantification and Trend Analysis",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["monthly summary", "waste quantification", "waste trend", "BMW report", "waste analysis", "waste statistics"],
+          "semantic_concepts": ["waste quantification", "monthly waste report", "waste trend analysis", "waste per bed", "waste benchmarking"],
+          "document_types": ["Report", "Summary", "Dashboard"],
+          "expected_locations": ["Monthly Summary", "Waste Report", "Trend Analysis"],
+          "validation_rules": ["monthly_totals_present", "per_bed_calculation", "trend_comparison", "target_benchmarking"]
+        },
+        "extraction_hints": {
+          "metric_patterns": ["kg/bed/day", "per bed", "total waste", "BMW quantity", "waste percentage", "waste ratio"],
+          "trend_patterns": ["compared to", "increase", "decrease", "trend", "previous month", "year on year", "quarterly"],
+          "target_patterns": ["target", "benchmark", "standard", "limit", "threshold", "≤1.5", "≤0.5"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-006",
+        "name": "Staff Training on Waste Handling",
+        "type": "training_record",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["waste handling training", "BMW training", "biomedical waste training", "waste segregation training", "waste management training"],
+          "semantic_concepts": ["waste handling education", "BMW rules training", "segregation training", "waste safety training"],
+          "document_types": ["Register", "Certificate", "Minutes"],
+          "expected_locations": ["Training Register", "Training Records", "Staff Training"],
+          "validation_rules": ["training_topic_documented", "attendance_recorded", "competency_assessed", "frequency_defined"]
+        },
+        "extraction_hints": {
+          "topic_patterns": ["Biomedical Waste", "BMW Rules", "Waste Segregation", "Waste Handling", "Infection Control", "Universal Precautions"],
+          "frequency_patterns": ["annual", "quarterly", "biannual", "every 6 months", "mandatory", "induction"],
+          "assessment_patterns": ["competency", "assessment", "evaluation", "test", "quiz", "practical"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R03-007",
+        "name": "Accident and Spill Incident Log",
+        "type": "register",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["spill incident", "waste spill", "accident log", "BMW accident", "needle stick", "sharps injury", "spill response"],
+          "semantic_concepts": ["waste spill incident", "biomedical waste accident", "spill response protocol", "incident reporting", "near miss"],
+          "document_types": ["Register", "Log", "Report"],
+          "expected_locations": ["Incident Register", "Accident Log", "Spill Register", "Near Miss Register"],
+          "validation_rules": ["incident_date_present", "incident_type_classified", "response_documented", "corrective_action_defined"]
+        },
+        "extraction_hints": {
+          "incident_patterns": ["Spill", "Leak", "Breakage", "Needle Stick", "Sharps Injury", "Splash", "Exposure", "Fire", "Chemical Spill"],
+          "response_patterns": ["Immediate Action", "Response", "Cleaned", "Decontaminated", "Reported", "Investigated"],
+          "classification_patterns": ["Minor", "Major", "Near Miss", "Reportable", "Non-Reportable", "First Aid", "Medical Attention"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Biomedical Waste Register",
+    "Waste Segregation Audit",
+    "Staff Training Register",
+    "CBWTF Authorisation Certificate",
+    "Monthly Waste Summary Report"
+  ],
+  "related_requirements": ["HIC-R09", "HIC-R06", "HIC-R02"],
+  "tags": ["biomedical_waste", "regulatory_compliance", "environmental_protection", "occupational_safety", "waste_segregation"]
+}

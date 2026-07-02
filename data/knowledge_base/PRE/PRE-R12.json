@@ -1,0 +1,329 @@
+{
+  "requirement_id": "PRE-R12",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Responsibilities and Care Partnership",
+  "description": "The hospital must inform patients and their families of their responsibilities in the healthcare process, including providing accurate medical history, following the prescribed treatment plan, respecting hospital rules and other patients' rights, and participating actively in their care. The hospital must document patient acknowledgment of these responsibilities and foster a partnership model of care.",
+  "business_objective": "To promote shared accountability in healthcare, improve treatment adherence, enhance patient safety through active participation, maintain orderly care environments, and align with national patient rights frameworks that explicitly define patient responsibilities.",
+  "criticality": "Medium",
+  "confidence_weight": 0.8,
+  "source_reference": [
+    "WHO - Patient Rights and Responsibilities Charter",
+    "Ministry of Health & Family Welfare, Government of India - Patient Rights Charter: Patient Responsibilities",
+    "NABH - Patient Rights and Responsibilities (Public Awareness Material)",
+    "NQAS - Patient Participation and Responsibility Standards",
+    "ICMR - Ethical Guidelines for Patient Engagement and Shared Decision-Making"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R12-E01",
+        "name": "Patient Responsibilities Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient responsibilities",
+            "patient duties",
+            "patient obligations",
+            "care partnership policy",
+            "patient accountability"
+          ],
+          "semantic_concepts": [
+            "shared accountability",
+            "treatment adherence",
+            "accurate information provision",
+            "hospital rule compliance",
+            "mutual respect"
+          ],
+          "document_types": [
+            "policy manual",
+            "patient charter",
+            "standard operating procedure",
+            "patient handbook"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical records",
+            "patient relations office",
+            "admission desk"
+          ],
+          "validation_rules": [
+            "Must be approved by hospital administration",
+            "Must be dated within last 3 years",
+            "Must reference national patient responsibilities framework",
+            "Must be available in local language",
+            "Must balance responsibilities with patient rights"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Approval date",
+            "Review date",
+            "Effective date"
+          ],
+          "signature_patterns": [
+            "Hospital administrator signature",
+            "Medical superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "List of patient responsibilities",
+            "Hospital rules and regulations",
+            "Consequences of non-compliance",
+            "Support available to patients"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R12-E02",
+        "name": "Patient Responsibilities Acknowledgment Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient responsibilities acknowledgment",
+            "patient duties receipt",
+            "responsibilities signature form",
+            "patient agreement responsibilities",
+            "care partnership acknowledgment"
+          ],
+          "semantic_concepts": [
+            "responsibility acknowledgment",
+            "patient agreement",
+            "information receipt",
+            "partnership commitment",
+            "rule acceptance"
+          ],
+          "document_types": [
+            "admission form",
+            "acknowledgment form",
+            "patient agreement",
+            "consent to responsibilities"
+          ],
+          "expected_locations": [
+            "medical records",
+            "admission files",
+            "patient charts",
+            "discharge documents"
+          ],
+          "validation_rules": [
+            "Must contain patient or representative signature",
+            "Must be dated at time of admission or registration",
+            "Must reference responsibilities document",
+            "Must be retained in patient record"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Admission date",
+            "Signature date",
+            "Registration date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Guardian signature",
+            "Witness signature"
+          ],
+          "numbered_lists": [
+            "Responsibilities listed",
+            "Patient agreement statements",
+            "Hospital contact information"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R12-E03",
+        "name": "Patient Responsibilities Display Boards",
+        "type": "visual_evidence",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient responsibilities display",
+            "responsibilities poster",
+            "patient duties board",
+            "hospital rules display",
+            "care partnership poster"
+          ],
+          "semantic_concepts": [
+            "public display",
+            "notice board",
+            "patient awareness",
+            "visibility",
+            "shared accountability"
+          ],
+          "document_types": [
+            "photograph",
+            "display material",
+            "signage",
+            "poster"
+          ],
+          "expected_locations": [
+            "OPD waiting areas",
+            "ward entrances",
+            "admission counters",
+            "emergency department",
+            "discharge desk"
+          ],
+          "validation_rules": [
+            "Must be visible in patient care areas",
+            "Must be in local language",
+            "Must be paired with patient rights display",
+            "Must include hospital contact for clarification"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Date of installation",
+            "Date of last update"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R12-E04",
+        "name": "Patient Responsibilities Training Records",
+        "type": "training_record",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient responsibilities training",
+            "care partnership training",
+            "patient engagement training",
+            "shared accountability training",
+            "patient-centered care orientation"
+          ],
+          "semantic_concepts": [
+            "staff education",
+            "capacity building",
+            "partnership model",
+            "patient engagement",
+            "orientation"
+          ],
+          "document_types": [
+            "training calendar",
+            "attendance sheet",
+            "training material",
+            "competency assessment"
+          ],
+          "expected_locations": [
+            "HR department",
+            "training department",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must cover all patient-facing staff",
+            "Must be conducted at induction and refreshed periodically",
+            "Must include balancing rights and responsibilities",
+            "Must include assessment"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Training date",
+            "Assessment date",
+            "Induction date"
+          ],
+          "signature_patterns": [
+            "Trainer signature",
+            "Trainee signature"
+          ],
+          "numbered_lists": [
+            "Training topics",
+            "Attendee list",
+            "Competency criteria"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R12-E05",
+        "name": "Patient Partnership and Responsibilities Compliance Review",
+        "type": "audit_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient responsibilities audit",
+            "care partnership review",
+            "patient engagement assessment",
+            "responsibilities implementation check",
+            "patient accountability monitoring"
+          ],
+          "semantic_concepts": [
+            "compliance monitoring",
+            "internal audit",
+            "partnership effectiveness",
+            "gap analysis",
+            "corrective action"
+          ],
+          "document_types": [
+            "audit report",
+            "monitoring checklist",
+            "review report",
+            "quality review"
+          ],
+          "expected_locations": [
+            "quality department",
+            "internal audit office",
+            "hospital administration"
+          ],
+          "validation_rules": [
+            "Must be conducted at least annually",
+            "Must assess documentation completeness",
+            "Must identify barriers to patient partnership",
+            "Must be reviewed by management"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Audit period",
+            "Report date",
+            "Corrective action deadline"
+          ],
+          "signature_patterns": [
+            "Auditor signature",
+            "Management review signature"
+          ],
+          "numbered_lists": [
+            "Findings",
+            "Corrective actions",
+            "Responsible persons",
+            "Improvement targets"
+          ],
+          "action_patterns": [
+            "Action items",
+            "Follow-up required",
+            "Improvement plans"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Responsibilities Policy",
+    "Patient Responsibilities Acknowledgment Form",
+    "Patient Responsibilities Display Boards",
+    "Staff Training Records",
+    "Compliance Review Reports"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R05",
+    "PRE-R07"
+  ],
+  "tags": [
+    "patient_responsibilities",
+    "care_partnership",
+    "shared_accountability",
+    "treatment_adherence",
+    "patient_engagement",
+    "hospital_rules",
+    "patient_rights"
+  ]
+}

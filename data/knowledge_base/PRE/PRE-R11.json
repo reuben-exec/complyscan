@@ -1,0 +1,345 @@
+{
+  "requirement_id": "PRE-R11",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Information Leaflets and Educational Materials",
+  "description": "The hospital must develop, maintain, and distribute accurate, culturally appropriate, and easily understandable patient information leaflets and educational materials covering common conditions, procedures, medications, and self-care instructions. Materials must be reviewed for medical accuracy and updated regularly.",
+  "business_objective": "To support informed decision-making, enhance patient understanding of health conditions and treatments, promote self-management, reduce anxiety, and ensure consistent messaging across the organization.",
+  "criticality": "Medium",
+  "confidence_weight": 0.82,
+  "source_reference": [
+    "WHO - Health Literacy and Patient Information Guidelines",
+    "Ministry of Health & Family Welfare - National Health Mission IEC Materials Standards",
+    "NABH - Patient Education and Information Standards (Public Training Resources)",
+    "ICMR - Health Communication and Literacy Guidelines",
+    "NQAS - Patient Information and Communication Standards"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 2,
+    "non_critical_items": 3,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R11-E01",
+        "name": "Patient Information Leaflet Inventory and Catalog",
+        "type": "inventory_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient leaflet inventory",
+            "education material catalog",
+            "patient information list",
+            "IEC material register",
+            "health education inventory"
+          ],
+          "semantic_concepts": [
+            "material tracking",
+            "content management",
+            "version control",
+            "distribution management",
+            "multilingual resources"
+          ],
+          "document_types": [
+            "inventory list",
+            "catalog",
+            "register",
+            "content management system record"
+          ],
+          "expected_locations": [
+            "patient education department",
+            "quality department",
+            "medical library",
+            "communication office"
+          ],
+          "validation_rules": [
+            "Must list all active leaflets with title and topic",
+            "Must indicate language versions available",
+            "Must show last review date",
+            "Must specify target audience",
+            "Must indicate distribution points"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Creation date",
+            "Last review date",
+            "Next review date",
+            "Version date"
+          ],
+          "signature_patterns": [
+            "Content owner signature",
+            "Medical reviewer signature"
+          ],
+          "numbered_lists": [
+            "Leaflet titles",
+            "Language versions",
+            "Distribution locations",
+            "Review schedule"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R11-E02",
+        "name": "Patient Information Leaflet Sample",
+        "type": "educational_material",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient information leaflet",
+            "patient brochure sample",
+            "condition information sheet",
+            "procedure guide",
+            "medication information leaflet"
+          ],
+          "semantic_concepts": [
+            "health literacy",
+            "plain language",
+            "visual aids",
+            "cultural adaptation",
+            "readability"
+          ],
+          "document_types": [
+            "leaflet",
+            "brochure",
+            "pamphlet",
+            "fact sheet",
+            "infographic"
+          ],
+          "expected_locations": [
+            "patient education center",
+            "OPD areas",
+            "wards",
+            "pharmacy",
+            "discharge desk"
+          ],
+          "validation_rules": [
+            "Must be at appropriate reading level (typically 6th-8th grade)",
+            "Must include hospital logo and contact",
+            "Must cite medical references where applicable",
+            "Must be reviewed by clinical subject matter expert",
+            "Must include date of publication or version"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Publication date",
+            "Review date",
+            "Version number date"
+          ],
+          "signature_patterns": [
+            "Medical reviewer signature",
+            "Content developer signature",
+            "Quality approver signature"
+          ],
+          "numbered_lists": [
+            "Content sections",
+            "Key messages",
+            "Warning signs",
+            "When to seek help"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R11-E03",
+        "name": "Leaflet Medical Accuracy Review Record",
+        "type": "review_document",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "leaflet review record",
+            "medical accuracy review",
+            "content validation",
+            "patient material audit",
+            "IEC review committee"
+          ],
+          "semantic_concepts": [
+            "clinical accuracy",
+            "evidence-based content",
+            "peer review",
+            "content validation cycle",
+            "medical fact-checking"
+          ],
+          "document_types": [
+            "review checklist",
+            "validation form",
+            "committee minutes",
+            "approval record"
+          ],
+          "expected_locations": [
+            "patient education department",
+            "quality department",
+            "medical administration"
+          ],
+          "validation_rules": [
+            "Must show periodic review cycle (at least annually)",
+            "Must identify reviewer credentials",
+            "Must document changes made",
+            "Must include approval for publication"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Review date",
+            "Approval date",
+            "Next review due date"
+          ],
+          "signature_patterns": [
+            "Reviewer signature",
+            "Department head signature",
+            "Medical director signature"
+          ],
+          "numbered_lists": [
+            "Review criteria",
+            "Accuracy checks",
+            "Required changes",
+            "Approval status"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R11-E04",
+        "name": "Patient Comprehension and Utility Assessment",
+        "type": "evaluation_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "leaflet comprehension test",
+            "patient understanding survey",
+            "material utility assessment",
+            "health literacy evaluation",
+            "patient feedback on materials"
+          ],
+          "semantic_concepts": [
+            "readability testing",
+            "comprehension validation",
+            "patient-centered design",
+            "usability testing",
+            "feedback integration"
+          ],
+          "document_types": [
+            "survey results",
+            "focus group report",
+            "usability test record",
+            "comprehension assessment"
+          ],
+          "expected_locations": [
+            "patient education department",
+            "quality department",
+            "patient relations office"
+          ],
+          "validation_rules": [
+            "Must assess patient understanding of content",
+            "Must evaluate cultural appropriateness",
+            "Must include patient feedback",
+            "Must guide material revision"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Assessment date",
+            "Survey period",
+            "Report date"
+          ],
+          "signature_patterns": [
+            "Assessor signature",
+            "Department head signature"
+          ],
+          "numbered_lists": [
+            "Assessment questions",
+            "Comprehension scores",
+            "Feedback themes",
+            "Improvement recommendations"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R11-E05",
+        "name": "Digital and Multimedia Patient Education Resources",
+        "type": "educational_material",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "digital patient education",
+            "health education video",
+            "patient education app",
+            "multimedia health content",
+            "online patient portal education"
+          ],
+          "semantic_concepts": [
+            "e-learning",
+            "health technology",
+            "patient portal",
+            "video education",
+            "interactive content",
+            "mobile health"
+          ],
+          "document_types": [
+            "video file",
+            "app screenshot",
+            "website content",
+            "digital presentation",
+            "podcast script"
+          ],
+          "expected_locations": [
+            "patient education center",
+            "website",
+            "patient portal",
+            "waiting area displays",
+            "mobile health platform"
+          ],
+          "validation_rules": [
+            "Must be accessible to patients with disabilities",
+            "Must be compatible with common devices",
+            "Must include same accuracy review as print materials",
+            "Must track usage analytics where applicable"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Creation date",
+            "Upload date",
+            "Last update date"
+          ],
+          "signature_patterns": [
+            "Content developer signature",
+            "Medical reviewer signature",
+            "IT approver signature"
+          ],
+          "numbered_lists": [
+            "Resource types",
+            "Topic coverage",
+            "Platform availability",
+            "Accessibility features"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Information Leaflet Inventory",
+    "Patient Information Leaflet Samples",
+    "Medical Accuracy Review Records",
+    "Patient Comprehension Assessment",
+    "Digital Education Resources"
+  ],
+  "related_requirements": [
+    "PRE-R05",
+    "PRE-R06",
+    "PRE-R10"
+  ],
+  "tags": [
+    "patient_information",
+    "health_literacy",
+    "educational_materials",
+    "leaflets",
+    "brochures",
+    "readability",
+    "medical_accuracy",
+    "multimedia_education"
+  ]
+}

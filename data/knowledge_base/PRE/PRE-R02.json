@@ -1,0 +1,328 @@
+{
+  "requirement_id": "PRE-R02",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Informed Consent",
+  "description": "The hospital must ensure that informed consent is obtained from patients or their legally authorized representatives before any procedure, treatment, or intervention. Consent must be voluntary, based on adequate information about risks, benefits, alternatives, and consequences, and documented in a language the patient understands.",
+  "business_objective": "To protect patient autonomy, ensure legal and ethical compliance, and demonstrate respect for patient decision-making while mitigating medico-legal risk.",
+  "criticality": "Critical",
+  "confidence_weight": 0.95,
+  "source_reference": [
+    "WHO - Informed Consent Guidelines",
+    "Indian Medical Council (Professional Conduct, Etiquette and Ethics) Regulations, 2002",
+    "NABH - Consent Process Standards (Public Training Resources)",
+    "ICMR - Ethical Guidelines for Biomedical Research on Human Participants",
+    "Ministry of Health & Family Welfare - Clinical Establishments Act, 2010"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 4,
+    "non_critical_items": 1,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R02-E01",
+        "name": "General Consent Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "general consent",
+            "admission consent",
+            "treatment consent",
+            "hospitalization consent"
+          ],
+          "semantic_concepts": [
+            "general treatment authorization",
+            "routine care consent",
+            "admission agreement",
+            "basic consent"
+          ],
+          "document_types": [
+            "consent form",
+            "admission form",
+            "patient agreement"
+          ],
+          "expected_locations": [
+            "medical records",
+            "admission files",
+            "patient charts"
+          ],
+          "validation_rules": [
+            "Must be signed by patient or legal guardian",
+            "Must be dated before or at admission",
+            "Must include patient identification details",
+            "Must be in language understood by patient"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Consent date",
+            "Admission date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Witness signature",
+            "Guardian signature",
+            "Interpreter signature"
+          ],
+          "numbered_lists": [
+            "Consent clauses",
+            "Patient rights statements"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R02-E02",
+        "name": "Procedure-Specific Consent Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "procedure consent",
+            "surgical consent",
+            "operative consent",
+            "intervention consent",
+            "specific consent"
+          ],
+          "semantic_concepts": [
+            "procedure-specific authorization",
+            "surgical permission",
+            "intervention agreement",
+            "treatment-specific consent"
+          ],
+          "document_types": [
+            "consent form",
+            "surgical consent",
+            "procedure authorization"
+          ],
+          "expected_locations": [
+            "medical records",
+            "surgical files",
+            "OT records",
+            "procedure notes"
+          ],
+          "validation_rules": [
+            "Must name the specific procedure",
+            "Must describe risks and benefits",
+            "Must mention alternatives",
+            "Must be signed before procedure",
+            "Must include surgeon name"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Consent date",
+            "Procedure date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Surgeon signature",
+            "Witness signature",
+            "Anesthetist signature"
+          ],
+          "numbered_lists": [
+            "Risks listed",
+            "Benefits listed",
+            "Alternatives listed"
+          ],
+          "timeline_patterns": [
+            "Consent obtained before procedure",
+            "Cooling off period mentioned"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R02-E03",
+        "name": "High-Risk Consent Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "high risk consent",
+            "major surgery consent",
+            "complex procedure consent",
+            "risk disclosure consent"
+          ],
+          "semantic_concepts": [
+            "high-risk authorization",
+            "major intervention",
+            "significant risk disclosure",
+            "complex treatment"
+          ],
+          "document_types": [
+            "high-risk consent form",
+            "detailed consent form",
+            "risk disclosure document"
+          ],
+          "expected_locations": [
+            "medical records",
+            "surgical files",
+            "high-risk procedure files"
+          ],
+          "validation_rules": [
+            "Must detail specific high risks",
+            "Must include percentage or severity of risks where applicable",
+            "Must document that patient understood",
+            "Must be witnessed by independent witness"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Consent date",
+            "Counseling date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Surgeon signature",
+            "Independent witness signature",
+            "Interpreter signature"
+          ],
+          "numbered_lists": [
+            "Specific high risks",
+            "Complications",
+            "Alternative treatments"
+          ],
+          "timeline_patterns": [
+            "Counseling session date",
+            "Consent date",
+            "Procedure date"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R02-E04",
+        "name": "Blood Transfusion Consent Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "blood transfusion consent",
+            "blood product consent",
+            "transfusion authorization",
+            "blood donation consent"
+          ],
+          "semantic_concepts": [
+            "blood product use",
+            "transfusion risks",
+            "voluntary donation",
+            "autologous transfusion"
+          ],
+          "document_types": [
+            "transfusion consent form",
+            "blood product consent",
+            "transfusion authorization"
+          ],
+          "expected_locations": [
+            "medical records",
+            "blood bank records",
+            "transfusion files"
+          ],
+          "validation_rules": [
+            "Must describe transfusion risks",
+            "Must mention alternatives",
+            "Must be signed before transfusion",
+            "Must comply with national blood safety standards"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Consent date",
+            "Transfusion date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Physician signature",
+            "Witness signature"
+          ],
+          "numbered_lists": [
+            "Transfusion risks",
+            "Benefits",
+            "Alternatives"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R02-E05",
+        "name": "Consent Policy and Procedure Document",
+        "type": "policy",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "consent policy",
+            "informed consent procedure",
+            "consent process SOP",
+            "consent guidelines"
+          ],
+          "semantic_concepts": [
+            "consent process",
+            "consent standards",
+            "authorization procedures",
+            "patient agreement workflow"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "clinical protocol",
+            "guideline"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical administration",
+            "nursing office"
+          ],
+          "validation_rules": [
+            "Must define who can obtain consent",
+            "Must specify language requirements",
+            "Must address emergency consent",
+            "Must include consent withdrawal process"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Policy effective date",
+            "Review date"
+          ],
+          "signature_patterns": [
+            "Policy approver signature",
+            "Medical superintendent signature"
+          ],
+          "numbered_lists": [
+            "Consent types",
+            "Responsible persons",
+            "Documentation requirements"
+          ],
+          "action_patterns": [
+            "Process steps",
+            "Escalation procedures"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "General Consent Form",
+    "Procedure-Specific Consent Form",
+    "High-Risk Consent Form",
+    "Blood Transfusion Consent Form",
+    "Consent Policy and Procedure Document"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R03",
+    "PRE-R06"
+  ],
+  "tags": [
+    "informed_consent",
+    "patient_autonomy",
+    "legal_compliance",
+    "risk_disclosure",
+    "authorization",
+    "ethics",
+    "documentation"
+  ]
+}

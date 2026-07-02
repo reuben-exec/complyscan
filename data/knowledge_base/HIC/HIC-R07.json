@@ -1,0 +1,140 @@
+{
+  "requirement_id": "HIC-R07",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Environmental Cleaning and Housekeeping Protocols",
+  "description": "The hospital must have standardised environmental cleaning protocols with defined schedules, methods, monitoring, and corrective action for all patient care areas.",
+  "business_objective": "Maintain a safe physical environment that minimises pathogen reservoirs and cross-contamination risks.",
+  "criticality": "High",
+  "confidence_weight": 0.80,
+  "source_reference": "CDC Guidelines for Environmental Infection Control; Generic hospital facilities management documentation",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 3,
+    "non_critical_items": 3,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R07-001",
+        "name": "Cleaning SOPs for Different Risk Areas",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["cleaning SOP", "housekeeping SOP", "environmental cleaning protocol", "terminal cleaning", "daily cleaning", "discharge cleaning", "cleaning procedure"],
+          "semantic_concepts": ["environmental cleaning standard operating procedure", "cleaning protocol by risk area", "terminal disinfection procedure", "routine cleaning schedule", "cleaning methodology"],
+          "document_types": ["SOP", "Policy", "Manual"],
+          "expected_locations": ["Section 1.0", "Cleaning SOP", "Housekeeping Protocol", "Environmental Cleaning"],
+          "validation_rules": ["general_ward_sop", "ICU_sop", "OT_sop", "high_risk_area_sop"]
+        },
+        "extraction_hints": {
+          "area_patterns": ["General Ward", "Semi-Private Ward", "Private Room", "ICU", "NICU", "OT", "Emergency", "Dialysis", "Laboratory", "OPD", "Pharmacy", "CSSD"],
+          "procedure_patterns": ["Step 1", "Step 2", "Procedure", "Method", "Technique", "Process", "Protocol", "Standard Operating Procedure"],
+          "frequency_patterns": ["Daily", "Twice daily", "Three times daily", "Between cases", "After each procedure", "Terminal cleaning", "Discharge cleaning", "Weekly", "Monthly"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R07-002",
+        "name": "Daily and Terminal Cleaning Schedules",
+        "type": "schedule",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["cleaning schedule", "daily cleaning schedule", "terminal cleaning schedule", "housekeeping roster", "cleaning timetable", "disinfection schedule"],
+          "semantic_concepts": ["cleaning frequency schedule", "terminal cleaning timing", "daily housekeeping roster", "cleaning duty allocation", "disinfection calendar"],
+          "document_types": ["Schedule", "Roster", "SOP", "Checklist"],
+          "expected_locations": ["Schedule", "Roster", "Cleaning Calendar", "Housekeeping Timetable"],
+          "validation_rules": ["daily_schedule_present", "terminal_schedule_present", "discharge_schedule_present", "area_coverage_complete"]
+        },
+        "extraction_hints": {
+          "time_patterns": ["06:00", "08:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00", "22:00", "Morning", "Afternoon", "Evening", "Night"],
+          "task_patterns": ["Mopping", "Dusting", "Disinfection", "Terminal cleaning", "Bed making", "Bathroom cleaning", "Waste removal", "Linen change", "Equipment cleaning"],
+          "area_patterns": ["All wards", "All rooms", "ICU", "OT", "Emergency", "OPD", "Common areas", "Corridors", "Staircases", "Elevators", "Toilets", "Pantry"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R07-003",
+        "name": "Cleaning Product Specifications and Dilution Protocols",
+        "type": "specification",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["cleaning product", "disinfectant specification", "dilution protocol", "chemical concentration", "cleaning agent", "disinfectant dilution", "ppm", "ppm concentration"],
+          "semantic_concepts": ["disinfectant specification", "cleaning chemical concentration", "dilution ratio", "contact time", "product compatibility", "material safety"],
+          "document_types": ["SOP", "Specification", "Safety Data Sheet", "Policy"],
+          "expected_locations": ["Product Specification", "Chemical Dilution", "Disinfectant Protocol", "Cleaning Products"],
+          "validation_rules": ["product_list_present", "dilution_ratios_defined", "contact_times_specified", "safety_precautions_documented"]
+        },
+        "extraction_hints": {
+          "product_patterns": ["Sodium hypochlorite", "Bleach", "Chlorine", "Quaternary ammonium", "QAC", "Phenolic", "Alcohol", "Hydrogen peroxide", "Peracetic acid", "Glutaraldehyde", "Formaldehyde"],
+          "concentration_patterns": ["0.1%", "0.5%", "1%", "5%", "10%", "1000 ppm", "5000 ppm", "10000 ppm", "1:10", "1:100", "1:1000"],
+          "contact_patterns": ["Contact time", "Exposure time", "Dwell time", "Minimum contact", "At least", "Minutes", "Hours"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R07-004",
+        "name": "High-Touch Surface Identification and Cleaning Frequency",
+        "type": "SOP",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["high touch surface", "frequently touched", "touch surface", "contact surface", "high touch area", "high risk surface", "environmental reservoir"],
+          "semantic_concepts": ["high touch surface definition", "frequently touched equipment", "environmental contact points", "surface cleaning priority", "touch frequency assessment"],
+          "document_types": ["SOP", "Checklist", "Policy"],
+          "expected_locations": ["High Touch Surfaces", "Contact Surfaces", "Priority Cleaning", "Critical Surfaces"],
+          "validation_rules": ["surface_list_defined", "cleaning_frequency_specified", "risk_classification_present", "monitoring_method_defined"]
+        },
+        "extraction_hints": {
+          "surface_patterns": ["Bed rails", "Call button", "Tray table", "Bedside table", "IV pole", "Infusion pump", "Monitor", "Remote control", "Telephone", "Door handle", "Light switch", "Faucet", "Toilet flush", "Chair armrest", "Keyboard", "Mouse", "Stethoscope", "Tourniquet"],
+          "frequency_patterns": ["Twice daily", "Three times daily", "Every 4 hours", "Every shift", "After each use", "Between patients", "Hourly", "Continuous"],
+          "risk_patterns": ["High risk", "Critical", "Priority", "Essential", "Mandatory", "Non-negotiable", "Standard", "Routine"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R07-005",
+        "name": "Environmental Monitoring with ATP or Culture Results",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["environmental monitoring", "ATP monitoring", "ATP bioluminescence", "culture swab", "environmental sampling", "surface culture", "cleaning audit", "hygiene monitoring"],
+          "semantic_concepts": ["environmental quality monitoring", "ATP testing", "microbiological sampling", "cleaning efficacy assessment", "surface contamination detection"],
+          "document_types": ["Report", "Log", "Dashboard"],
+          "expected_locations": ["Environmental Monitoring", "ATP Results", "Culture Report", "Cleaning Audit", "Hygiene Check"],
+          "validation_rules": ["monitoring_method_defined", "sampling_plan_present", "results_documented", "action_limits_defined"]
+        },
+        "extraction_hints": {
+          "method_patterns": ["ATP", "Bioluminescence", "RLU", "Relative Light Units", "Culture", "Swab", "Contact plate", "Agar plate", "Settle plate", "Air sampling", "Particle count"],
+          "result_patterns": ["Pass", "Fail", "Acceptable", "Unacceptable", "Below limit", "Above limit", "Within range", "Out of range", "Clean", "Contaminated"],
+          "limit_patterns": ["≤250 RLU", "≤500 RLU", "≤100 RLU", "CFU", "Colony forming units", "Acceptable limit", "Action limit", "Alert limit"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R07-006",
+        "name": "Corrective Action for Monitoring Failures",
+        "type": "process",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["corrective action", "remedial action", "cleaning failure", "monitoring failure", "environmental failure", "re-cleaning", "corrective measure", "action plan"],
+          "semantic_concepts": ["corrective action protocol", "failure response procedure", "re-cleaning protocol", "environmental failure management", "non-conformance action"],
+          "document_types": ["SOP", "Form", "Report", "Minutes"],
+          "expected_locations": ["Corrective Action", "Failure Response", "Non-Conformance", "Action Plan", "Remedial Measures"],
+          "validation_rules": ["failure_threshold_defined", "response_timeline_specified", "responsibility_assigned", "verification_method_present"]
+        },
+        "extraction_hints": {
+          "trigger_patterns": ["Fail", "Unacceptable", "Above limit", "Out of range", "Non-conformance", "Deficiency", "Deviation", "Violation", "Breach"],
+          "action_patterns": ["Re-clean", "Re-disinfect", "Re-test", "Re-sample", "Re-train", "Supervise", "Escalate", "Notify", "Investigate", "Root cause analysis"],
+          "timeline_patterns": ["Immediately", "Within 24 hours", "Within 48 hours", "Same day", "Next shift", "Before next use", "Before patient admission"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Housekeeping Cleaning SOP",
+    "Environmental Monitoring Reports",
+    "Cleaning Schedule",
+    "Corrective Action Log"
+  ],
+  "related_requirements": ["HIC-R02", "HIC-R08", "HIC-R10"],
+  "tags": ["environmental_hygiene", "housekeeping", "cleaning_protocol", "disinfection", "monitoring", "corrective_action"]
+}

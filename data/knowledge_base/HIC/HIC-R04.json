@@ -1,0 +1,159 @@
+{
+  "requirement_id": "HIC-R04",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Needle Stick Injury and Occupational Exposure Management",
+  "description": "The hospital must maintain a confidential register documenting all occupational exposures to blood and body fluids with immediate reporting, source testing, baseline testing, PEP protocols, and follow-up schedules.",
+  "business_objective": "Protect healthcare workers from bloodborne pathogen transmission and ensure rapid, standardised post-exposure management.",
+  "criticality": "Critical",
+  "confidence_weight": 0.90,
+  "source_reference": "CDC Guidelines for Management of Occupational Exposures; Generic hospital occupational health policy",
+  "evidence_schema": {
+    "total_evidence_items": 7,
+    "critical_items": 6,
+    "non_critical_items": 1,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R04-001",
+        "name": "Confidential Exposure Register with Individual Incident Logs",
+        "type": "register",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["needle stick injury register", "NSI register", "exposure register", "occupational exposure register", "sharps injury log", "blood exposure register"],
+          "semantic_concepts": ["occupational exposure record", "needle stick injury documentation", "sharps injury tracking", "bloodborne pathogen exposure", "confidential health record"],
+          "document_types": ["Register", "Log"],
+          "expected_locations": ["Needle Stick Injury Register", "Exposure Register", "Occupational Health Register"],
+          "validation_rules": ["register_exists", "individual_incident_logs", "confidentiality_marked", "unique_incident_ids"]
+        },
+        "extraction_hints": {
+          "header_patterns": ["Needle Stick Injury Register", "Occupational Exposure Register", "Sharps Injury Log", "Blood and Body Fluid Exposure"],
+          "column_patterns": ["Incident No", "Date", "Time", "Exposed Staff", "Department", "Type of Exposure", "Source Patient", "HIV", "HBsAg", "HCV"],
+          "id_patterns": ["Inc. No", "Incident ID", "Case No", "Reference No", "NSI-"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-002",
+        "name": "Immediate Reporting Protocol",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["immediate reporting", "report within", "30 minutes", "exposure reporting", "incident reporting protocol", "post exposure reporting"],
+          "semantic_concepts": ["rapid reporting", "immediate notification", "exposure incident protocol", "urgent reporting requirement", "timely disclosure"],
+          "document_types": ["Policy", "SOP", "Register"],
+          "expected_locations": ["Reporting Protocol", "Immediate Action", "First Response", "Post-Exposure Protocol"],
+          "validation_rules": ["reporting_timeline_defined", "reporting_authority_identified", "reporting_method_specified"]
+        },
+        "extraction_hints": {
+          "timeline_patterns": ["within 30 minutes", "within 1 hour", "immediately", "as soon as possible", "without delay", "promptly", "urgent"],
+          "authority_patterns": ["Infection Control Nurse", "ICN", "Occupational Health", "Medical Officer", "HOD", "Supervisor", "Department Head"],
+          "method_patterns": ["report to", "notify", "inform", "contact", "call", "page", "escalate to"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-003",
+        "name": "Source Patient Testing",
+        "type": "test_result",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["source testing", "source patient", "HIV test", "HBsAg test", "HCV test", "source blood test", "exposed source"],
+          "semantic_concepts": ["source patient screening", "bloodborne pathogen testing", "HIV screening", "hepatitis B screening", "hepatitis C screening", "source identification"],
+          "document_types": ["Register", "Lab Report", "Form"],
+          "expected_locations": ["Source Testing", "Laboratory Results", "Source Patient Status", "Pathogen Testing"],
+          "validation_rules": ["hiv_test_documented", "hbsag_test_documented", "hcv_test_documented", "test_results_recorded"]
+        },
+        "extraction_hints": {
+          "test_patterns": ["HIV", "HBsAg", "HCV", "Hepatitis B", "Hepatitis C", "Anti-HIV", "Anti-HCV", "HBV"],
+          "result_patterns": ["Negative", "Positive", "Non-Reactive", "Reactive", "Detected", "Not Detected", "Indeterminate"],
+          "source_patterns": ["Source Patient", "Source", "Index Patient", "Exposed Source", "Donor", "Patient ID"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-004",
+        "name": "Exposed Staff Baseline Testing",
+        "type": "test_result",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["baseline testing", "exposed staff test", "baseline HIV", "baseline HBsAg", "baseline HCV", "pre-exposure testing", "post-exposure baseline"],
+          "semantic_concepts": ["baseline serology", "pre-treatment testing", "exposed worker screening", "initial pathogen test", "baseline health status"],
+          "document_types": ["Register", "Lab Report", "Form"],
+          "expected_locations": ["Baseline Testing", "Exposed Staff Results", "Pre-Exposure Baseline", "Initial Screening"],
+          "validation_rules": ["baseline_hiv_documented", "baseline_hbsag_documented", "baseline_hcv_documented", "test_date_recorded"]
+        },
+        "extraction_hints": {
+          "baseline_patterns": ["Baseline", "Initial", "Pre-treatment", "Pre-exposure", "First Test", "Entry Test", "Screening"],
+          "staff_patterns": ["Exposed Staff", "Exposed HCW", "Healthcare Worker", "Employee", "Staff ID", "Personnel"],
+          "date_patterns": ["Baseline Date", "Test Date", "Date of Test", "Sample Date", "Collection Date"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-005",
+        "name": "PEP Protocol and Initiation Timeline",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["PEP", "post exposure prophylaxis", "PEP protocol", "PEP initiation", "antiretroviral PEP", "HBIG", "hepatitis B immunoglobulin", "PEP drugs"],
+          "semantic_concepts": ["post exposure prophylaxis protocol", "emergency medication", "HIV PEP", "hepatitis B prophylaxis", "drug regimen", "PEP timeline"],
+          "document_types": ["Policy", "SOP", "Register", "Form"],
+          "expected_locations": ["PEP Protocol", "Post-Exposure Prophylaxis", "Emergency Treatment", "Prophylaxis Guidelines"],
+          "validation_rules": ["pep_protocol_defined", "initiation_timeline_specified", "drug_regimen_documented", "source_risk_assessment_present"]
+        },
+        "extraction_hints": {
+          "drug_patterns": ["Tenofovir", "Emtricitabine", "Dolutegravir", "Zidovudine", "Lamivudine", "HBIG", "Hepatitis B Immunoglobulin", "Antiretroviral", "ART"],
+          "timeline_patterns": ["within 72 hours", "within 24 hours", "as soon as possible", "immediately", "within 2 hours", "without delay"],
+          "protocol_patterns": ["Triple drug", "Dual drug", "Single drug", "3-drug regimen", "2-drug regimen", "Expanded regimen", "Basic regimen"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-006",
+        "name": "Follow-Up Schedule",
+        "type": "schedule",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["follow up", "follow-up schedule", "6 weeks", "3 months", "6 months", "seroconversion monitoring", "repeat testing", "post exposure follow up"],
+          "semantic_concepts": ["serological follow up", "post exposure monitoring", "HIV seroconversion window", "hepatitis serology tracking", "long term monitoring"],
+          "document_types": ["Register", "Schedule", "Form"],
+          "expected_locations": ["Follow-Up Schedule", "Monitoring Plan", "Seroconversion Testing", "Post-Exposure Follow-Up"],
+          "validation_rules": ["six_week_test_defined", "three_month_test_defined", "six_month_test_defined", "counselling_documented"]
+        },
+        "extraction_hints": {
+          "schedule_patterns": ["6 weeks", "3 months", "6 months", "12 months", "1 year", "2 weeks", "4 weeks", "8 weeks", "12 weeks", "24 weeks", "52 weeks"],
+          "test_patterns": ["HIV test", "HBsAg", "Anti-HCV", "HIV serology", "Hepatitis serology", "Liver function", "CD4 count", "Viral load"],
+          "counselling_patterns": ["Counselling", "Psychological support", "Mental health", "Peer support", "Employee assistance", "Confidential counselling"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R04-007",
+        "name": "Staff Immunisation Records",
+        "type": "register",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["staff immunisation", "hepatitis B vaccination", "vaccination record", "immunisation register", "healthcare worker immunisation", "vaccine card"],
+          "semantic_concepts": ["occupational immunisation", "hepatitis B immunity", "vaccine documentation", "staff health record", "preventive vaccination"],
+          "document_types": ["Register", "Certificate", "Health Record"],
+          "expected_locations": ["Immunisation Register", "Vaccination Record", "Staff Health File", "Occupational Health Record"],
+          "validation_rules": ["hepatitis_b_vaccine_documented", "titer_check_recorded", "booster_dates_present", "vaccine_coverage_calculated"]
+        },
+        "extraction_hints": {
+          "vaccine_patterns": ["Hepatitis B", "HBV", "Engerix-B", "Revac-B", "Hepatitis B vaccine", "Recombinant HBV", "DNA vaccine"],
+          "titer_patterns": ["Anti-HBs", "HBsAb", "Surface antibody", "Titer", "Antibody level", "Immunity check", "Seroprotection"],
+          "date_patterns": ["Date of Vaccination", "Dose 1", "Dose 2", "Dose 3", "Booster", "Revaccination", "Expiry"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Needle Stick Injury Register",
+    "Staff Immunisation Records",
+    "Infection Control Committee Minutes",
+    "Occupational Health Policy"
+  ],
+  "related_requirements": ["HIC-R02", "HIC-R06", "HIC-R08"],
+  "tags": ["occupational_health", "bloodborne_pathogens", "healthcare_worker_safety", "PEP", "needle_stick_injury", "confidential_record"]
+}

@@ -1,0 +1,300 @@
+{
+  "requirement_id": "PRE-R01",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Rights Policy",
+  "description": "The hospital must have a documented patient rights policy that is communicated to patients and their families. The policy should outline the rights of patients to respectful care, information, privacy, informed consent, and grievance redressal in a manner consistent with national and international standards.",
+  "business_objective": "To ensure patients are aware of their rights and can exercise them, fostering trust, transparency, and patient-centered care while meeting accreditation and regulatory expectations.",
+  "criticality": "Critical",
+  "confidence_weight": 0.92,
+  "source_reference": [
+    "WHO - Patient Rights Charter",
+    "Ministry of Health & Family Welfare, Government of India - Patient Rights Charter",
+    "NABH - Patient Rights and Responsibilities (Public Awareness Material)",
+    "NQAS - Patient Rights Standards"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R01-E01",
+        "name": "Patient Rights Policy Document",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient rights",
+            "charter of patient rights",
+            "rights and responsibilities",
+            "patient bill of rights"
+          ],
+          "semantic_concepts": [
+            "patient autonomy",
+            "dignity in care",
+            "right to information",
+            "right to privacy",
+            "right to grievance"
+          ],
+          "document_types": [
+            "policy manual",
+            "patient handbook",
+            "charter document",
+            "standard operating procedure"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical records",
+            "patient relations office",
+            "admission desk"
+          ],
+          "validation_rules": [
+            "Document must be approved by hospital administration",
+            "Must be dated within last 3 years",
+            "Must reference national patient rights charter",
+            "Must be available in local language"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Approval date",
+            "Review date",
+            "Effective date"
+          ],
+          "signature_patterns": [
+            "Hospital administrator signature",
+            "Medical superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "List of patient rights",
+            "List of patient responsibilities"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R01-E02",
+        "name": "Patient Rights Display Boards",
+        "type": "visual_evidence",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient rights display",
+            "charter display",
+            "rights poster",
+            "patient information board"
+          ],
+          "semantic_concepts": [
+            "public display",
+            "notice board",
+            "patient awareness",
+            "visibility"
+          ],
+          "document_types": [
+            "photograph",
+            "display material",
+            "signage"
+          ],
+          "expected_locations": [
+            "OPD waiting areas",
+            "ward entrances",
+            "admission counters",
+            "emergency department"
+          ],
+          "validation_rules": [
+            "Must be visible in patient care areas",
+            "Must be in local language",
+            "Must include hospital contact for grievances"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Date of installation",
+            "Date of last update"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R01-E03",
+        "name": "Patient Acknowledgment of Rights",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient rights acknowledgment",
+            "rights receipt",
+            "patient signature rights",
+            "consent to rights information"
+          ],
+          "semantic_concepts": [
+            "acknowledgment",
+            "receipt",
+            "patient signature",
+            "information delivery"
+          ],
+          "document_types": [
+            "admission form",
+            "consent form",
+            "patient information sheet",
+            "acknowledgment form"
+          ],
+          "expected_locations": [
+            "medical records",
+            "admission files",
+            "patient charts"
+          ],
+          "validation_rules": [
+            "Must contain patient or representative signature",
+            "Must be dated at time of admission",
+            "Must reference rights document"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Admission date",
+            "Signature date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Witness signature",
+            "Guardian signature"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R01-E04",
+        "name": "Patient Rights Training Records",
+        "type": "training_record",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient rights training",
+            "staff orientation patient rights",
+            "rights awareness training",
+            "patient centered care training"
+          ],
+          "semantic_concepts": [
+            "staff education",
+            "capacity building",
+            "awareness program",
+            "orientation"
+          ],
+          "document_types": [
+            "training calendar",
+            "attendance sheet",
+            "training material",
+            "competency assessment"
+          ],
+          "expected_locations": [
+            "HR department",
+            "training department",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must cover all staff categories",
+            "Must be conducted at least annually",
+            "Must include assessment"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Training date",
+            "Assessment date"
+          ],
+          "signature_patterns": [
+            "Trainer signature",
+            "Trainee signature"
+          ],
+          "numbered_lists": [
+            "Training topics",
+            "Attendee list"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R01-E05",
+        "name": "Patient Rights Compliance Audit Report",
+        "type": "audit_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient rights audit",
+            "rights compliance review",
+            "patient rights monitoring",
+            "rights implementation check"
+          ],
+          "semantic_concepts": [
+            "compliance monitoring",
+            "internal audit",
+            "gap analysis",
+            "corrective action"
+          ],
+          "document_types": [
+            "audit report",
+            "monitoring checklist",
+            "review report",
+            "quality review"
+          ],
+          "expected_locations": [
+            "quality department",
+            "internal audit office",
+            "hospital administration"
+          ],
+          "validation_rules": [
+            "Must be conducted at least annually",
+            "Must identify gaps and corrective actions",
+            "Must be reviewed by management"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Audit period",
+            "Report date",
+            "Corrective action deadline"
+          ],
+          "signature_patterns": [
+            "Auditor signature",
+            "Management review signature"
+          ],
+          "numbered_lists": [
+            "Findings",
+            "Corrective actions",
+            "Responsible persons"
+          ],
+          "action_patterns": [
+            "Action items",
+            "Follow-up required"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Rights Policy Document",
+    "Patient Rights Display Boards",
+    "Patient Acknowledgment Form",
+    "Staff Training Records",
+    "Compliance Audit Reports"
+  ],
+  "related_requirements": [
+    "PRE-R02",
+    "PRE-R03",
+    "PRE-R13"
+  ],
+  "tags": [
+    "patient_rights",
+    "charter",
+    "policy",
+    "communication",
+    "awareness",
+    "grievance",
+    "dignity",
+    "autonomy"
+  ]
+}

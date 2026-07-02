@@ -1,0 +1,140 @@
+{
+  "requirement_id": "HIC-R06",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Staff Infection Control Training and Competency",
+  "description": "All healthcare workers must receive initial and periodic infection control training with documented attendance, competency assessment, and refresher schedules.",
+  "business_objective": "Ensure all personnel possess current knowledge and practical skills for infection prevention, reducing human error as a source of HAIs.",
+  "criticality": "High",
+  "confidence_weight": 0.85,
+  "source_reference": "APIC Competency-Based Training Framework; Generic hospital training policy",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 4,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R06-001",
+        "name": "Training Register with Staff Names and Topics",
+        "type": "register",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["training register", "training log", "training record", "staff training", "infection control training", "training attendance"],
+          "semantic_concepts": ["training documentation", "staff education record", "training attendance tracking", "infection control education log"],
+          "document_types": ["Register", "Log", "Spreadsheet"],
+          "expected_locations": ["Training Register", "Staff Training Log", "Education Record", "Training Attendance"],
+          "validation_rules": ["register_exists", "staff_names_present", "training_topics_documented", "dates_recorded"]
+        },
+        "extraction_hints": {
+          "column_patterns": ["Name", "Staff Name", "Employee Name", "ID", "Employee ID", "Department", "Designation", "Topic", "Training Topic", "Date", "Training Date", "Duration", "Hours"],
+          "topic_patterns": ["Hand Hygiene", "Standard Precautions", "PPE", "Waste Management", "Sharps Safety", "Isolation Precautions", "Environmental Cleaning", "Sterilization", "Surveillance", "Outbreak Management"],
+          "signature_patterns": ["Signature", "Initials", "Attendee Sign", "Trainer Sign", "Verified by"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R06-002",
+        "name": "Initial Training Within 48 Hours of Joining",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["initial training", "induction training", "within 48 hours", "joining training", "orientation training", "onboarding infection control"],
+          "semantic_concepts": ["new employee training", "induction programme", "onboarding education", "initial infection control orientation", "mandatory training timeline"],
+          "document_types": ["Policy", "SOP", "Register"],
+          "expected_locations": ["Initial Training", "Induction", "Orientation", "New Employee Training"],
+          "validation_rules": ["timeline_defined", "all_new_employees_covered", "content_specified", "mandatory_flag_present"]
+        },
+        "extraction_hints": {
+          "timeline_patterns": ["within 48 hours", "within 24 hours", "within 72 hours", "first day", "day 1", "day 2", "immediate", "upon joining", "before patient contact"],
+          "coverage_patterns": ["all new employees", "all new staff", "every new hire", "mandatory for all", "compulsory", "required for all"],
+          "content_patterns": ["Hand Hygiene", "Standard Precautions", "PPE", "Waste Management", "Sharps Safety", "Fire Safety", "Patient Safety"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R06-003",
+        "name": "Annual Refresher Training Documentation",
+        "type": "training_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["annual refresher", "refresher training", "annual training", "periodic training", "yearly training", "continuing education", "annual competency"],
+          "semantic_concepts": ["annual training renewal", "periodic skills update", "continuing professional education", "yearly competency refresh", "training recurrence"],
+          "document_types": ["Register", "Certificate", "Minutes"],
+          "expected_locations": ["Annual Refresher", "Yearly Training", "Refresher Programme", "Continuing Education"],
+          "validation_rules": ["annual_frequency_defined", "all_staff_covered", "content_updated", "attendance_documented"]
+        },
+        "extraction_hints": {
+          "frequency_patterns": ["annual", "yearly", "every 12 months", "every year", "12 monthly", "once per year", "biannual", "every 6 months"],
+          "coverage_patterns": ["all staff", "all employees", "all healthcare workers", "100% staff", "mandatory for all", "compulsory"],
+          "update_patterns": ["updated content", "new guidelines", "revised protocol", "latest evidence", "current practices", "emerging threats"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R06-004",
+        "name": "Competency Assessment with Practical Demonstration",
+        "type": "assessment",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["competency assessment", "practical evaluation", "return demonstration", "skills check", "competency test", "practical exam", "fluorescent gel"],
+          "semantic_concepts": ["competency validation", "practical skills assessment", "demonstration based evaluation", "hands on testing", "competency verification"],
+          "document_types": ["Form", "Register", "Certificate"],
+          "expected_locations": ["Competency Assessment", "Skills Evaluation", "Practical Test", "Competency Checklist"],
+          "validation_rules": ["assessment_method_defined", "passing_criteria_specified", "practical_component_present", "remedial_plan_defined"]
+        },
+        "extraction_hints": {
+          "method_patterns": ["Practical demonstration", "Return demonstration", "Direct observation", "Skills check", "Competency test", "OSCE", "OSPE", "Fluorescent gel", "GloGerm", "Black light test"],
+          "criteria_patterns": ["Pass", "Fail", "Competent", "Not Competent", "Satisfactory", "Unsatisfactory", "Meets standard", "Below standard", "100%", "≥90%", "≥80%"],
+          "remedial_patterns": ["Remedial", "Re-training", "Re-assessment", "Additional training", "Coaching", "Mentoring", "Supervised practice"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R06-005",
+        "name": "Department-Specific Training Records",
+        "type": "training_record",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["department training", "ICU training", "OT training", "lab training", "specialised training", "department specific", "ward training"],
+          "semantic_concepts": ["specialised department training", "ICU specific education", "OT infection control", "laboratory biosafety", "dialysis training", "NICU training"],
+          "document_types": ["Register", "Certificate", "Minutes"],
+          "expected_locations": ["Department Training", "Specialised Training", "ICU Training", "OT Training", "Lab Training"],
+          "validation_rules": ["department_list_defined", "specialised_content_present", "high_risk_areas_covered", "frequency_matched_to_risk"]
+        },
+        "extraction_hints": {
+          "department_patterns": ["ICU", "OT", "Operation Theatre", "Laboratory", "Dialysis", "NICU", "Emergency", "Radiology", "CSSD", "Endoscopy", "Blood Bank"],
+          "specialised_patterns": ["High risk area", "Critical care", "Invasive procedures", "Immunocompromised patients", "Sterile field", "Aseptic technique", "Biosafety"],
+          "frequency_patterns": ["Monthly", "Quarterly", "Biannual", "Annual", "As needed", "Before posting", "On rotation"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R06-006",
+        "name": "Gap Analysis and Remedial Training for Failures",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["gap analysis", "remedial training", "training gap", "competency gap", "training needs assessment", "failed assessment", "staff retraining"],
+          "semantic_concepts": ["training gap identification", "remedial education plan", "competency gap closure", "training needs analysis", "failed assessment response"],
+          "document_types": ["Report", "Form", "Minutes"],
+          "expected_locations": ["Gap Analysis", "Training Needs", "Remedial Plan", "Competency Gap"],
+          "validation_rules": ["gap_identification_method", "remedial_plan_documented", "reassessment_scheduled", "tracking_mechanism_present"]
+        },
+        "extraction_hints": {
+          "gap_patterns": ["Gap", "Deficiency", "Weakness", "Area for improvement", "Training need", "Competency gap", "Knowledge deficit", "Skill gap"],
+          "remedial_patterns": ["Remedial", "Corrective", "Additional training", "Supplementary", "Refresher", "Coaching", "One-on-one", "Shadowing", "Mentoring"],
+          "tracking_patterns": ["Follow up", "Re-assessment", "Re-evaluation", "Verification", "Closure", "Sign off", "Competency achieved"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Staff Infection Control Training Register",
+    "Training Curriculum",
+    "Competency Assessment Forms",
+    "Gap Analysis Report"
+  ],
+  "related_requirements": ["HIC-R01", "HIC-R10", "HIC-R02"],
+  "tags": ["training", "competency", "workforce_development", "skills_validation", "education", "assessment"]
+}

@@ -1,0 +1,325 @@
+{
+  "requirement_id": "PRE-R04",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Privacy and Confidentiality",
+  "description": "The hospital must protect patient privacy and maintain confidentiality of patient information in accordance with ethical standards and applicable laws. This includes safeguarding medical records, ensuring private consultations, restricting disclosure of patient information, and implementing measures to prevent unauthorized access to patient data.",
+  "business_objective": "To uphold patient trust, comply with data protection regulations, prevent breaches of confidentiality, and protect patient dignity and legal rights.",
+  "criticality": "Critical",
+  "confidence_weight": 0.93,
+  "source_reference": [
+    "WHO - Standards for Personal Medical Record Confidentiality",
+    "Indian Medical Council (Professional Conduct, Etiquette and Ethics) Regulations, 2002 - Confidentiality",
+    "NABH - Patient Rights and Confidentiality (Public Awareness Material)",
+    "Digital Information Security in Healthcare Act (DISHA) - India",
+    "Ministry of Health & Family Welfare - National Health Policy 2017"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R04-E01",
+        "name": "Privacy and Confidentiality Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "privacy policy",
+            "confidentiality policy",
+            "patient information protection",
+            "data privacy",
+            "medical record confidentiality"
+          ],
+          "semantic_concepts": [
+            "information security",
+            "patient data protection",
+            "confidentiality agreement",
+            "privacy rights",
+            "HIPAA equivalent"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "privacy guideline",
+            "confidentiality agreement"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical records department",
+            "IT department",
+            "hospital administration"
+          ],
+          "validation_rules": [
+            "Must define scope of protected information",
+            "Must specify authorized access levels",
+            "Must address electronic and physical records",
+            "Must include breach notification procedure",
+            "Must be approved by hospital administration"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Hospital administrator signature",
+            "Medical superintendent signature",
+            "Privacy officer signature"
+          ],
+          "numbered_lists": [
+            "Protected information categories",
+            "Access levels",
+            "Disclosure exceptions",
+            "Breach response steps"
+          ],
+          "action_patterns": [
+            "Breach reporting steps",
+            "Investigation procedures",
+            "Corrective actions"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R04-E02",
+        "name": "Patient Confidentiality Agreement for Staff",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "confidentiality agreement",
+            "staff confidentiality",
+            "non-disclosure agreement",
+            "patient data pledge",
+            "employee confidentiality form"
+          ],
+          "semantic_concepts": [
+            "staff commitment",
+            "confidentiality pledge",
+            "employee agreement",
+            "data protection commitment"
+          ],
+          "document_types": [
+            "agreement form",
+            "pledge form",
+            "NDA",
+            "employment document"
+          ],
+          "expected_locations": [
+            "HR department",
+            "employee files",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must be signed by all staff at induction",
+            "Must be renewed periodically",
+            "Must specify consequences of breach",
+            "Must cover all patient information types"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Signing date",
+            "Renewal date",
+            "Employment start date"
+          ],
+          "signature_patterns": [
+            "Employee signature",
+            "HR manager signature",
+            "Witness signature"
+          ],
+          "numbered_lists": [
+            "Confidentiality clauses",
+            "Information categories",
+            "Breach consequences"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R04-E03",
+        "name": "Privacy Audit and Access Log Review",
+        "type": "audit_report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "privacy audit",
+            "access log review",
+            "confidentiality audit",
+            "EMR access audit",
+            "medical record audit"
+          ],
+          "semantic_concepts": [
+            "access monitoring",
+            "unauthorized access detection",
+            "audit trail",
+            "compliance verification"
+          ],
+          "document_types": [
+            "audit report",
+            "access log",
+            "monitoring report",
+            "compliance review"
+          ],
+          "expected_locations": [
+            "IT department",
+            "medical records department",
+            "quality department",
+            "internal audit office"
+          ],
+          "validation_rules": [
+            "Must review access logs regularly",
+            "Must identify unauthorized access",
+            "Must document corrective actions",
+            "Must cover electronic and physical records"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Audit period start",
+            "Audit period end",
+            "Report date"
+          ],
+          "signature_patterns": [
+            "Auditor signature",
+            "IT head signature",
+            "Privacy officer signature"
+          ],
+          "numbered_lists": [
+            "Audit findings",
+            "Unauthorized access instances",
+            "Corrective actions"
+          ],
+          "timeline_patterns": [
+            "Audit frequency",
+            "Review schedule"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R04-E04",
+        "name": "Private Consultation Area Documentation",
+        "type": "visual_evidence",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "private consultation room",
+            "confidential discussion area",
+            "patient privacy screen",
+            "soundproof consultation"
+          ],
+          "semantic_concepts": [
+            "private space",
+            "consultation privacy",
+            "examination privacy",
+            "discussion confidentiality"
+          ],
+          "document_types": [
+            "photograph",
+            "floor plan",
+            "facility layout",
+            "infrastructure record"
+          ],
+          "expected_locations": [
+            "OPD areas",
+            "wards",
+            "counseling rooms",
+            "emergency department"
+          ],
+          "validation_rules": [
+            "Must demonstrate visual and auditory privacy",
+            "Must be available in all patient care areas",
+            "Must be documented in facility records"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Facility assessment date",
+            "Renovation date"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R04-E05",
+        "name": "Patient Information Disclosure Authorization Form",
+        "type": "form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "information release form",
+            "disclosure authorization",
+            "patient consent for information sharing",
+            "third party information release"
+          ],
+          "semantic_concepts": [
+            "authorized disclosure",
+            "information sharing consent",
+            "third party access",
+            "release of information"
+          ],
+          "document_types": [
+            "authorization form",
+            "release form",
+            "consent for disclosure",
+            "information sharing agreement"
+          ],
+          "expected_locations": [
+            "medical records department",
+            "patient relations office",
+            "admission desk"
+          ],
+          "validation_rules": [
+            "Must specify information to be disclosed",
+            "Must identify recipient",
+            "Must include patient signature",
+            "Must have expiration or scope limit"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Authorization date",
+            "Expiration date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Witness signature",
+            "Authorizing officer signature"
+          ],
+          "numbered_lists": [
+            "Information categories",
+            "Authorized recipients",
+            "Purpose of disclosure"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Privacy and Confidentiality Policy",
+    "Staff Confidentiality Agreement",
+    "Privacy Audit and Access Log Review",
+    "Private Consultation Area Documentation",
+    "Information Disclosure Authorization Form"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R05",
+    "PRE-R06"
+  ],
+  "tags": [
+    "privacy",
+    "confidentiality",
+    "data_protection",
+    "patient_rights",
+    "information_security",
+    "medical_records",
+    "access_control"
+  ]
+}

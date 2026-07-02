@@ -1,0 +1,353 @@
+{
+  "requirement_id": "PRE-R10",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Safety Education and Participation",
+  "description": "The hospital must educate patients and their families about patient safety practices, including fall prevention, medication safety, infection prevention, hand hygiene, and the importance of speaking up about concerns. Patients must be encouraged to actively participate in their own safety through clear communication and accessible safety information.",
+  "business_objective": "To reduce preventable harm by engaging patients as partners in safety, improve safety culture, decrease adverse events, and align with international patient safety goals and accreditation requirements.",
+  "criticality": "High",
+  "confidence_weight": 0.88,
+  "source_reference": [
+    "WHO - Patient Engagement and Safety Guidelines",
+    "WHO - Global Patient Safety Action Plan 2021-2030",
+    "Ministry of Health & Family Welfare - National Patient Safety Framework",
+    "NABH - Patient Safety Goals and Patient Participation (Public Awareness Material)",
+    "NQAS - Patient Safety Education Standards"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 2,
+    "non_critical_items": 3,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R10-E01",
+        "name": "Patient Safety Education Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient safety education policy",
+            "patient participation safety",
+            "safety awareness policy",
+            "patient engagement safety"
+          ],
+          "semantic_concepts": [
+            "patient empowerment",
+            "safety partnership",
+            "harm prevention",
+            "patient activation",
+            "safety culture"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "safety guideline",
+            "patient education protocol"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient safety office",
+            "nursing office",
+            "patient education department"
+          ],
+          "validation_rules": [
+            "Must define safety topics for patient education",
+            "Must specify delivery methods and timing",
+            "Must address vulnerable populations",
+            "Must include documentation requirements",
+            "Must be approved by patient safety committee"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Patient safety officer signature",
+            "Medical superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "Safety education topics",
+            "Target audiences",
+            "Delivery methods",
+            "Documentation requirements",
+            "Responsible departments"
+          ],
+          "action_patterns": [
+            "Education delivery steps",
+            "Assessment methods",
+            "Feedback collection"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R10-E02",
+        "name": "Patient Safety Information Leaflets and Visual Aids",
+        "type": "educational_material",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient safety leaflet",
+            "fall prevention poster",
+            "hand hygiene guide for patients",
+            "medication safety brochure",
+            "speak up campaign material"
+          ],
+          "semantic_concepts": [
+            "safety awareness material",
+            "visual safety education",
+            "patient-friendly safety content",
+            "preventive care information"
+          ],
+          "document_types": [
+            "leaflet",
+            "brochure",
+            "poster",
+            "video script",
+            "digital display content"
+          ],
+          "expected_locations": [
+            "patient education center",
+            "ward notice boards",
+            "OPD waiting areas",
+            "admission desk",
+            "bedside"
+          ],
+          "validation_rules": [
+            "Must cover key safety topics",
+            "Must be at appropriate literacy level",
+            "Must be available in local language",
+            "Must include hospital contact for safety concerns"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Publication date",
+            "Review date",
+            "Version date"
+          ],
+          "signature_patterns": [
+            "Content reviewer signature",
+            "Patient safety officer signature"
+          ],
+          "numbered_lists": [
+            "Safety topics covered",
+            "Language versions",
+            "Distribution locations"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R10-E03",
+        "name": "Patient Safety Education Documentation in Medical Record",
+        "type": "form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "safety education note",
+            "patient safety teaching record",
+            "fall prevention education documented",
+            "infection prevention education note"
+          ],
+          "semantic_concepts": [
+            "education delivered",
+            "patient understanding",
+            "safety behavior change",
+            "teach-back verification"
+          ],
+          "document_types": [
+            "nursing note",
+            "education checklist",
+            "patient chart notation",
+            "care plan"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "nursing documentation"
+          ],
+          "validation_rules": [
+            "Must document specific safety topics covered",
+            "Must note patient or caregiver understanding",
+            "Must be signed by educator",
+            "Must be dated and timed"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Education date",
+            "Documentation date"
+          ],
+          "signature_patterns": [
+            "Nurse signature",
+            "Patient signature acknowledging receipt"
+          ],
+          "numbered_lists": [
+            "Safety topics taught",
+            "Patient response",
+            "Reinforcement plan"
+          ],
+          "timeline_patterns": [
+            "Admission education timeline",
+            "Pre-discharge reinforcement"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R10-E04",
+        "name": "Patient and Family Safety Rounds or Feedback",
+        "type": "meeting_minutes",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient safety round",
+            "family safety walk",
+            "patient feedback safety",
+            "safety concern log",
+            "patient safety council"
+          ],
+          "semantic_concepts": [
+            "patient voice in safety",
+            "safety concern reporting",
+            "family engagement",
+            "safety walkthrough",
+            "patient advisory"
+          ],
+          "document_types": [
+            "round documentation",
+            "feedback form",
+            "meeting minutes",
+            "safety concern register"
+          ],
+          "expected_locations": [
+            "patient safety office",
+            "quality department",
+            "patient relations office"
+          ],
+          "validation_rules": [
+            "Must document patient or family safety concerns",
+            "Must show response to concerns raised",
+            "Must include improvement actions",
+            "Must be reviewed by patient safety committee"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Round date",
+            "Feedback date",
+            "Response date"
+          ],
+          "signature_patterns": [
+            "Facilitator signature",
+            "Participant signatures"
+          ],
+          "numbered_lists": [
+            "Concerns raised",
+            "Actions taken",
+            "Responsible persons",
+            "Follow-up items"
+          ],
+          "timeline_patterns": [
+            "Concern to resolution timeline"
+          ],
+          "action_patterns": [
+            "Immediate actions",
+            "Long-term improvements",
+            "Monitoring plan"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R10-E05",
+        "name": "Patient Safety Education Effectiveness Evaluation",
+        "type": "evaluation_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "safety education evaluation",
+            "patient safety knowledge assessment",
+            "safety behavior survey",
+            "education outcome report"
+          ],
+          "semantic_concepts": [
+            "knowledge retention",
+            "behavior change measurement",
+            "safety incident reduction",
+            "patient activation measure"
+          ],
+          "document_types": [
+            "evaluation report",
+            "survey results",
+            "quality indicator report",
+            "outcome analysis"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient safety office",
+            "patient education department"
+          ],
+          "validation_rules": [
+            "Must measure patient safety knowledge",
+            "Must assess behavior change",
+            "Must link to incident reduction data",
+            "Must guide program improvement"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Evaluation period",
+            "Report date",
+            "Review date"
+          ],
+          "signature_patterns": [
+            "Evaluator signature",
+            "Department head signature"
+          ],
+          "numbered_lists": [
+            "Evaluation metrics",
+            "Knowledge scores",
+            "Behavior indicators",
+            "Incident trends",
+            "Recommendations"
+          ],
+          "action_patterns": [
+            "Program improvements",
+            "Targeted interventions",
+            "Follow-up plans"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Safety Education Policy",
+    "Patient Safety Information Leaflets",
+    "Safety Education Documentation",
+    "Patient and Family Safety Rounds",
+    "Education Effectiveness Evaluation"
+  ],
+  "related_requirements": [
+    "PRE-R05",
+    "PRE-R09",
+    "HIC-R01",
+    "HIC-R05"
+  ],
+  "tags": [
+    "patient_safety",
+    "patient_education",
+    "safety_participation",
+    "fall_prevention",
+    "medication_safety",
+    "infection_prevention",
+    "patient_activation",
+    "harm_prevention"
+  ]
+}

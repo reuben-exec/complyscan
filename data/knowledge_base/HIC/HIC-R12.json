@@ -1,0 +1,425 @@
+{
+  "requirement_id": "HIC-R12",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Antimicrobial Stewardship Programme",
+  "description": "The hospital must implement an antimicrobial stewardship programme with policies for restricted antibiotics, empiric therapy guidelines, de-escalation protocols, and consumption monitoring.",
+  "business_objective": "Optimise antimicrobial use to reduce resistance, improve patient outcomes, and ensure cost-effective therapy.",
+  "criticality": "High",
+  "confidence_weight": 0.85,
+  "source_reference": "CDC Core Elements of Hospital Antibiotic Stewardship; Generic hospital antimicrobial policy",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 4,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R12-001",
+        "name": "Antimicrobial Policy with Restricted List",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "antimicrobial policy",
+            "antibiotic policy",
+            "restricted antibiotic",
+            "antibiotic restriction",
+            "antimicrobial stewardship policy",
+            "AMS policy"
+          ],
+          "semantic_concepts": [
+            "antimicrobial stewardship policy",
+            "restricted antibiotic list",
+            "antibiotic formulary",
+            "antimicrobial use policy",
+            "antibiotic approval system"
+          ],
+          "document_types": [
+            "Policy",
+            "Manual",
+            "SOP"
+          ],
+          "expected_locations": [
+            "Section 1.0",
+            "Antimicrobial Policy",
+            "Antibiotic Policy",
+            "Stewardship Policy"
+          ],
+          "validation_rules": [
+            "restricted_list_present",
+            "approval_authority_defined",
+            "empiric_guidelines_present",
+            "prophylaxis_guidelines_present"
+          ]
+        },
+        "extraction_hints": {
+          "restriction_patterns": [
+            "Restricted",
+            "Approval required",
+            "Prior authorisation",
+            "Consultant approval",
+            "Infectious disease approval",
+            "Microbiology approval",
+            "Formulary restriction",
+            "Non-formulary"
+          ],
+          "antibiotic_patterns": [
+            "Meropenem",
+            "Imipenem",
+            "Colistin",
+            "Linezolid",
+            "Vancomycin",
+            "Teicoplanin"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R12-002",
+        "name": "Empiric Therapy Guidelines for Common Infections",
+        "type": "guideline",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "empiric therapy",
+            "empirical treatment",
+            "first line antibiotic",
+            "initial therapy",
+            "suspected infection",
+            "empiric guideline",
+            "treatment algorithm"
+          ],
+          "semantic_concepts": [
+            "empiric antimicrobial selection",
+            "first line therapy guideline",
+            "suspected infection treatment",
+            "empiric antibiotic algorithm",
+            "initial antimicrobial choice"
+          ],
+          "document_types": [
+            "Guideline",
+            "Policy",
+            "SOP",
+            "Chart"
+          ],
+          "expected_locations": [
+            "Empiric Therapy",
+            "Treatment Guidelines",
+            "Initial Therapy",
+            "First Line",
+            "Treatment Algorithm"
+          ],
+          "validation_rules": [
+            "common_infections_covered",
+            "antibiotic_recommendations_present",
+            "duration_specified",
+            "de_escalation_trigger_defined"
+          ]
+        },
+        "extraction_hints": {
+          "infection_patterns": [
+            "Community acquired pneumonia",
+            "Hospital acquired pneumonia",
+            "Ventilator associated pneumonia",
+            "UTI",
+            "Intra-abdominal infection",
+            "Skin and soft tissue infection",
+            "Surgical site infection",
+            "Sepsis",
+            "Bacteraemia"
+          ],
+          "antibiotic_patterns": [
+            "Ceftriaxone",
+            "Piperacillin tazobactam",
+            "Meropenem",
+            "Vancomycin",
+            "Metronidazole",
+            "Ciprofloxacin",
+            "Azithromycin"
+          ],
+          "duration_patterns": [
+            "5 days",
+            "7 days",
+            "10 days",
+            "14 days",
+            "48 hours",
+            "72 hours"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R12-003",
+        "name": "De-escalation Protocol Based on Culture Results",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "antibiotic de-escalation",
+            "narrowing spectrum",
+            "step down therapy",
+            "culture directed therapy",
+            "targeted therapy",
+            "definitive therapy"
+          ],
+          "semantic_concepts": [
+            "antimicrobial de-escalation protocol",
+            "spectrum narrowing procedure",
+            "culture guided therapy switch",
+            "targeted antibiotic selection",
+            "definitive therapy protocol"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Guideline"
+          ],
+          "expected_locations": [
+            "De-escalation",
+            "Step Down",
+            "Narrowing Spectrum",
+            "Culture Directed",
+            "Targeted Therapy"
+          ],
+          "validation_rules": [
+            "de_escalation_trigger_defined",
+            "timeline_specified",
+            "responsibility_assigned",
+            "documentation_required"
+          ]
+        },
+        "extraction_hints": {
+          "trigger_patterns": [
+            "Culture results available",
+            "Susceptibility report",
+            "Organism identified",
+            "48 hours",
+            "72 hours",
+            "Clinical improvement",
+            "Afebrile"
+          ],
+          "action_patterns": [
+            "Narrow to",
+            "Switch to",
+            "Step down to",
+            "De-escalate to",
+            "Oral switch",
+            "IV to oral",
+            "Discontinue"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R12-004",
+        "name": "Antibiotic Prescribing & Approval Workflow",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "antibiotic prescribing",
+            "antimicrobial prescription",
+            "antibiotic order",
+            "prescription approval",
+            "antibiotic authorization",
+            "antimicrobial approval workflow",
+            "antibiotic order form"
+          ],
+          "semantic_concepts": [
+            "antibiotic prescribing policy",
+            "prescription authorization process",
+            "antimicrobial order system",
+            "antibiotic approval workflow",
+            "medication order review"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Form"
+          ],
+          "expected_locations": [
+            "Prescribing",
+            "Antibiotic Order",
+            "Approval Workflow",
+            "Prescription Guidelines",
+            "Order Form"
+          ],
+          "validation_rules": [
+            "prescribing_tiers_defined",
+            "approval_matrix_defined",
+            "time_limits_specified",
+            "automatic_stop_orders_defined"
+          ]
+        },
+        "extraction_hints": {
+          "approval_patterns": [
+            "Consultant approval",
+            "ID physician approval",
+            "Microbiologist approval",
+            "Chief pharmacist approval",
+            "Senior resident approval",
+            "Antibiotic order form",
+            "Approval stamp"
+          ],
+          "tier_patterns": [
+            "Restricted antibiotic",
+            "Reserve antibiotic",
+            "Watch antibiotic",
+            "Access antibiotic",
+            "Non-formulary antibiotic"
+          ],
+          "timeline_patterns": [
+            "48 hour review",
+            "72 hour review",
+            "Automatic stop",
+            "Reassessment required",
+            "Daily review"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R12-005",
+        "name": "Antimicrobial Stewardship Committee & Governance",
+        "type": "meeting_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "antimicrobial stewardship committee",
+            "AMS committee",
+            "stewardship committee",
+            "antibiotic review committee",
+            "antimicrobial governance",
+            "AMS meeting"
+          ],
+          "semantic_concepts": [
+            "antimicrobial stewardship governance",
+            "AMS committee structure",
+            "antibiotic stewardship team",
+            "stewardship oversight committee",
+            "antimicrobial review committee"
+          ],
+          "document_types": [
+            "Meeting Record",
+            "Minutes",
+            "Policy",
+            "Constitution"
+          ],
+          "expected_locations": [
+            "AMS Committee",
+            "Stewardship Committee",
+            "Antimicrobial Governance",
+            "Committee Members",
+            "Meeting Minutes"
+          ],
+          "validation_rules": [
+            "committee_members_listed",
+            "meeting_frequency_defined",
+            "quorum_defined",
+            "minutes_recorded",
+            "action_tracked"
+          ]
+        },
+        "extraction_hints": {
+          "member_patterns": [
+            "Infectious disease physician",
+            "Clinical microbiologist",
+            "Hospital pharmacist",
+            "Infection control nurse",
+            "Hospital administrator",
+            "Surgeon representative",
+            "Physician representative"
+          ],
+          "frequency_patterns": [
+            "Monthly meeting",
+            "Quarterly meeting",
+            "Weekly review",
+            "Fortnightly meeting"
+          ],
+          "agenda_patterns": [
+            "Antibiotic consumption review",
+            "Resistance pattern review",
+            "Restricted antibiotic audit",
+            "Policy review",
+            "Compliance monitoring",
+            "Action plan"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R12-006",
+        "name": "Antibiotic Consumption & Resistance Monitoring",
+        "type": "audit_data",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "antibiotic consumption",
+            "antimicrobial usage",
+            "defined daily dose",
+            "DDD per 100 bed days",
+            "antibiotic use density",
+            "antibiotic audit",
+            "antimicrobial resistance surveillance",
+            "antibiotic susceptibility pattern",
+            "antibiogram",
+            "antibiotic utilization report"
+          ],
+          "semantic_concepts": [
+            "antimicrobial consumption monitoring",
+            "antibiotic use metrics",
+            "resistance surveillance system",
+            "antibiotic utilization data",
+            "antibiogram analysis"
+          ],
+          "document_types": [
+            "Audit Report",
+            "Dashboard",
+            "Spreadsheet",
+            "Quarterly Report"
+          ],
+          "expected_locations": [
+            "Antibiotic Consumption",
+            "Antimicrobial Usage",
+            "DDD Report",
+            "Antibiogram",
+            "Resistance Surveillance",
+            "Utilisation Report"
+          ],
+          "validation_rules": [
+            "ddd_calculated",
+            "ward_wise_breakdown",
+            "trend_analysis_present",
+            "resistance_rates_reported",
+            "actionable_recommendations"
+          ]
+        },
+        "extraction_hints": {
+          "metric_patterns": [
+            "DDD per 100 patient days",
+            "Days of therapy",
+            "Antibiotic use rate",
+            "Consumption in DDD",
+            "Usage per 1000 bed days"
+          ],
+          "organism_patterns": [
+            "MRSA rate",
+            "ESBL rate",
+            "Carbapenem resistant",
+            "Colistin resistant",
+            "VRE rate",
+            "MDR rate"
+          ],
+          "reporting_patterns": [
+            "Quarterly antibiogram",
+            "Annual resistance report",
+            "Monthly consumption report",
+            "Ward wise antibiotic use",
+            "Speciality wise usage"
+          ]
+        }
+      }
+    ]
+  }
+}

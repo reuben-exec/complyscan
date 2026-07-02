@@ -1,0 +1,140 @@
+{
+  "requirement_id": "HIC-R05",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Infection Surveillance and Data Reporting",
+  "description": "The hospital must conduct active and passive surveillance for healthcare-associated infections with defined case definitions, calculated rates, benchmarking, and regular reporting to governance bodies.",
+  "business_objective": "Detect infection trends early, benchmark performance against national standards, and drive data-informed quality improvement.",
+  "criticality": "High",
+  "confidence_weight": 0.85,
+  "source_reference": "ICMR HAI Surveillance Network Guidelines; NHSN Patient Safety Manual; Generic surveillance framework",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 4,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R05-001",
+        "name": "Surveillance Report with Case Definitions",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["surveillance report", "infection surveillance", "HAI report", "device associated infection", "CLABSI", "CAUTI", "VAP", "SSI", "surveillance data"],
+          "semantic_concepts": ["infection surveillance report", "healthcare associated infection data", "device associated infection tracking", "surgical site infection monitoring", "surveillance case definitions"],
+          "document_types": ["Report", "Dashboard", "Minutes"],
+          "expected_locations": ["Surveillance Report", "Infection Data", "HAI Report", "Monthly Surveillance"],
+          "validation_rules": ["report_exists", "case_definitions_present", "infection_types_listed", "period_covered"]
+        },
+        "extraction_hints": {
+          "case_definition_patterns": ["CLABSI", "CAUTI", "VAP", "SSI", "CRBSI", "UTI", "Pneumonia", "Surgical Site Infection", "Bloodstream Infection", "Catheter Associated"],
+          "definition_source_patterns": ["NHSN", "CDC", "ICMR", "WHO", "INICC", "CASE DEFINITION", "Criteria", "Definition"],
+          "period_patterns": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Q1", "Q2", "Q3", "Q4", "2025", "2026"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R05-002",
+        "name": "Device-Day Denominators and Infection Rates",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["device days", "denominator data", "infection rate", "per 1000 device days", "CLABSI rate", "CAUTI rate", "VAP rate", "SSI rate", "rate calculation"],
+          "semantic_concepts": ["device utilization", "denominator calculation", "infection incidence rate", "rate per 1000", "device associated infection rate", "surgical procedure rate"],
+          "document_types": ["Report", "Dashboard", "Spreadsheet"],
+          "expected_locations": ["Rate Calculation", "Denominator Data", "Infection Rates", "Surveillance Metrics"],
+          "validation_rules": ["denominator_defined", "rate_formula_present", "per_1000_device_days", "per_100_procedures"]
+        },
+        "extraction_hints": {
+          "rate_patterns": ["per 1000", "/1000", "per 100", "/100", "rate", "incidence", "density", "attack rate", "cumulative incidence"],
+          "device_patterns": ["central line days", "catheter days", "ventilator days", "device days", "patient days", "urinary catheter days", "mechanical ventilation days"],
+          "formula_patterns": ["Number of infections / Number of device days × 1000", "Rate =", "Formula:", "Calculation:"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R05-003",
+        "name": "Monthly Surveillance Reports",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["monthly report", "surveillance monthly", "infection monthly", "HAI monthly", "monthly surveillance data", "monthly infection report"],
+          "semantic_concepts": ["monthly surveillance reporting", "regular infection data", "periodic surveillance summary", "monthly HAI statistics"],
+          "document_types": ["Report", "Dashboard", "Minutes"],
+          "expected_locations": ["Monthly Report", "Surveillance Summary", "Infection Data", "Monthly Dashboard"],
+          "validation_rules": ["monthly_frequency", "consistent_reporting", "data_completeness", "trend_data_present"]
+        },
+        "extraction_hints": {
+          "frequency_patterns": ["Monthly", "Every month", "Per month", "Month of", "January 2026", "February 2026", "March 2026", "April 2026", "May 2026", "June 2026"],
+          "report_patterns": ["Surveillance Report", "Infection Report", "HAI Data", "Device Associated Infection Report", "SSI Report"],
+          "trend_patterns": ["Trend", "Comparison", "Previous month", "Last month", "Year over year", "Quarterly comparison"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R05-004",
+        "name": "Comparison with National Benchmarks",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["infection rate benchmark", "national benchmark", "ICMR benchmark", "NHSN benchmark", "benchmark comparison", "national average", "international benchmark", "benchmarking data"],
+          "semantic_concepts": ["performance benchmarking", "national comparison", "international standards", "benchmark data", "peer comparison"],
+          "document_types": ["Report", "Dashboard", "Presentation"],
+          "expected_locations": ["Benchmarking", "Comparison", "National Data", "International Standards"],
+          "validation_rules": ["benchmark_source_identified", "comparison_method_defined", "national_data_referenced", "target_defined"]
+        },
+        "extraction_hints": {
+          "benchmark_patterns": ["Benchmark", "Standard", "National Average", "International Standard", "Target", "Goal", "Threshold", "Best Practice"],
+          "source_patterns": ["ICMR", "NHSN", "CDC", "WHO", "INICC", "EARS-Net", "GLASS", "National Surveillance"],
+          "comparison_patterns": ["Compared to", "Versus", "Vs", "National benchmark", "International data", "Peer hospitals", "Similar sized hospitals"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R05-005",
+        "name": "Trend Analysis and Annual Report",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["trend analysis", "annual report", "yearly report", "infection trend", "surveillance trend", "annual surveillance", "longitudinal analysis"],
+          "semantic_concepts": ["infection trend analysis", "annual surveillance summary", "long term data analysis", "epidemiological trend", "seasonal variation"],
+          "document_types": ["Report", "Presentation", "Dashboard"],
+          "expected_locations": ["Trend Analysis", "Annual Report", "Yearly Summary", "Longitudinal Data"],
+          "validation_rules": ["trend_data_present", "annual_summary", "comparative_analysis", "actionable_insights"]
+        },
+        "extraction_hints": {
+          "trend_patterns": ["Trend", "Increasing", "Decreasing", "Stable", "Fluctuating", "Seasonal", "Outbreak", "Sporadic", "Endemic"],
+          "time_patterns": ["2024", "2025", "2026", "Annual", "Yearly", "Q1-Q4", "Half yearly", "Bi-annual"],
+          "graph_patterns": ["Graph", "Chart", "Trend line", "Bar chart", "Line graph", "Histogram", "Control chart", "Run chart"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R05-006",
+        "name": "Feedback to Clinical Departments",
+        "type": "process",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["department feedback", "clinical feedback", "ward feedback", "surveillance feedback", "infection data sharing", "departmental report"],
+          "semantic_concepts": ["clinical department communication", "surveillance data dissemination", "ward level feedback", "infection control feedback loop", "departmental performance"],
+          "document_types": ["Report", "Minutes", "Email", "Dashboard"],
+          "expected_locations": ["Department Feedback", "Clinical Communication", "Ward Report", "Departmental Data"],
+          "validation_rules": ["feedback_mechanism_defined", "department_recipients_identified", "frequency_specified", "actionable_data_present"]
+        },
+        "extraction_hints": {
+          "feedback_patterns": ["Feedback", "Shared with", "Communicated to", "Disseminated to", "Report to departments", "Departmental briefing"],
+          "department_patterns": ["Medicine", "Surgery", "ICU", "Orthopaedics", "Obstetrics", "Paediatrics", "Emergency", "OT", "NICU", "Dialysis"],
+          "action_patterns": ["Action required", "Review needed", "Intervention", "Corrective measure", "Improvement plan", "Departmental action"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Hospital Infection Surveillance Report",
+    "Infection Control Committee Minutes",
+    "Monthly Dashboard",
+    "Annual Surveillance Report"
+  ],
+  "related_requirements": ["HIC-R02", "HIC-R10", "HIC-R06"],
+  "tags": ["surveillance", "epidemiology", "benchmarking", "data_analysis", "quality_improvement", "HAI_monitoring"]
+}

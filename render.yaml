@@ -1,0 +1,18 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: complyscan
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14
+      - key: CF_API_TOKEN
+        sync: false  # Set in Render Dashboard
+      - key: CF_ACCOUNT_ID
+        sync: false
+      - key: CF_LLM_MODEL
+        value: "@cf/meta/llama-3.1-8b-instruct"

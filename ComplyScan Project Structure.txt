@@ -1,0 +1,456 @@
+ComplyScan Project Structure (Architecture Specification)
+Project Name
+
+ComplyScan
+
+Purpose
+
+A modular, scalable, and maintainable project for an NABH Compliance Automation System.
+
+Root directory:
+
+D:\ComplyScan
+High-Level Architecture
+
+The project is divided into independent modules following separation of concerns.
+
+ComplyScan/
+│
+├── backend/
+├── frontend/
+├── data/
+├── database/
+├── docs/
+├── tests/
+├── notebooks/
+├── scripts/
+├── logs/
+├── output/
+├── assets/
+├── .github/
+│
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── pyproject.toml
+├── docker-compose.yml
+├── .env.example
+└── LICENSE
+1. backend/
+
+Primary FastAPI backend.
+
+Responsible for:
+
+OCR
+document parsing
+compliance rule matching
+scoring
+report generation
+
+Structure:
+
+backend/
+│
+├── api/
+├── core/
+├── models/
+├── services/
+├── ocr/
+├── parser/
+├── matcher/
+├── scorer/
+├── report/
+└── utils/
+Responsibilities
+api/
+
+REST API endpoints.
+
+Examples:
+
+upload document
+analyze
+generate report
+authentication
+core/
+
+Core application logic.
+
+Contains:
+
+configuration
+settings
+dependency injection
+startup logic
+constants
+models/
+
+Application models.
+
+Includes:
+
+Pydantic models
+SQLAlchemy models
+request/response schemas
+services/
+
+Business logic.
+
+Coordinates between modules.
+
+Example:
+
+Upload
+   ↓
+OCR
+   ↓
+Parser
+   ↓
+Matcher
+   ↓
+Scorer
+   ↓
+Report Generator
+ocr/
+
+OCR engine.
+
+Responsibilities:
+
+extract text
+preprocess images
+PDF conversion
+page segmentation
+parser/
+
+Converts OCR text into structured fields.
+
+Examples:
+
+patient information
+hospital details
+dates
+signatures
+document metadata
+matcher/
+
+Compares parsed data against NABH rules.
+
+Example:
+
+Parsed Document
+        ↓
+Rule Engine
+        ↓
+Compliance Results
+scorer/
+
+Calculates compliance scores.
+
+Outputs:
+
+section scores
+overall score
+missing requirements
+confidence values
+report/
+
+Creates reports.
+
+Possible formats:
+
+PDF
+HTML
+JSON
+Excel
+utils/
+
+Shared helper utilities.
+
+Examples:
+
+logging
+file operations
+validation
+helper functions
+2. frontend/
+
+Next.js application.
+
+Purpose:
+
+Dashboard and user interface.
+
+Responsibilities:
+
+document upload
+compliance dashboard
+report viewer
+authentication
+analytics
+3. data/
+
+Contains all knowledge assets.
+
+Structure:
+
+data/
+│
+├── knowledge_base/
+│   ├── HIC/
+│   └── PRE/
+│
+├── rules/
+│   ├── HIC/
+│   └── PRE/
+│
+├── prompts/
+├── schemas/
+├── synthetic_documents/
+│   ├── HIC/
+│   └── PRE/
+│
+├── evaluation/
+└── config/
+knowledge_base/
+
+Reference documents.
+
+Organized by:
+
+HIC
+PRE
+rules/
+
+Compliance rules.
+
+Organized by:
+
+HIC
+PRE
+
+These are consumed by the matcher.
+
+prompts/
+
+LLM prompts.
+
+Includes:
+
+extraction prompts
+validation prompts
+report prompts
+schemas/
+
+JSON schemas.
+
+Examples:
+
+parsed document schema
+compliance schema
+output schema
+synthetic_documents/
+
+Synthetic sample documents.
+
+Organized by:
+
+HIC
+PRE
+
+Used for:
+
+testing
+benchmarking
+evaluation
+evaluation/
+
+Evaluation datasets.
+
+Used for:
+
+accuracy testing
+benchmarking
+model comparison
+config/
+
+Configuration files.
+
+Examples:
+
+YAML
+JSON
+environment configs
+4. database/
+
+Database-related files.
+
+Responsibilities:
+
+migrations
+seeds
+initialization
+database configuration
+5. docs/
+
+Project documentation.
+
+Contains:
+
+guides
+SOPs
+architecture
+design docs
+6. tests/
+
+Testing suite.
+
+Structure:
+
+tests/
+│
+├── unit/
+├── integration/
+└── sample_data/
+unit/
+
+Unit tests.
+
+integration/
+
+End-to-end integration tests.
+
+sample_data/
+
+Example inputs used by tests.
+
+7. notebooks/
+
+Jupyter notebooks.
+
+Purpose:
+
+experiments
+analysis
+prototypes
+research
+8. scripts/
+
+Automation utilities.
+
+Examples:
+
+data preprocessing
+migrations
+maintenance scripts
+batch processing
+9. logs/
+
+Automatically generated logs.
+
+Examples:
+
+application logs
+error logs
+audit logs
+10. output/
+
+Generated outputs.
+
+Structure:
+
+output/
+│
+├── reports/
+└── exports/
+reports/
+
+Generated compliance reports.
+
+exports/
+
+Exported files such as CSV, Excel, JSON.
+
+11. assets/
+
+Static project assets.
+
+Examples:
+
+images
+templates
+styles
+icons
+12. .github/
+
+GitHub configuration.
+
+Structure:
+
+.github/
+└── workflows/
+
+Contains:
+
+CI/CD pipelines
+GitHub Actions
+automated testing workflows
+Root-Level Files
+.gitignore
+
+Git ignore rules.
+
+README.md
+
+Project overview and setup instructions.
+
+requirements.txt
+
+Python package dependencies.
+
+pyproject.toml
+
+Project metadata and build configuration.
+
+docker-compose.yml
+
+Docker service definitions.
+
+.env.example
+
+Environment variable template.
+
+LICENSE
+
+Project license.
+
+Intended Processing Pipeline
+User Upload
+      │
+      ▼
+backend/api
+      │
+      ▼
+OCR Module
+      │
+      ▼
+Parser
+      │
+      ▼
+Matcher
+      │
+      ▼
+Scorer
+      │
+      ▼
+Report Generator
+      │
+      ▼
+output/reports
+Architectural Principles
+Separation of concerns: Each directory has a single, well-defined responsibility.
+Modularity: Components (OCR, parsing, matching, scoring, reporting) are isolated and replaceable.
+Scalability: New rule sets, document types, or services can be added without major restructuring.
+Maintainability: Documentation, tests, data, and source code are organized into dedicated modules.
+Extensibility: Supports adding new compliance domains (beyond HIC and PRE), OCR engines, AI models, report formats, and frontend features with minimal impact on existing code.

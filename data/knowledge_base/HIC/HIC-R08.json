@@ -1,0 +1,142 @@
+{
+  "requirement_id": "HIC-R08",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Disinfection and Sterilization Quality Assurance",
+  "description": "The hospital must ensure all reusable medical devices and equipment undergo appropriate disinfection or sterilization with validated processes, biological monitoring, and documentation.",
+  "business_objective": "Prevent iatrogenic infections by ensuring sterile and high-level disinfected equipment for invasive procedures.",
+  "criticality": "Critical",
+  "confidence_weight": 0.90,
+  "source_reference": "AAMI ST79 Comprehensive Guide to Steam Sterilization; Generic CSSD quality assurance documentation",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 5,
+    "non_critical_items": 1,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R08-001",
+        "name": "Sterilization SOPs for All Methods Used",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["sterilization SOP", "sterilisation protocol", "autoclave procedure", "steam sterilization", "ETO sterilization", "plasma sterilization", "low temperature sterilization", "CSSD procedure"],
+          "semantic_concepts": ["sterilization standard operating procedure", "sterilisation methodology", "CSSD workflow", "sterile processing protocol", "reusable device reprocessing"],
+          "document_types": ["SOP", "Manual", "Policy"],
+          "expected_locations": ["Section 1.0", "Sterilization SOP", "CSSD Protocol", "Sterile Processing"],
+          "validation_rules": ["steam_sterilization_defined", "chemical_sterilization_defined", "low_temp_sterilization_defined", "method_selection_criteria"]
+        },
+        "extraction_hints": {
+          "method_patterns": ["Steam sterilization", "Autoclave", "Gravity displacement", "Pre-vacuum", "Dynamic air removal", "ETO", "Ethylene oxide", "Plasma", "Hydrogen peroxide plasma", "Vaporized hydrogen peroxide", "VHP", "Low temperature", "Formaldehyde", "Glutaraldehyde", "Peracetic acid"],
+          "parameter_patterns": ["121°C", "134°C", "15 psi", "30 psi", "15 minutes", "30 minutes", "4 minutes", "3 minutes", "270°F", "273°F"],
+          "cycle_patterns": ["Flash sterilization", "Immediate use", "Routine cycle", "Porous load", "Wrapped items", "Unwrapped items", "Container system"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R08-002",
+        "name": "CSSD Workflow Documentation",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["CSSD workflow", "central sterile supply department", "sterile supply workflow", "instrument processing", "decontamination workflow", "sterile processing workflow"],
+          "semantic_concepts": ["CSSD operational flow", "instrument reprocessing cycle", "sterile supply chain", "decontamination to sterilization workflow", "device tracking"],
+          "document_types": ["SOP", "Manual", "Flowchart"],
+          "expected_locations": ["CSSD Workflow", "Sterile Processing Flow", "Instrument Reprocessing", "Decontamination to Sterilization"],
+          "validation_rules": ["decontamination_step_defined", "inspection_step_defined", "packaging_step_defined", "sterilization_step_defined", "storage_step_defined", "distribution_step_defined"]
+        },
+        "extraction_hints": {
+          "step_patterns": ["Collection", "Transport", "Decontamination", "Cleaning", "Inspection", "Assembly", "Packaging", "Wrapping", "Sterilization", "Cooling", "Storage", "Distribution", "Delivery"],
+          "zone_patterns": ["Dirty zone", "Clean zone", "Sterile zone", "Decontamination area", "Inspection area", "Packaging area", "Sterilizer loading area", "Sterile storage"],
+          "tracking_patterns": ["Tracking number", "Load number", "Batch number", "Sterilizer number", "Cycle number", "Date", "Time", "Operator", "Verifier"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R08-003",
+        "name": "Chemical Indicator Use for Each Load",
+        "type": "monitoring_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["chemical indicator", "Class 5 indicator", "integrating indicator", "internal indicator", "external indicator", "process indicator", "Bowie Dick", "steam indicator"],
+          "semantic_concepts": ["chemical process indicator", "sterilization monitoring indicator", "Class 1 indicator", "Class 2 indicator", "Class 3 indicator", "Class 4 indicator", "Class 5 indicator", "integrating chemical indicator"],
+          "document_types": ["Log", "Register", "SOP", "Form"],
+          "expected_locations": ["Chemical Indicator Log", "Load Record", "Sterilization Monitor", "Indicator Check"],
+          "validation_rules": ["internal_indicator_used", "external_indicator_used", "indicator_type_documented", "indicator_result_recorded"]
+        },
+        "extraction_hints": {
+          "class_patterns": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Emulating indicator", "Integrating indicator", "Single variable", "Multi-variable"],
+          "type_patterns": ["Internal chemical indicator", "External chemical indicator", "Process indicator", "Specific indicator", "Multi-parameter indicator", "Type 1", "Type 2", "Type 3", "Type 4", "Type 5"],
+          "result_patterns": ["Pass", "Fail", "Accept", "Reject", "Color change", "Darkening", "Lightening", "OK", "Not OK", "Approved", "Rejected"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R08-004",
+        "name": "Biological Indicator Testing Schedule",
+        "type": "monitoring_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["biological indicator", "biological indicator testing", "spore test", "Geobacillus stearothermophilus", "Bacillus atrophaeus", "biological monitor", "sterility assurance", "biological validation"],
+          "semantic_concepts": ["biological indicator testing", "spore strip testing", "sterilization biological validation", "microbiological challenge test", "sterility assurance level verification"],
+          "document_types": ["Log", "Register", "Report", "Certificate"],
+          "expected_locations": ["Biological Indicator Log", "BI Test Record", "Spore Test Results", "Biological Monitor"],
+          "validation_rules": ["testing_frequency_defined", "organism_specified", "incubation_period_defined", "result_interpretation_defined", "positive_control_used"]
+        },
+        "extraction_hints": {
+          "organism_patterns": ["Geobacillus stearothermophilus", "Bacillus atrophaeus", "Bacillus subtilis", "Spore", "ATCC 7953", "ATCC 9372", "Biological challenge"],
+          "frequency_patterns": ["Daily", "Every cycle", "Weekly", "Per load", "Routine", "Validation", "Verification", "Quarterly", "Annual"],
+          "result_patterns": ["No growth", "Growth", "Negative", "Positive", "Pass", "Fail", "Sterile", "Non-sterile", "Control positive", "Control negative"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R08-005",
+        "name": "Bowie-Dick Test Daily Records for Pre-Vacuum Autoclaves",
+        "type": "monitoring_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["Bowie Dick", "Bowie-Dick test", "BD test", "air removal test", "vacuum test", "pre-vacuum test", "dynamic air removal test", "steam penetration test"],
+          "semantic_concepts": ["Bowie-Dick test protocol", "pre-vacuum autoclave validation", "air removal verification", "steam penetration assessment", "vacuum integrity test"],
+          "document_types": ["Log", "Register", "Form"],
+          "expected_locations": ["Bowie-Dick Log", "BD Test Record", "Daily Vacuum Test", "Air Removal Test"],
+          "validation_rules": ["daily_frequency", "pre_vacuum_autoclaves_covered", "test_pack_specified", "result_criteria_defined", "failure_response_defined"]
+        },
+        "extraction_hints": {
+          "test_patterns": ["Bowie-Dick", "BD", "Air removal", "Vacuum", "Steam penetration", "Dynamic air removal", "Prevacuum", "Pre-vacuum"],
+          "pack_patterns": ["Test pack", "BD pack", "Challenge pack", "Standard test pack", "Commercial test pack", "Homemade test pack"],
+          "result_patterns": ["Pass", "Fail", "Uniform color change", "Complete color change", "Uniform darkening", "Cold spot", "Air pocket", "Incomplete penetration"],
+          "frequency_patterns": ["Daily", "Every morning", "First cycle", "Before first load", "Routine", "Before use"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R08-006",
+        "name": "Traceability System for Sterilized Loads",
+        "type": "tracking_system",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["traceability", "sterilization traceability", "load tracking", "instrument tracking", "sterile tracking", "batch record", "sterilization log", "load number"],
+          "semantic_concepts": ["sterilization traceability system", "instrument tracking system", "load identification system", "sterile supply tracking", "batch record system"],
+          "document_types": ["Log", "Register", "Database", "Software"],
+          "expected_locations": ["Traceability Log", "Load Record", "Instrument Tracking", "Sterilization Log", "Batch Record"],
+          "validation_rules": ["load_number_system", "item_identification", "sterilization_parameters_linked", "distribution_tracking", "recall_capability"]
+        },
+        "extraction_hints": {
+          "identifier_patterns": ["Load number", "Batch number", "Cycle number", "Sterilizer ID", "Date", "Time", "Operator ID", "Verifier ID", "Instrument set", "Tray number", "Container number"],
+          "parameter_patterns": ["Temperature", "Pressure", "Time", "Cycle type", "Dry time", "Exposure time", "Come-up time", "Cooling time"],
+          "linkage_patterns": ["Linked to", "Associated with", "Corresponding to", "For load", "In cycle", "Batch", "Lot", "Set", "Tray"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Disinfection and Sterilization SOP",
+    "CSSD Monitoring Logs",
+    "Biological Indicator Test Records",
+    "Bowie-Dick Test Log",
+    "Equipment Maintenance Records"
+  ],
+  "related_requirements": ["HIC-R02", "HIC-R07", "HIC-R10"],
+  "tags": ["sterilization", "disinfection", "CSSD", "quality_assurance", "biological_indicator", "traceability", "patient_safety"]
+}

@@ -1,0 +1,344 @@
+{
+  "requirement_id": "PRE-R05",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Education and Communication",
+  "description": "The hospital must provide patient education regarding their medical condition, treatment plan, medications, self-care instructions, and preventive measures. Education must be tailored to the patient's literacy level, language, and cultural background, and documented in the patient record.",
+  "business_objective": "To empower patients to participate in their own care, improve treatment adherence, reduce readmissions, enhance health outcomes, and meet accreditation standards for patient-centered education.",
+  "criticality": "High",
+  "confidence_weight": 0.88,
+  "source_reference": [
+    "WHO - Patient Engagement and Health Literacy Guidelines",
+    "Ministry of Health & Family Welfare - National Health Mission Patient Education Resources",
+    "NABH - Patient Education Standards (Public Training Resources)",
+    "ICMR - Health Literacy and Patient Communication Guidelines",
+    "NQAS - Patient Education and Counseling Standards"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 2,
+    "non_critical_items": 3,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R05-E01",
+        "name": "Patient Education Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient education policy",
+            "health education policy",
+            "patient teaching policy",
+            "patient instruction guidelines"
+          ],
+          "semantic_concepts": [
+            "health literacy",
+            "patient teaching",
+            "self-care instruction",
+            "therapeutic education",
+            "disease management education"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "clinical protocol",
+            "education guideline"
+          ],
+          "expected_locations": [
+            "quality department",
+            "nursing office",
+            "patient education department",
+            "medical administration"
+          ],
+          "validation_rules": [
+            "Must define education responsibilities by role",
+            "Must address literacy and language needs",
+            "Must specify documentation requirements",
+            "Must cover inpatient and outpatient settings"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Nursing superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "Education topics",
+            "Responsible departments",
+            "Documentation requirements",
+            "Assessment methods"
+          ],
+          "action_patterns": [
+            "Education delivery steps",
+            "Follow-up procedures",
+            "Evaluation methods"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R05-E02",
+        "name": "Patient Education Documentation in Medical Record",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient education record",
+            "teaching documentation",
+            "patient instruction note",
+            "education checklist"
+          ],
+          "semantic_concepts": [
+            "education delivered",
+            "patient understanding",
+            "teaching verification",
+            "health literacy assessment"
+          ],
+          "document_types": [
+            "nursing notes",
+            "patient education form",
+            "discharge instruction sheet",
+            "care plan"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "nursing documentation",
+            "discharge summaries"
+          ],
+          "validation_rules": [
+            "Must document topics covered",
+            "Must note patient understanding",
+            "Must be signed by educator",
+            "Must be dated and timed"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Education date",
+            "Documentation date",
+            "Discharge date"
+          ],
+          "signature_patterns": [
+            "Nurse signature",
+            "Physician signature",
+            "Patient signature acknowledging receipt"
+          ],
+          "numbered_lists": [
+            "Education topics",
+            "Instructions given",
+            "Patient response indicators"
+          ],
+          "timeline_patterns": [
+            "Education session timing",
+            "Reinforcement schedule"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R05-E03",
+        "name": "Patient Information Leaflets and Educational Materials",
+        "type": "educational_material",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient information leaflet",
+            "health education material",
+            "patient brochure",
+            "disease information sheet",
+            "medication guide"
+          ],
+          "semantic_concepts": [
+            "health literacy material",
+            "visual aids",
+            "multilingual education",
+            "condition-specific information",
+            "self-management guide"
+          ],
+          "document_types": [
+            "leaflet",
+            "brochure",
+            "pamphlet",
+            "poster",
+            "video script",
+            "mobile health content"
+          ],
+          "expected_locations": [
+            "patient education center",
+            "OPD waiting areas",
+            "wards",
+            "pharmacy",
+            "discharge desk"
+          ],
+          "validation_rules": [
+            "Must be in language understood by patient",
+            "Must be at appropriate literacy level",
+            "Must be reviewed for medical accuracy",
+            "Must include hospital contact information"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Publication date",
+            "Review date",
+            "Version date"
+          ],
+          "signature_patterns": [
+            "Medical reviewer signature",
+            "Content approver signature"
+          ],
+          "numbered_lists": [
+            "Content topics",
+            "Language versions available",
+            "Distribution points"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R05-E04",
+        "name": "Patient Education Needs Assessment",
+        "type": "assessment_form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "education needs assessment",
+            "health literacy assessment",
+            "learning needs evaluation",
+            "patient knowledge assessment"
+          ],
+          "semantic_concepts": [
+            "learning barriers",
+            "literacy level",
+            "cultural factors",
+            "cognitive ability",
+            "language preference"
+          ],
+          "document_types": [
+            "assessment form",
+            "screening tool",
+            "evaluation checklist",
+            "nursing assessment"
+          ],
+          "expected_locations": [
+            "medical records",
+            "nursing documentation",
+            "patient charts",
+            "admission assessment"
+          ],
+          "validation_rules": [
+            "Must assess language and literacy",
+            "Must identify barriers to learning",
+            "Must guide education planning",
+            "Must be completed at admission"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Assessment date",
+            "Admission date"
+          ],
+          "signature_patterns": [
+            "Assessor signature",
+            "Patient signature"
+          ],
+          "numbered_lists": [
+            "Assessment domains",
+            "Barrier indicators",
+            "Education plan elements"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R05-E05",
+        "name": "Patient Education Effectiveness Evaluation",
+        "type": "evaluation_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "education effectiveness",
+            "patient understanding evaluation",
+            "education outcome assessment",
+            "health literacy outcome"
+          ],
+          "semantic_concepts": [
+            "knowledge retention",
+            "behavior change",
+            "self-management ability",
+            "readmission reduction",
+            "patient satisfaction"
+          ],
+          "document_types": [
+            "evaluation report",
+            "survey results",
+            "quality indicator report",
+            "outcome study"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient education department",
+            "nursing quality office"
+          ],
+          "validation_rules": [
+            "Must measure patient understanding",
+            "Must include feedback mechanism",
+            "Must identify areas for improvement",
+            "Must be reviewed periodically"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Evaluation period",
+            "Report date",
+            "Review date"
+          ],
+          "signature_patterns": [
+            "Evaluator signature",
+            "Department head signature"
+          ],
+          "numbered_lists": [
+            "Evaluation metrics",
+            "Findings",
+            "Recommendations",
+            "Action items"
+          ],
+          "action_patterns": [
+            "Improvement actions",
+            "Follow-up plans"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Education Policy",
+    "Patient Education Documentation",
+    "Patient Information Leaflets",
+    "Education Needs Assessment",
+    "Education Effectiveness Evaluation"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R06",
+    "PRE-R07",
+    "PRE-R10"
+  ],
+  "tags": [
+    "patient_education",
+    "health_literacy",
+    "communication",
+    "self_care",
+    "discharge_instructions",
+    "disease_management",
+    "patient_centered_care"
+  ]
+}

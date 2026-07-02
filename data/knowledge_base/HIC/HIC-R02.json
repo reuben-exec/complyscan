@@ -1,0 +1,197 @@
+{
+  "requirement_id": "HIC-R02",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Infection Control Manual and Organisational Structure",
+  "description": "The hospital must maintain a comprehensive infection control manual defining organisational structure, surveillance programme, precautions, environmental controls, sterilization, waste management, and outbreak protocols.",
+  "business_objective": "Establish a governance framework for infection prevention with clear accountability, surveillance targets, and standardised response protocols.",
+  "criticality": "Critical",
+  "confidence_weight": 0.95,
+  "source_reference": "ICMR Hospital Infection Control Guidelines; Generic tertiary care hospital governance framework",
+  "evidence_schema": {
+    "total_evidence_items": 9,
+    "critical_items": 7,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R02-001",
+        "name": "Infection Control Manual Document",
+        "type": "manual",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["infection control manual", "infection control programme", "infection prevention manual", "hospital infection control"],
+          "semantic_concepts": ["infection control manual", "infection prevention programme", "hospital infection control document", "comprehensive infection control guide"],
+          "document_types": ["Manual"],
+          "expected_locations": ["Document Control", "Title Page", "Table of Contents"],
+          "validation_rules": ["manual_exists", "table_of_contents_present", "version_controlled"]
+        },
+        "extraction_hints": {
+          "title_patterns": ["Infection Control Manual", "Hospital Infection Control", "Infection Prevention and Control", "IPC Manual"],
+          "section_patterns": ["Table of Contents", "Contents", "Index", "List of Sections"],
+          "version_patterns": ["Version", "Edition", "Revision", "Issue"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-002",
+        "name": "Infection Control Committee Composition and Terms of Reference",
+        "type": "governance",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["infection control committee", "infection control committee team", "infection control team", "infection control group", "IPC committee"],
+          "semantic_concepts": ["infection control governance", "committee structure", "infection control oversight", "multidisciplinary team"],
+          "document_types": ["Manual", "Policy", "Minutes"],
+          "expected_locations": ["Section 2.0", "Organisation", "Committee", "Governance"],
+          "validation_rules": ["committee_composition_defined", "meeting_frequency_specified", "terms_of_reference_present", "quorum_defined"]
+        },
+        "extraction_hints": {
+          "role_patterns": ["Chairperson", "Chair", "Head", "Coordinator", "Nurse", "Microbiologist", "Physician", "Surgeon", "Pharmacist", "Engineer"],
+          "frequency_patterns": ["monthly", "bi-monthly", "quarterly", "weekly", "fortnightly"],
+          "quorum_patterns": ["quorum", "minimum attendance", "majority", "60%", "50%"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-003",
+        "name": "Surveillance Programme with Case Definitions",
+        "type": "programme",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["surveillance programme", "infection surveillance", "HAI surveillance", "healthcare associated infection surveillance", "active surveillance"],
+          "semantic_concepts": ["infection surveillance", "HAI monitoring", "device associated infection tracking", "surgical site infection surveillance"],
+          "document_types": ["Manual", "Report", "SOP"],
+          "expected_locations": ["Section 3.0", "Surveillance", "Monitoring", "Infection Surveillance"],
+          "validation_rules": ["case_definitions_documented", "surveillance_methods_defined", "data_sources_identified", "reporting_frequency_specified"]
+        },
+        "extraction_hints": {
+          "case_definition_patterns": ["CLABSI", "CAUTI", "VAP", "SSI", "HAI", "healthcare associated infection", "device associated infection"],
+          "method_patterns": ["active surveillance", "passive surveillance", "targeted surveillance", "prospective", "retrospective"],
+          "data_source_patterns": ["laboratory", "microbiology", "pharmacy", "discharge diagnosis", "clinical review"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-004",
+        "name": "Standard and Transmission-Based Precautions Documentation",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["standard precautions", "transmission based precautions", "contact precautions", "droplet precautions", "airborne precautions", "isolation precautions"],
+          "semantic_concepts": ["standard precautions", "universal precautions", "transmission based precautions", "isolation protocols", "PPE requirements"],
+          "document_types": ["Manual", "Policy", "SOP"],
+          "expected_locations": ["Section 4.0", "Precautions", "Standard Precautions", "Transmission Based Precautions"],
+          "validation_rules": ["standard_precautions_defined", "contact_precautions_defined", "droplet_precautions_defined", "airborne_precautions_defined", "PPE_specified"]
+        },
+        "extraction_hints": {
+          "precaution_patterns": ["standard precautions", "contact precautions", "droplet precautions", "airborne precautions", "protective isolation"],
+          "PPE_patterns": ["gloves", "gown", "mask", "N95", "respirator", "face shield", "goggles", "eye protection"],
+          "signage_patterns": ["sign", "poster", "colour coded", "door sign", "room sign"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-005",
+        "name": "Environmental Cleaning and Monitoring Schedule",
+        "type": "schedule",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["environmental cleaning", "housekeeping schedule", "cleaning protocol", "disinfection schedule", "terminal cleaning"],
+          "semantic_concepts": ["environmental hygiene", "cleaning frequency", "disinfection protocol", "housekeeping standards", "environmental monitoring"],
+          "document_types": ["Manual", "SOP", "Schedule"],
+          "expected_locations": ["Section 5.0", "Environmental Control", "Cleaning", "Housekeeping"],
+          "validation_rules": ["cleaning_frequency_defined", "high_touch_surfaces_identified", "monitoring_method_specified"]
+        },
+        "extraction_hints": {
+          "frequency_patterns": ["daily", "twice daily", "three times daily", "between cases", "terminal cleaning", "discharge cleaning"],
+          "surface_patterns": ["high touch surfaces", "bed rails", "call button", "tray table", "door handle", "light switch", "faucet"],
+          "monitoring_patterns": ["ATP", "bioluminescence", "culture swab", "environmental monitoring", "cleaning audit"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-006",
+        "name": "Sterilization and Disinfection Protocols",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["sterilization protocol", "disinfection protocol", "autoclave", "CSSD", "central sterile supply", "high level disinfection"],
+          "semantic_concepts": ["sterilization process", "disinfection methods", "CSSD workflow", "sterility assurance", "equipment reprocessing"],
+          "document_types": ["Manual", "SOP", "Policy"],
+          "expected_locations": ["Section 6.0", "Sterilization", "Disinfection", "CSSD"],
+          "validation_rules": ["sterilization_methods_defined", "monitoring_indicators_specified", "traceability_system_present"]
+        },
+        "extraction_hints": {
+          "method_patterns": ["steam sterilization", "autoclave", "ETO", "ethylene oxide", "plasma", "hydrogen peroxide", "glutaraldehyde", "peracetic acid"],
+          "indicator_patterns": ["biological indicator", "chemical indicator", "Bowie Dick", "Class 5", "integrating indicator", "sterility assurance"],
+          "traceability_patterns": ["load number", "batch number", "traceability", "sterilization log", "CSSD record"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-007",
+        "name": "Biomedical Waste Management Alignment",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["biomedical waste", "biomedical waste management", "waste management", "waste segregation", "biomedical waste rules", "waste disposal"],
+          "semantic_concepts": ["biomedical waste management", "waste segregation", "colour coding", "waste disposal protocol", "CBWTF"],
+          "document_types": ["Manual", "Policy", "SOP"],
+          "expected_locations": ["Section 7.0", "Waste Management", "Biomedical Waste", "Waste Disposal"],
+          "validation_rules": ["colour_coding_defined", "segregation_at_source", "disposal_method_specified", "regulatory_compliance"]
+        },
+        "extraction_hints": {
+          "colour_patterns": ["yellow bag", "red bag", "blue bag", "black bag", "white container", "puncture proof"],
+          "category_patterns": ["human anatomical waste", "soiled waste", "microbiological waste", "sharps", "chemical waste", "general waste"],
+          "regulatory_patterns": ["BMW Rules", "Biomedical Waste Management Rules", "2016", "CPCB", "SPCB"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-008",
+        "name": "Occupational Health and Safety Programme",
+        "type": "programme",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["occupational health", "staff safety", "healthcare worker safety", "immunisation programme", "PEP protocol"],
+          "semantic_concepts": ["occupational health programme", "staff immunisation", "post exposure prophylaxis", "healthcare worker protection", "needle stick injury"],
+          "document_types": ["Manual", "Policy", "Register"],
+          "expected_locations": ["Section 8.0", "Occupational Health", "Staff Safety", "Healthcare Worker Safety"],
+          "validation_rules": ["immunisation_programme_defined", "PEP_protocol_present", "health_screening_defined"]
+        },
+        "extraction_hints": {
+          "vaccine_patterns": ["hepatitis B", "HBV", "varicella", "MMR", "influenza", "typhoid", "tetanus", "immunisation", "vaccination"],
+          "PEP_patterns": ["post exposure prophylaxis", "PEP", "needle stick injury", "sharps injury", "blood exposure", "body fluid exposure"],
+          "screening_patterns": ["pre employment health check", "annual health assessment", "TB screening", "chest X-ray", "IGRA"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R02-009",
+        "name": "Outbreak Investigation and Management Protocol",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["outbreak investigation", "outbreak management", "epidemic response", "cluster investigation", "infection outbreak"],
+          "semantic_concepts": ["outbreak response", "epidemic investigation", "infection cluster management", "outbreak control measures", "contact tracing"],
+          "document_types": ["Manual", "SOP", "Policy"],
+          "expected_locations": ["Section 9.0", "Outbreak", "Epidemic", "Cluster Management"],
+          "validation_rules": ["outbreak_definition_present", "investigation_steps_defined", "reporting_protocol_specified", "control_measures_defined"]
+        },
+        "extraction_hints": {
+          "definition_patterns": ["two or more", "cluster", "outbreak", "epidemiologically linked", "above baseline", "increased rate"],
+          "step_patterns": ["immediate notification", "preliminary assessment", "enhanced surveillance", "environmental sampling", "control measures", "post outbreak review"],
+          "reporting_patterns": ["notify", "report", "inform", "district surveillance", "health department", "MOH"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Hospital Infection Control Manual",
+    "Infection Surveillance Report",
+    "Waste Segregation Audit",
+    "Infection Control Committee Meeting Minutes"
+  ],
+  "related_requirements": ["HIC-R05", "HIC-R10", "HIC-R03", "HIC-R04", "HIC-R08"],
+  "tags": ["governance", "surveillance", "infection_control", "organisational_structure", "outbreak_management"]
+}

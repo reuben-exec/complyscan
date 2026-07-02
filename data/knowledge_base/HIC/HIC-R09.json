@@ -1,0 +1,121 @@
+{
+  "requirement_id": "HIC-R09",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Waste Segregation Audit and Compliance Verification",
+  "description": "The hospital must conduct periodic audits of waste segregation practices to verify colour-coding compliance, proper container use, and staff adherence.",
+  "business_objective": "Validate that waste segregation practices meet regulatory and internal standards through independent verification.",
+  "criticality": "Medium",
+  "confidence_weight": 0.75,
+  "source_reference": "Biomedical Waste Management Rules, 2016; Generic hospital audit framework",
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R09-001",
+        "name": "Audit Report with Methodology",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["waste audit", "segregation audit", "BMW audit", "biomedical waste audit", "waste compliance audit", "colour coding audit"],
+          "semantic_concepts": ["waste segregation audit", "biomedical waste compliance check", "colour coding verification", "waste audit methodology", "independent waste assessment"],
+          "document_types": ["Report", "Audit Report", "Checklist"],
+          "expected_locations": ["Audit Report", "Waste Audit", "Segregation Audit", "Compliance Audit"],
+          "validation_rules": ["audit_report_exists", "methodology_documented", "audit_scope_defined", "sampling_method_specified"]
+        },
+        "extraction_hints": {
+          "method_patterns": ["Random sampling", "Systematic sampling", "Stratified sampling", "Convenience sampling", "Observational audit", "Surprise audit", "Scheduled audit", "Unannounced audit"],
+          "scope_patterns": ["All wards", "All departments", "Random selection", "High risk areas", "ICU", "OT", "Emergency", "Laboratory", "Pharmacy", "OPD"],
+          "frequency_patterns": ["Monthly", "Quarterly", "Biannual", "Annual", "Weekly", "Fortnightly", "As needed", "Routine"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R09-002",
+        "name": "Audit Checklist with Scoring Criteria",
+        "type": "checklist",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["audit checklist", "waste checklist", "segregation checklist", "scoring criteria", "audit tool", "audit form", "compliance score"],
+          "semantic_concepts": ["audit assessment tool", "waste segregation checklist", "compliance scoring rubric", "audit evaluation form", "waste compliance criteria"],
+          "document_types": ["Checklist", "Form", "Audit Tool"],
+          "expected_locations": ["Audit Checklist", "Scoring Sheet", "Evaluation Form", "Audit Tool"],
+          "validation_rules": ["checklist_exists", "scoring_criteria_defined", "pass_fail_thresholds", "weighting_system_present"]
+        },
+        "extraction_hints": {
+          "criteria_patterns": ["Colour coding", "Container type", "Label", "Segregation", "Sharps disposal", "Liquid waste", "Solid waste", "Infectious waste", "General waste", "Hazardous waste"],
+          "score_patterns": ["Score", "Points", "Rating", "Grade", "Percentage", "Compliance percentage", "Pass mark", "Fail mark", "Acceptable", "Unacceptable"],
+          "weight_patterns": ["Weight", "Weighted score", "Priority", "Critical", "Major", "Minor", "Observation", "Finding"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R09-003",
+        "name": "Ward-Wise Audit Results with Compliance Percentages",
+        "type": "report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["ward audit", "department audit", "area audit", "compliance percentage", "audit result", "ward score", "department score", "compliance rate"],
+          "semantic_concepts": ["ward level compliance", "departmental audit results", "area specific compliance data", "unit level waste compliance", "location based audit findings"],
+          "document_types": ["Report", "Dashboard", "Spreadsheet"],
+          "expected_locations": ["Ward Results", "Department Results", "Area Compliance", "Unit Scores"],
+          "validation_rules": ["ward_wise_data", "compliance_percentage_calculated", "finding_categorised", "trend_comparable"]
+        },
+        "extraction_hints": {
+          "ward_patterns": ["General Medicine", "General Surgery", "ICU", "OT", "Emergency", "OPD", "Laboratory", "Pharmacy", "Dialysis", "NICU", "Maternity", "Orthopaedics", "ENT", "Ophthalmology", "Dental"],
+          "score_patterns": ["95%", "90%", "85%", "80%", "75%", "70%", "65%", "60%", "Pass", "Fail", "Compliant", "Non-compliant", "Partially compliant"],
+          "finding_patterns": ["Correct segregation", "Incorrect segregation", "Mixed waste", "Wrong container", "Missing label", "Overfilled", "Underfilled", "Damaged bag", "Spillage", "Good practice"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R09-004",
+        "name": "Non-Compliance Identification and Corrective Action",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["non-compliance", "corrective action", "audit finding", "audit deficiency finding", "protocol violation", "remedial action", "improvement plan", "action taken"],
+          "semantic_concepts": ["audit non-conformance", "compliance gap identification", "corrective action plan", "remedial measure", "deficiency closure", "audit finding response"],
+          "document_types": ["Report", "Form", "Minutes"],
+          "expected_locations": ["Non-Compliance", "Findings", "Corrective Action", "Action Plan", "Deficiency Report"],
+          "validation_rules": ["non_compliance_identified", "root_cause_analysed", "corrective_action_defined", "responsibility_assigned", "timeline_specified", "verification_method_present"]
+        },
+        "extraction_hints": {
+          "finding_patterns": ["Non-compliance", "Deficiency", "Deviation", "Violation", "Breach", "Gap", "Weakness", "Area of concern", "Observation", "Recommendation"],
+          "action_patterns": ["Corrective action", "Remedial action", "Improvement plan", "Action plan", "Preventive action", "CAPA", "Corrective and preventive action", "Root cause analysis"],
+          "responsibility_patterns": ["Responsible person", "Assigned to", "Owner", "In charge", "Department head", "Nursing supervisor", "Housekeeping supervisor", "Quality officer"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R09-005",
+        "name": "Trend Analysis Across Audit Cycles",
+        "type": "report",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["trend analysis", "audit trend", "compliance trend", "improvement trend", "waste trend", "audit cycle comparison", "longitudinal audit"],
+          "semantic_concepts": ["audit trend analysis", "compliance improvement tracking", "waste audit longitudinal data", "audit cycle comparison", "performance trend"],
+          "document_types": ["Report", "Dashboard", "Presentation"],
+          "expected_locations": ["Trend Analysis", "Audit Comparison", "Compliance Trend", "Performance Improvement"],
+          "validation_rules": ["multiple_cycles_compared", "trend_direction_identified", "improvement_quantified", "deterioration_flagged"]
+        },
+        "extraction_hints": {
+          "trend_patterns": ["Improving", "Declining", "Stable", "Fluctuating", "Upward trend", "Downward trend", "Positive trend", "Negative trend", "Consistent", "Variable"],
+          "comparison_patterns": ["Compared to", "Versus", "Vs", "Previous audit", "Last quarter", "Last year", "Baseline", "Benchmark", "Target", "Goal"],
+          "metric_patterns": ["Compliance rate", "Score", "Percentage", "Number of findings", "Severity", "Critical findings", "Major findings", "Minor findings", "Repeat findings"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Waste Segregation Audit Report",
+    "Biomedical Waste Register",
+    "Infection Control Committee Minutes",
+    "Corrective Action Log"
+  ],
+  "related_requirements": ["HIC-R03", "HIC-R10", "HIC-R02"],
+  "tags": ["waste_audit", "compliance_verification", "segregation", "colour_coding", "corrective_action", "trend_analysis"]
+}

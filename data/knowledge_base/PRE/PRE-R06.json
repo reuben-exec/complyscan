@@ -1,0 +1,345 @@
+{
+  "requirement_id": "PRE-R06",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Language Assistance and Communication Access",
+  "description": "The hospital must provide effective communication assistance to patients with limited language proficiency, hearing impairment, speech impairment, or cognitive disabilities. This includes access to professional interpreters, sign language interpreters, translated materials, and alternative communication aids to ensure patients can fully participate in their care decisions.",
+  "business_objective": "To eliminate language and communication barriers, ensure informed consent and patient understanding, comply with non-discrimination principles, and provide equitable care to all patients regardless of communication ability.",
+  "criticality": "High",
+  "confidence_weight": 0.87,
+  "source_reference": [
+    "WHO - Health Equity and Communication Access Guidelines",
+    "Ministry of Health & Family Welfare - National Health Mission Language Access Resources",
+    "NABH - Patient Communication Standards (Public Awareness Material)",
+    "Rights of Persons with Disabilities Act, 2016 - India",
+    "ICMR - Ethical Guidelines for Research with Vulnerable Populations"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 2,
+    "non_critical_items": 3,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R06-E01",
+        "name": "Language Assistance Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "language assistance policy",
+            "interpreter services policy",
+            "communication access policy",
+            "translation services policy",
+            "sign language policy"
+          ],
+          "semantic_concepts": [
+            "linguistic access",
+            "interpreter availability",
+            "translation services",
+            "communication barriers",
+            "multilingual care"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "service guideline",
+            "patient rights document"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient relations office",
+            "medical administration",
+            "social work department"
+          ],
+          "validation_rules": [
+            "Must define when language assistance is required",
+            "Must specify types of assistance available",
+            "Must prohibit use of family members as interpreters for clinical decisions",
+            "Must address emergency communication needs"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Quality head signature",
+            "Patient relations head signature"
+          ],
+          "numbered_lists": [
+            "Language assistance types",
+            "Service availability",
+            "Responsible departments",
+            "Prohibited practices"
+          ],
+          "action_patterns": [
+            "Request procedures",
+            "Emergency protocols",
+            "Documentation requirements"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R06-E02",
+        "name": "Interpreter Service Documentation",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "interpreter log",
+            "language service record",
+            "interpreter assignment form",
+            "translation request form",
+            "communication assistance record"
+          ],
+          "semantic_concepts": [
+            "interpreter utilization",
+            "language matching",
+            "service delivery record",
+            "communication event"
+          ],
+          "document_types": [
+            "service log",
+            "assignment form",
+            "utilization record",
+            "patient chart notation"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "interpreter services office",
+            "nursing documentation"
+          ],
+          "validation_rules": [
+            "Must document language interpreted",
+            "Must note interpreter name or ID",
+            "Must indicate patient consent to interpreter",
+            "Must be retained in patient record"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Service date",
+            "Request time",
+            "Service start and end time"
+          ],
+          "signature_patterns": [
+            "Interpreter signature",
+            "Patient signature",
+            "Provider signature"
+          ],
+          "numbered_lists": [
+            "Languages available",
+            "Service types provided",
+            "Patient language preference"
+          ],
+          "timeline_patterns": [
+            "Request to service timeline",
+            "Response time"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R06-E03",
+        "name": "Translated Consent Forms and Documents",
+        "type": "form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "translated consent form",
+            "multilingual form",
+            "consent in local language",
+            "translated patient rights",
+            "bilingual document"
+          ],
+          "semantic_concepts": [
+            "document translation",
+            "language-appropriate forms",
+            "culturally adapted materials",
+            "local language access"
+          ],
+          "document_types": [
+            "consent form",
+            "patient rights document",
+            "information leaflet",
+            "discharge instruction",
+            "medication guide"
+          ],
+          "expected_locations": [
+            "medical records department",
+            "admission desk",
+            "patient education center",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must be professionally translated",
+            "Must include back-translation verification",
+            "Must be reviewed for medical accuracy",
+            "Must match English version content"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Translation date",
+            "Review date",
+            "Version date"
+          ],
+          "signature_patterns": [
+            "Translator certification",
+            "Medical reviewer signature",
+            "Quality approver signature"
+          ],
+          "numbered_lists": [
+            "Available languages",
+            "Document types translated",
+            "Distribution points"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R06-E04",
+        "name": "Sign Language and Alternative Communication Resources",
+        "type": "physical_evidence",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "sign language interpreter",
+            "hearing impairment support",
+            "communication board",
+            "alternative communication device",
+            "TDD service",
+            "video relay service"
+          ],
+          "semantic_concepts": [
+            "deaf access",
+            "hard of hearing support",
+            "visual communication",
+            "augmentative communication",
+            "accessible technology"
+          ],
+          "document_types": [
+            "service agreement",
+            "equipment inventory",
+            "resource list",
+            "photograph"
+          ],
+          "expected_locations": [
+            "patient relations office",
+            "social work department",
+            "rehabilitation services",
+            "communication access office"
+          ],
+          "validation_rules": [
+            "Must list available alternative communication methods",
+            "Must document staff training on assistive devices",
+            "Must show availability of sign language interpreters",
+            "Must include emergency communication protocols"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Resource acquisition date",
+            "Training date",
+            "Service agreement date"
+          ],
+          "signature_patterns": [
+            "Service provider signature",
+            "Department head signature"
+          ],
+          "numbered_lists": [
+            "Available resources",
+            "Trained staff",
+            "Contact information"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R06-E05",
+        "name": "Language Assistance Training Records",
+        "type": "training_record",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "interpreter training",
+            "cultural competency training",
+            "communication access training",
+            "disability awareness training",
+            "language services training"
+          ],
+          "semantic_concepts": [
+            "staff competency",
+            "cultural sensitivity",
+            "disability etiquette",
+            "interpreter ethics",
+            "inclusive communication"
+          ],
+          "document_types": [
+            "training calendar",
+            "attendance sheet",
+            "competency assessment",
+            "certificate"
+          ],
+          "expected_locations": [
+            "HR department",
+            "training department",
+            "patient relations office"
+          ],
+          "validation_rules": [
+            "Must cover all patient-facing staff",
+            "Must include cultural competency",
+            "Must address disability awareness",
+            "Must be refreshed periodically"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Training date",
+            "Assessment date",
+            "Certificate issue date"
+          ],
+          "signature_patterns": [
+            "Trainer signature",
+            "Trainee signature",
+            "Competency assessor signature"
+          ],
+          "numbered_lists": [
+            "Training modules",
+            "Competency criteria",
+            "Attendee list"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Language Assistance Policy",
+    "Interpreter Service Documentation",
+    "Translated Consent Forms",
+    "Alternative Communication Resources",
+    "Language Assistance Training Records"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R02",
+    "PRE-R05",
+    "PRE-R07"
+  ],
+  "tags": [
+    "language_assistance",
+    "interpreter_services",
+    "communication_access",
+    "health_equity",
+    "disability_access",
+    "cultural_competency",
+    "translation",
+    "sign_language"
+  ]
+}

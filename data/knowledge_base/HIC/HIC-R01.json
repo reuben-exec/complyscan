@@ -1,0 +1,154 @@
+{
+  "requirement_id": "HIC-R01",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Hand Hygiene Policy and Compliance",
+  "description": "The hospital must have a documented hand hygiene policy that defines indications, technique, products, infrastructure, training, monitoring, and audit mechanisms.",
+  "business_objective": "Reduce healthcare-associated infections by ensuring consistent hand hygiene practices across all personnel and patient care areas.",
+  "criticality": "Critical",
+  "confidence_weight": 0.95,
+  "source_reference": "WHO Guidelines on Hand Hygiene in Health Care (2009); CDC Guideline for Hand Hygiene in Health-Care Settings (2002); Generic hospital policy framework",
+  "evidence_schema": {
+    "total_evidence_items": 7,
+    "critical_items": 5,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R01-001",
+        "name": "Policy Document with Effective and Review Dates",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["hand hygiene", "hand hygiene policy", "handwashing policy", "hand hygiene protocol"],
+          "semantic_concepts": ["infection prevention policy", "standard precautions", "hygiene protocol", "hand cleansing policy"],
+          "document_types": ["Policy", "Manual"],
+          "expected_locations": ["Document Control", "Header", "Footer", "Section 1.0"],
+          "validation_rules": ["effective_date_present", "review_date_present", "version_number_present"]
+        },
+        "extraction_hints": {
+          "date_patterns": ["Effective Date:", "Review Date:", "Date of Issue:", "Next Review:", "Valid From:", "Valid Until:"],
+          "signature_patterns": ["Approved by:", "Authorized by:", "Medical Director", "Head of Department"],
+          "stamp_patterns": ["Document Control Stamp", "QPS Stamp", "Quality Stamp"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-002",
+        "name": "WHO Five Moments Framework Adoption",
+        "type": "framework_reference",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["WHO Five Moments", "Five Moments for Hand Hygiene", "5 moments", "WHO hand hygiene", "five moments"],
+          "semantic_concepts": ["WHO guidelines", "hand hygiene indications", "patient contact moments", "hand hygiene framework"],
+          "document_types": ["Policy", "Manual", "SOP"],
+          "expected_locations": ["Section 5.0", "Indications", "Framework", "Hand Hygiene Moments"],
+          "validation_rules": ["who_five_moments_named", "five_moments_listed", "examples_provided"]
+        },
+        "extraction_hints": {
+          "table_patterns": ["Moment", "Before touching a patient", "After body fluid exposure", "Before clean procedure", "After touching patient", "After touching surroundings"],
+          "numbered_lists": ["1.", "2.", "3.", "4.", "5.", "Moment 1", "Moment 2", "Moment 3", "Moment 4", "Moment 5"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-003",
+        "name": "Hand Hygiene Technique Specifications",
+        "type": "procedure",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["handwashing technique", "alcohol-based hand rub", "ABHR", "surgical hand antisepsis", "scrub technique", "hand rubbing", "hand washing steps"],
+          "semantic_concepts": ["hand cleansing steps", "rub duration", "washing duration", "drying method", "hand hygiene technique"],
+          "document_types": ["Policy", "SOP", "Manual"],
+          "expected_locations": ["Section 6.0", "Technique", "Procedure", "Hand Hygiene Method"],
+          "validation_rules": ["soap_water_duration", "abhr_duration", "surgical_scrub_duration"]
+        },
+        "extraction_hints": {
+          "duration_patterns": ["seconds", "minutes", "minimum", "at least", "duration", "time required"],
+          "step_patterns": ["Step 1:", "Step 2:", "1.", "2.", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleventh"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-004",
+        "name": "Product Specifications and Infrastructure",
+        "type": "specification",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["ABHR", "alcohol-based hand rub", "liquid soap", "hand hygiene dispenser", "hand hygiene product", "hand rub", "hand wash solution"],
+          "semantic_concepts": ["product specifications", "infrastructure requirements", "dispenser placement", "hand hygiene supplies"],
+          "document_types": ["Policy", "SOP"],
+          "expected_locations": ["Section 7.0", "Products", "Infrastructure", "Hand Hygiene Products"],
+          "validation_rules": ["abhr_concentration", "dispenser_locations", "procurement_stock"]
+        },
+        "extraction_hints": {
+          "concentration_patterns": ["60%", "70%", "95%", "ethanol", "isopropanol", "isopropyl alcohol", "alcohol content"],
+          "location_patterns": ["point of care", "room entrance", "within arm's reach", "bedside", "patient care area", "ward entrance"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-005",
+        "name": "Training Programme with Competency Assessment",
+        "type": "training_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["hand hygiene training", "competency assessment", "return demonstration", "fluorescent gel", "hand hygiene education", "training programme"],
+          "semantic_concepts": ["staff education", "practical evaluation", "skills validation", "training register", "competency testing"],
+          "document_types": ["Register", "Policy", "Minutes"],
+          "expected_locations": ["Section 8.0", "Training", "Education", "Staff Training"],
+          "validation_rules": ["initial_training_timeline", "annual_refresher", "competency_method", "passing_criteria"]
+        },
+        "extraction_hints": {
+          "timeline_patterns": ["within 48 hours", "every 12 months", "annual", "quarterly", "monthly", "within 24 hours", "upon joining", "induction"],
+          "assessment_patterns": ["practical evaluation", "return demonstration", "fluorescent", "competency", "skills check", "assessment", "evaluation", "demonstration"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-006",
+        "name": "Monthly Audit Schedule with Compliance Targets",
+        "type": "audit_schedule",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": ["hand hygiene audit", "compliance target", "direct observation audit", "audit frequency", "monthly audit", "hand hygiene monitoring", "compliance rate"],
+          "semantic_concepts": ["direct observation", "compliance monitoring", "audit schedule", "performance target", "hand hygiene compliance"],
+          "document_types": ["Policy", "Report", "Minutes"],
+          "expected_locations": ["Section 9.0", "Monitoring", "Audit", "Compliance Monitoring"],
+          "validation_rules": ["audit_frequency", "sample_size", "compliance_target_percentage", "observer_training"]
+        },
+        "extraction_hints": {
+          "frequency_patterns": ["monthly", "quarterly", "weekly", "daily", "bi-weekly", "every month", "per month"],
+          "target_patterns": ["≥90%", "≥95%", "target", "benchmark", "goal", "threshold", "minimum", "at least 90", "at least 95"],
+          "method_patterns": ["direct observation", "WHO observation form", "trained observer", "secret shopper", "audit tool"]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R01-007",
+        "name": "Feedback Mechanism and Corrective Action",
+        "type": "process",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": ["feedback mechanism", "corrective action", "ward-level feedback", "compliance dashboard", "hand hygiene feedback", "non-compliance action"],
+          "semantic_concepts": ["performance feedback", "improvement action", "non-compliance response", "trend analysis", "feedback loop"],
+          "document_types": ["Policy", "Minutes", "Report"],
+          "expected_locations": ["Section 9.3", "Feedback", "Corrective Action", "Performance Improvement"],
+          "validation_rules": ["feedback_timeline", "corrective_action_defined", "integration_appraisal"]
+        },
+        "extraction_hints": {
+          "timeline_patterns": ["within 7 days", "monthly", "quarterly", "within 48 hours", "immediate", "prompt"],
+          "action_patterns": ["individual feedback", "departmental review", "root cause analysis", "corrective action", "remedial training", "performance improvement plan"]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Hand Hygiene Policy",
+    "Staff Infection Control Training Register",
+    "Monthly Infection Committee Meeting Minutes",
+    "Hand Hygiene Audit Report"
+  ],
+  "related_requirements": ["HIC-R06", "HIC-R10"],
+  "tags": ["infection_prevention", "standard_precautions", "workforce_safety", "patient_safety"]
+}

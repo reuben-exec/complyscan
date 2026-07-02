@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv-temp/
+venv/
+env/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+logs/
+output/reports/
+output/exports/
+*.pdf
+!tests/*.pdf
+!sample_*.pdf
+
+# Kimi
+kimi_config.toml

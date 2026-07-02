@@ -1,0 +1,378 @@
+{
+  "requirement_id": "PRE-R09",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Discharge Counselling and Planning",
+  "description": "The hospital must provide structured discharge counselling to patients and their caregivers, ensuring they understand post-discharge care instructions, medications, follow-up appointments, warning signs, and available community resources. Discharge planning must begin early in the hospital stay and be documented comprehensively.",
+  "business_objective": "To reduce preventable readmissions, ensure continuity of care, improve patient outcomes, enhance patient and caregiver preparedness, and meet accreditation standards for discharge processes.",
+  "criticality": "High",
+  "confidence_weight": 0.9,
+  "source_reference": [
+    "WHO - Transition of Care and Discharge Planning Guidelines",
+    "Ministry of Health & Family Welfare - National Health Mission Discharge Protocols",
+    "NABH - Discharge Process Standards (Public Training Resources)",
+    "NQAS - Discharge Planning and Patient Education Standards",
+    "ICMR - Patient Safety Guidelines for Care Transitions"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R09-E01",
+        "name": "Discharge Planning Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "discharge planning policy",
+            "discharge procedure",
+            "discharge SOP",
+            "care transition policy",
+            "discharge counselling policy"
+          ],
+          "semantic_concepts": [
+            "care transition",
+            "discharge readiness",
+            "post-discharge support",
+            "continuity of care",
+            "discharge against medical advice"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "clinical protocol",
+            "discharge guideline"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical administration",
+            "nursing office",
+            "case management department"
+          ],
+          "validation_rules": [
+            "Must define discharge planning timeline",
+            "Must specify roles and responsibilities",
+            "Must address high-risk discharge categories",
+            "Must include DAMA (Discharge Against Medical Advice) protocol",
+            "Must require patient or caregiver education"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Nursing superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "Discharge criteria",
+            "Planning steps",
+            "Responsible departments",
+            "Documentation requirements",
+            "High-risk categories"
+          ],
+          "timeline_patterns": [
+            "Planning initiation timeline",
+            "Discharge day timeline",
+            "Follow-up scheduling"
+          ],
+          "action_patterns": [
+            "Assessment actions",
+            "Counselling steps",
+            "Coordination actions",
+            "Follow-up arrangements"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R09-E02",
+        "name": "Discharge Summary",
+        "type": "clinical_document",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "discharge summary",
+            "discharge note",
+            "discharge letter",
+            "final diagnosis summary",
+            "treatment summary at discharge"
+          ],
+          "semantic_concepts": [
+            "hospital course",
+            "discharge diagnosis",
+            "medication reconciliation",
+            "follow-up plan",
+            "condition at discharge"
+          ],
+          "document_types": [
+            "discharge summary",
+            "discharge note",
+            "clinical summary",
+            "transfer summary"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "discharge desk",
+            "OPD files"
+          ],
+          "validation_rules": [
+            "Must include admission and discharge diagnosis",
+            "Must list all medications with dosage and duration",
+            "Must specify follow-up appointments",
+            "Must include warning signs for return",
+            "Must be signed by treating physician",
+            "Must be given to patient before leaving"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Admission date",
+            "Discharge date",
+            "Summary preparation date"
+          ],
+          "signature_patterns": [
+            "Treating physician signature",
+            "Unit head signature",
+            "Medical officer signature"
+          ],
+          "numbered_lists": [
+            "Diagnoses",
+            "Procedures performed",
+            "Medications",
+            "Follow-up instructions",
+            "Warning signs"
+          ],
+          "timeline_patterns": [
+            "Hospital course timeline",
+            "Follow-up schedule",
+            "Medication duration"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R09-E03",
+        "name": "Discharge Counselling Documentation",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "discharge counselling",
+            "discharge education",
+            "discharge instruction",
+            "caregiver education at discharge",
+            "post-discharge teaching"
+          ],
+          "semantic_concepts": [
+            "medication education",
+            "wound care instruction",
+            "dietary advice",
+            "activity restrictions",
+            "follow-up compliance"
+          ],
+          "document_types": [
+            "counselling form",
+            "education checklist",
+            "discharge instruction sheet",
+            "caregiver handout"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "nursing documentation",
+            "discharge desk"
+          ],
+          "validation_rules": [
+            "Must document topics covered in counselling",
+            "Must note patient or caregiver understanding",
+            "Must include teach-back verification",
+            "Must be signed by counsellor and patient",
+            "Must be in language understood by patient"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Counselling date",
+            "Discharge date",
+            "Documentation date"
+          ],
+          "signature_patterns": [
+            "Nurse counsellor signature",
+            "Physician signature",
+            "Patient signature",
+            "Caregiver signature"
+          ],
+          "numbered_lists": [
+            "Counselling topics",
+            "Medications explained",
+            "Warning signs discussed",
+            "Follow-up appointments",
+            "Community resources"
+          ],
+          "timeline_patterns": [
+            "Counselling session timing",
+            "Discharge process timeline"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R09-E04",
+        "name": "Medication Reconciliation at Discharge",
+        "type": "form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "medication reconciliation",
+            "discharge medication list",
+            "medication comparison",
+            "home medication review",
+            "prescription accuracy"
+          ],
+          "semantic_concepts": [
+            "medication safety",
+            "prescription errors",
+            "drug interactions",
+            "adherence support",
+            "pharmacy review"
+          ],
+          "document_types": [
+            "medication reconciliation form",
+            "discharge prescription",
+            "pharmacy review note",
+            "medication list"
+          ],
+          "expected_locations": [
+            "medical records",
+            "pharmacy department",
+            "patient charts",
+            "discharge summaries"
+          ],
+          "validation_rules": [
+            "Must compare admission and discharge medications",
+            "Must identify discrepancies",
+            "Must be reviewed by pharmacist",
+            "Must be explained to patient"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Reconciliation date",
+            "Discharge date",
+            "Pharmacy review date"
+          ],
+          "signature_patterns": [
+            "Pharmacist signature",
+            "Physician signature",
+            "Patient signature"
+          ],
+          "numbered_lists": [
+            "Admission medications",
+            "Discharge medications",
+            "Discontinued medications",
+            "New medications",
+            "Discrepancies noted"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R09-E05",
+        "name": "Post-Discharge Follow-Up and Readmission Tracking",
+        "type": "report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "post discharge follow up",
+            "readmission tracking",
+            "discharge outcome",
+            "care transition outcome",
+            "30 day readmission"
+          ],
+          "semantic_concepts": [
+            "continuity monitoring",
+            "readmission prevention",
+            "follow-up compliance",
+            "post-discharge contact",
+            "care gap identification"
+          ],
+          "document_types": [
+            "follow-up report",
+            "readmission analysis",
+            "outcome report",
+            "quality indicator report"
+          ],
+          "expected_locations": [
+            "quality department",
+            "case management",
+            "medical records",
+            "hospital administration"
+          ],
+          "validation_rules": [
+            "Must track readmissions within 30 days",
+            "Must identify preventable readmissions",
+            "Must assess follow-up appointment compliance",
+            "Must guide quality improvement"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Discharge date",
+            "Follow-up date",
+            "Readmission date",
+            "Report period"
+          ],
+          "signature_patterns": [
+            "Quality officer signature",
+            "Department head signature"
+          ],
+          "numbered_lists": [
+            "Readmission causes",
+            "Preventable factors",
+            "Improvement actions",
+            "Follow-up compliance rates"
+          ],
+          "timeline_patterns": [
+            "Discharge to follow-up timeline",
+            "Readmission timeline"
+          ],
+          "action_patterns": [
+            "Improvement actions",
+            "Follow-up protocols",
+            "Risk mitigation steps"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Discharge Planning Policy",
+    "Discharge Summary",
+    "Discharge Counselling Documentation",
+    "Medication Reconciliation Form",
+    "Post-Discharge Follow-Up Report"
+  ],
+  "related_requirements": [
+    "PRE-R05",
+    "PRE-R07",
+    "PRE-R10"
+  ],
+  "tags": [
+    "discharge_planning",
+    "discharge_counselling",
+    "care_transition",
+    "medication_reconciliation",
+    "readmission_prevention",
+    "continuity_of_care",
+    "patient_education"
+  ]
+}

@@ -1,0 +1,576 @@
+{
+  "requirement_id": "HIC-R11",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "Isolation Precautions and Patient Placement",
+  "description": "The hospital must have protocols for identifying patients requiring isolation, implementing transmission-based precautions, and managing patient placement and movement.",
+  "business_objective": "Prevent cross-transmission of multidrug-resistant organisms and communicable diseases through appropriate patient isolation and precaution implementation.",
+  "criticality": "High",
+  "confidence_weight": 0.8,
+  "source_reference": "CDC Isolation Precautions Guidelines; Generic hospital patient placement policy",
+  "evidence_schema": {
+    "total_evidence_items": 6,
+    "critical_items": 4,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R11-001",
+        "name": "Isolation Precaution SOPs",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "isolation precaution",
+            "isolation SOP",
+            "transmission based precaution",
+            "contact precaution",
+            "droplet precaution",
+            "airborne precaution",
+            "protective isolation",
+            "reverse isolation"
+          ],
+          "semantic_concepts": [
+            "isolation protocol",
+            "transmission based precaution procedure",
+            "patient isolation standard operating procedure",
+            "infection containment protocol",
+            "source control procedure"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Manual"
+          ],
+          "expected_locations": [
+            "Section 1.0",
+            "Isolation Precautions",
+            "Transmission Based Precautions",
+            "Patient Isolation"
+          ],
+          "validation_rules": [
+            "contact_precautions_defined",
+            "droplet_precautions_defined",
+            "airborne_precautions_defined",
+            "protective_isolation_defined"
+          ]
+        },
+        "extraction_hints": {
+          "precaution_patterns": [
+            "Contact Precautions",
+            "Droplet Precautions",
+            "Airborne Precautions",
+            "Protective Isolation",
+            "Reverse Isolation",
+            "Neutropenic Precautions",
+            "Strict Isolation",
+            "Enteric Precautions",
+            "Drainage Precautions"
+          ],
+          "indication_patterns": [
+            "MRSA",
+            "VRE",
+            "CRE",
+            "ESBL",
+            "MDR",
+            "XDR",
+            "PDR",
+            "C. difficile",
+            "Norovirus",
+            "Rotavirus",
+            "Influenza",
+            "RSV",
+            "Pertussis",
+            "Meningococcus",
+            "Tuberculosis",
+            "Measles",
+            "Varicella",
+            "Chickenpox",
+            "SARS",
+            "MERS",
+            "COVID-19"
+          ],
+          "PPE_patterns": [
+            "Gloves",
+            "Gown",
+            "Mask",
+            "Surgical mask",
+            "N95",
+            "Respirator",
+            "FFP2",
+            "FFP3",
+            "Face shield",
+            "Goggles",
+            "Eye protection",
+            "Apron",
+            "Boot covers",
+            "Hair cover",
+            "Cap"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R11-002",
+        "name": "Patient Screening and Risk Assessment Criteria",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient screening",
+            "risk assessment",
+            "isolation screening",
+            "infection screening",
+            "admission screening",
+            "MDRO screening",
+            "active surveillance screening"
+          ],
+          "semantic_concepts": [
+            "patient infection risk assessment",
+            "admission screening protocol",
+            "MDRO detection screening",
+            "isolation need assessment",
+            "infectious disease screening criteria"
+          ],
+          "document_types": [
+            "Policy",
+            "SOP",
+            "Form",
+            "Checklist"
+          ],
+          "expected_locations": [
+            "Screening",
+            "Risk Assessment",
+            "Admission Screening",
+            "Patient Assessment",
+            "Isolation Criteria"
+          ],
+          "validation_rules": [
+            "screening_criteria_defined",
+            "risk_factors_identified",
+            "screening_methods_specified",
+            "frequency_defined",
+            "responsibility_assigned"
+          ]
+        },
+        "extraction_hints": {
+          "criteria_patterns": [
+            "Risk factors",
+            "High risk",
+            "Low risk",
+            "Screening criteria",
+            "Indications for screening",
+            "When to screen",
+            "Who to screen",
+            "Screening protocol",
+            "Assessment tool"
+          ],
+          "method_patterns": [
+            "Nasal swab",
+            "Rectal swab",
+            "Perianal swab",
+            "Wound swab",
+            "Sputum culture",
+            "Stool culture",
+            "PCR",
+            "Rapid test",
+            "Antigen test",
+            "Culture",
+            "Molecular test"
+          ],
+          "frequency_patterns": [
+            "At admission",
+            "On transfer",
+            "Weekly",
+            "Monthly",
+            "On exposure",
+            "On outbreak",
+            "Routine",
+            "Targeted",
+            "Universal screening",
+            "Selective screening"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R11-003",
+        "name": "Room Allocation Protocol",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "room allocation",
+            "single room",
+            "patient cohorting",
+            "isolation room",
+            "negative pressure room",
+            "AIIR",
+            "airborne infection isolation room",
+            "patient placement",
+            "bed allocation"
+          ],
+          "semantic_concepts": [
+            "isolation room allocation",
+            "single room assignment",
+            "patient cohorting protocol",
+            "negative pressure room use",
+            "airborne infection isolation room allocation",
+            "patient placement decision tree"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Manual",
+            "Flowchart"
+          ],
+          "expected_locations": [
+            "Room Allocation",
+            "Patient Placement",
+            "Bed Assignment",
+            "Isolation Room",
+            "Cohorting Protocol"
+          ],
+          "validation_rules": [
+            "single_room_criteria",
+            "cohorting_criteria",
+            "negative_pressure_room_criteria",
+            "room_priority_defined",
+            "overflow_plan_present"
+          ]
+        },
+        "extraction_hints": {
+          "room_patterns": [
+            "Single room",
+            "Private room",
+            "Isolation room",
+            "Negative pressure room",
+            "AIIR",
+            "Airborne infection isolation room",
+            "Positive pressure room",
+            "Cohort room",
+            "Shared room",
+            "Multi-bed room",
+            "General ward"
+          ],
+          "criteria_patterns": [
+            "Indicated for",
+            "Required for",
+            "Preferred for",
+            "Mandatory for",
+            "Single room indicated",
+            "Cohorting indicated",
+            "Negative pressure required",
+            "Airborne precautions require"
+          ],
+          "overflow_patterns": [
+            "If single room unavailable",
+            "If isolation room full",
+            "Overflow plan",
+            "Alternative placement",
+            "Temporary arrangement",
+            "Transfer to",
+            "Refer to"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R11-004",
+        "name": "Signage Requirements at Room Entrance",
+        "type": "specification",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "isolation signage",
+            "door sign",
+            "precaution sign",
+            "room sign",
+            "isolation label",
+            "PPE sign",
+            "contact precaution sign",
+            "droplet precaution sign",
+            "airborne precaution sign"
+          ],
+          "semantic_concepts": [
+            "isolation room signage",
+            "precaution door sign",
+            "PPE requirement sign",
+            "infection control signage",
+            "room entry warning sign",
+            "precaution category display"
+          ],
+          "document_types": [
+            "SOP",
+            "Specification",
+            "Policy",
+            "Image"
+          ],
+          "expected_locations": [
+            "Signage",
+            "Door Sign",
+            "Room Label",
+            "Precaution Sign",
+            "Entry Sign"
+          ],
+          "validation_rules": [
+            "sign_types_defined",
+            "placement_specified",
+            "content_standardised",
+            "colour_coding_present",
+            "language_appropriate"
+          ]
+        },
+        "extraction_hints": {
+          "sign_patterns": [
+            "Sign",
+            "Poster",
+            "Label",
+            "Sticker",
+            "Placard",
+            "Notice",
+            "Warning",
+            "Caution",
+            "Alert",
+            "Display"
+          ],
+          "content_patterns": [
+            "Contact Precautions",
+            "Droplet Precautions",
+            "Airborne Precautions",
+            "PPE Required",
+            "Gloves Required",
+            "Gown Required",
+            "Mask Required",
+            "N95 Required",
+            "Visitors Restricted",
+            "Hand Hygiene",
+            "Before Entering",
+            "Before Leaving"
+          ],
+          "colour_patterns": [
+            "Yellow",
+            "Red",
+            "Blue",
+            "Green",
+            "Orange",
+            "Purple",
+            "Colour coded",
+            "Colour coded sign",
+            "Standard colour",
+            "Universal colour"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R11-005",
+        "name": "PPE Requirements per Precaution Type",
+        "type": "SOP",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "PPE requirement",
+            "personal protective equipment",
+            "PPE by precaution",
+            "contact PPE",
+            "droplet PPE",
+            "airborne PPE",
+            "PPE donning",
+            "PPE doffing",
+            "PPE protocol"
+          ],
+          "semantic_concepts": [
+            "precaution specific PPE",
+            "personal protective equipment by transmission type",
+            "PPE selection guide",
+            "donning and doffing protocol",
+            "PPE compliance requirement"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Poster",
+            "Checklist"
+          ],
+          "expected_locations": [
+            "PPE Requirements",
+            "Personal Protective Equipment",
+            "PPE Protocol",
+            "Donning Doffing",
+            "PPE Guide"
+          ],
+          "validation_rules": [
+            "contact_ppe_defined",
+            "droplet_ppe_defined",
+            "airborne_ppe_defined",
+            "donning_sequence_defined",
+            "doffing_sequence_defined",
+            "disposal_defined"
+          ]
+        },
+        "extraction_hints": {
+          "PPE_item_patterns": [
+            "Gloves",
+            "Gown",
+            "Apron",
+            "Mask",
+            "Surgical mask",
+            "N95 respirator",
+            "FFP2 respirator",
+            "FFP3 respirator",
+            "Face shield",
+            "Goggles",
+            "Eye protection",
+            "Head cover",
+            "Boot covers",
+            "Shoe covers"
+          ],
+          "sequence_patterns": [
+            "Donning sequence",
+            "Doffing sequence",
+            "Step 1",
+            "Step 2",
+            "Step 3",
+            "Step 4",
+            "Step 5",
+            "First",
+            "Second",
+            "Third",
+            "Then",
+            "Next",
+            "Finally",
+            "Before entering",
+            "After leaving",
+            "Upon exit"
+          ],
+          "disposal_patterns": [
+            "Dispose",
+            "Discard",
+            "Remove",
+            "Take off",
+            "Discard in",
+            "Yellow bin",
+            "Red bin",
+            "Biohazard bin",
+            "At point of removal",
+            "Before leaving room",
+            "In anteroom"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R11-006",
+        "name": "Discontinuation Criteria for Precautions",
+        "type": "SOP",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "discontinuation criteria",
+            "precaution removal",
+            "isolation discontinuation",
+            "when to stop isolation",
+            "precaution cessation",
+            "isolation clearance",
+            "de-isolation criteria"
+          ],
+          "semantic_concepts": [
+            "isolation discontinuation protocol",
+            "precaution removal criteria",
+            "de-isolation decision tree",
+            "when to stop transmission based precautions",
+            "isolation duration criteria"
+          ],
+          "document_types": [
+            "SOP",
+            "Policy",
+            "Manual"
+          ],
+          "expected_locations": [
+            "Discontinuation",
+            "Precaution Removal",
+            "De-isolation",
+            "Isolation Clearance",
+            "When to Stop"
+          ],
+          "validation_rules": [
+            "clinical_criteria_defined",
+            "microbiological_criteria_defined",
+            "time_based_criteria_defined",
+            "approval_required_defined"
+          ]
+        },
+        "extraction_hints": {
+          "clinical_patterns": [
+            "Afebrile",
+            "Symptom free",
+            "No drainage",
+            "Wound healed",
+            "Culture negative",
+            "No new lesions",
+            "No cough",
+            "No diarrhea",
+            "No vomiting",
+            "Clinically stable",
+            "Improving",
+            "Resolved"
+          ],
+          "microbiological_patterns": [
+            "Negative culture",
+            "Negative PCR",
+            "Negative antigen",
+            "Two negative cultures",
+            "48 hours negative",
+            "72 hours negative",
+            "Complete treatment",
+            "Antibiotic course completed"
+          ],
+          "time_patterns": [
+            "24 hours",
+            "48 hours",
+            "72 hours",
+            "5 days",
+            "7 days",
+            "10 days",
+            "14 days",
+            "21 days",
+            "Until culture negative",
+            "Until symptom free",
+            "For duration of illness",
+            "For duration of treatment"
+          ],
+          "approval_patterns": [
+            "Physician approval",
+            "Infection control approval",
+            "Attending physician",
+            "Consultant",
+            "Microbiologist",
+            "Infection control nurse",
+            "Medical clearance"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Isolation Precautions SOP",
+    "Infection Control Manual",
+    "Patient Placement Policy",
+    "PPE Selection Guide"
+  ],
+  "related_requirements": [
+    "HIC-R02",
+    "HIC-R04",
+    "HIC-R01"
+  ],
+  "tags": [
+    "isolation",
+    "transmission_based_precautions",
+    "MDRO",
+    "patient_placement",
+    "PPE",
+    "source_control",
+    "cross_transmission_prevention"
+  ]
+}

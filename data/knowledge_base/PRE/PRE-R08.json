@@ -1,0 +1,377 @@
+{
+  "requirement_id": "PRE-R08",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Advance Directives and End-of-Life Communication",
+  "description": "The hospital must respect patient autonomy regarding end-of-life decisions by facilitating advance directives, living wills, and do-not-resuscitate (DNR) orders. The hospital must have clear policies and procedures for documenting, honoring, and communicating patient preferences for end-of-life care, ensuring ethical and legal compliance.",
+  "business_objective": "To uphold patient autonomy in end-of-life decisions, ensure ethical care delivery, comply with legal frameworks for advance directives, and provide compassionate communication during critical care transitions.",
+  "criticality": "High",
+  "confidence_weight": 0.89,
+  "source_reference": [
+    "WHO - End-of-Life Care and Patient Autonomy Guidelines",
+    "Supreme Court of India - Common Cause v. Union of India (2018) - Living Will and Advance Directive",
+    "Indian Council of Medical Research - Ethical Guidelines for End-of-Life Care",
+    "NABH - Palliative Care and Patient Rights (Public Training Resources)",
+    "Ministry of Health & Family Welfare - National Palliative Care Strategy"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R08-E01",
+        "name": "Advance Directive and End-of-Life Care Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "advance directive policy",
+            "living will policy",
+            "DNR policy",
+            "end of life care policy",
+            "palliative care policy",
+            "do not resuscitate policy"
+          ],
+          "semantic_concepts": [
+            "patient autonomy",
+            "withholding treatment",
+            "withdrawal of life support",
+            "terminal illness",
+            "dignity in dying",
+            "surrogate decision maker"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "clinical protocol",
+            "ethical guideline"
+          ],
+          "expected_locations": [
+            "quality department",
+            "medical administration",
+            "ethics committee",
+            "palliative care department"
+          ],
+          "validation_rules": [
+            "Must comply with Supreme Court guidelines on living wills",
+            "Must define process for documenting advance directives",
+            "Must specify DNR order authorization and review",
+            "Must address surrogate decision-making",
+            "Must include staff training requirements"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date",
+            "Supreme Court judgment reference date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Ethics committee chair signature",
+            "Legal advisor signature"
+          ],
+          "numbered_lists": [
+            "Advance directive types",
+            "Documentation requirements",
+            "Verification steps",
+            "Revocation procedures",
+            "Responsible officers"
+          ],
+          "timeline_patterns": [
+            "Directive validity period",
+            "Review schedule",
+            "DNR order renewal"
+          ],
+          "action_patterns": [
+            "Directive registration steps",
+            "Verification actions",
+            "Communication protocols",
+            "Conflict resolution steps"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R08-E02",
+        "name": "Living Will or Advance Directive Form",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "living will form",
+            "advance directive form",
+            "DNR form",
+            "end of life preference form",
+            "treatment refusal form"
+          ],
+          "semantic_concepts": [
+            "patient wishes",
+            "treatment preferences",
+            "life support decisions",
+            "organ donation wishes",
+            "surrogate appointment"
+          ],
+          "document_types": [
+            "legal form",
+            "advance directive template",
+            "living will document",
+            "DNR order form"
+          ],
+          "expected_locations": [
+            "medical records",
+            "legal department",
+            "patient charts",
+            "ethics committee files"
+          ],
+          "validation_rules": [
+            "Must be voluntarily executed by competent patient",
+            "Must be witnessed by two independent witnesses",
+            "Must be countersigned by jurisdictional Judicial Magistrate",
+            "Must specify treatment preferences clearly",
+            "Must be registered with hospital and family physician"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Execution date",
+            "Witness date",
+            "Magistrate countersign date",
+            "Registration date"
+          ],
+          "signature_patterns": [
+            "Patient signature",
+            "Witness 1 signature",
+            "Witness 2 signature",
+            "Judicial Magistrate signature",
+            "Family physician signature"
+          ],
+          "numbered_lists": [
+            "Treatment preferences",
+            "Life support options",
+            "Organ donation wishes",
+            "Surrogate details"
+          ],
+          "timeline_patterns": [
+            "Directive execution timeline",
+            "Review and update schedule"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R08-E03",
+        "name": "DNR Order Documentation",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "DNR order",
+            "do not resuscitate order",
+            "no CPR order",
+            "comfort care order",
+            "allow natural death order"
+          ],
+          "semantic_concepts": [
+            "cardiopulmonary resuscitation refusal",
+            "comfort measures only",
+            "palliative care order",
+            "terminal care directive",
+            "code status"
+          ],
+          "document_types": [
+            "physician order",
+            "DNR form",
+            "code status form",
+            "treatment limitation order"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "ICU records",
+            "emergency department"
+          ],
+          "validation_rules": [
+            "Must be issued by treating physician",
+            "Must be based on patient or surrogate consent",
+            "Must be reviewed periodically",
+            "Must be prominently displayed in patient chart",
+            "Must be communicated to all care team members"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Order date",
+            "Review date",
+            "Expiration date"
+          ],
+          "signature_patterns": [
+            "Attending physician signature",
+            "Patient or surrogate signature",
+            "Witness signature"
+          ],
+          "numbered_lists": [
+            "DNR conditions",
+            "Exceptions if any",
+            "Comfort care measures",
+            "Communication log"
+          ],
+          "timeline_patterns": [
+            "Order validity period",
+            "Review frequency"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R08-E04",
+        "name": "End-of-Life Communication Documentation",
+        "type": "clinical_note",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "end of life discussion",
+            "goals of care discussion",
+            "palliative care consultation",
+            "family meeting note",
+            "prognosis communication"
+          ],
+          "semantic_concepts": [
+            "breaking bad news",
+            "shared decision making",
+            "family conference",
+            "prognosis disclosure",
+            "symptom management discussion"
+          ],
+          "document_types": [
+            "clinical note",
+            "family meeting summary",
+            "palliative care consult note",
+            "communication log"
+          ],
+          "expected_locations": [
+            "medical records",
+            "patient charts",
+            "palliative care notes",
+            "ICU notes"
+          ],
+          "validation_rules": [
+            "Must document participants in discussion",
+            "Must record patient or surrogate understanding",
+            "Must note decisions made",
+            "Must demonstrate empathy and cultural sensitivity"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Discussion date",
+            "Consultation date",
+            "Family meeting date"
+          ],
+          "signature_patterns": [
+            "Physician signature",
+            "Nurse signature",
+            "Social worker signature"
+          ],
+          "numbered_lists": [
+            "Participants",
+            "Topics discussed",
+            "Decisions made",
+            "Action items"
+          ],
+          "timeline_patterns": [
+            "Discussion timeline",
+            "Follow-up plan"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R08-E05",
+        "name": "Ethics Committee Review Records for End-of-Life Decisions",
+        "type": "meeting_minutes",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "ethics committee end of life",
+            "ethical dilemma review",
+            "withdrawal of life support ethics",
+            "DNR ethics consultation",
+            "palliative care ethics"
+          ],
+          "semantic_concepts": [
+            "ethical consultation",
+            "moral distress",
+            "futile treatment",
+            "surrogate conflict",
+            "best interest determination"
+          ],
+          "document_types": [
+            "ethics consultation form",
+            "committee minutes",
+            "opinion letter",
+            "case review"
+          ],
+          "expected_locations": [
+            "ethics committee office",
+            "medical records",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must document reason for ethics consultation",
+            "Must record committee deliberation",
+            "Must provide recommendations",
+            "Must maintain confidentiality"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Consultation request date",
+            "Meeting date",
+            "Opinion date"
+          ],
+          "signature_patterns": [
+            "Committee chair signature",
+            "Committee members signatures"
+          ],
+          "numbered_lists": [
+            "Ethical issues",
+            "Stakeholder perspectives",
+            "Recommendations",
+            "Follow-up actions"
+          ],
+          "timeline_patterns": [
+            "Consultation timeline",
+            "Decision implementation timeline"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Advance Directive and End-of-Life Care Policy",
+    "Living Will or Advance Directive Form",
+    "DNR Order Documentation",
+    "End-of-Life Communication Documentation",
+    "Ethics Committee Review Records"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R02",
+    "PRE-R07",
+    "PRE-R09"
+  ],
+  "tags": [
+    "advance_directive",
+    "living_will",
+    "DNR",
+    "end_of_life_care",
+    "patient_autonomy",
+    "palliative_care",
+    "ethics",
+    "surrogate_decision"
+  ]
+}

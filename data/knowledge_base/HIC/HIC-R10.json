@@ -1,0 +1,298 @@
+{
+  "requirement_id": "HIC-R10",
+  "chapter": "HIC",
+  "chapter_name": "Hospital Infection Control",
+  "title": "CSSD and Sterile Supply Chain Management",
+  "description": "The hospital must have a documented Central Sterile Supply Department (CSSD) policy that defines sterilization processes, quality assurance, packaging, storage, distribution, and traceability of sterile items.",
+  "business_objective": "Ensure all sterile items used in patient care are properly processed, sterilized, and traceable to prevent healthcare-associated infections from contaminated instruments or supplies.",
+  "criticality": "Critical",
+  "confidence_weight": 0.9,
+  "source_reference": "NABH 5th Edition - Hospital Infection Control Chapter; WHO Decontamination and Sterilization Guidelines; CDC Guidelines for Disinfection and Sterilization in Healthcare Facilities",
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-HIC-R10-001",
+        "name": "CSSD Policy Document with Effective and Review Dates",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "CSSD policy",
+            "sterile supply department",
+            "central sterile supply",
+            "sterilization policy",
+            "CSSD manual"
+          ],
+          "semantic_concepts": [
+            "sterile processing",
+            "decontamination policy",
+            "sterilization protocol",
+            "CSSD operations"
+          ],
+          "document_types": [
+            "Policy",
+            "Manual",
+            "SOP"
+          ],
+          "expected_locations": [
+            "Document Control",
+            "Header",
+            "CSSD Department"
+          ],
+          "validation_rules": [
+            "effective_date_present",
+            "review_date_present",
+            "version_number_present"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective Date:",
+            "Review Date:",
+            "Date of Issue:",
+            "Next Review:"
+          ],
+          "signature_patterns": [
+            "Approved by:",
+            "Authorized by:",
+            "CSSD In-charge",
+            "Medical Director"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R10-002",
+        "name": "Sterilization Process Documentation",
+        "type": "procedure",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "sterilization process",
+            "autoclave",
+            "steam sterilization",
+            "ETO sterilization",
+            "sterilization cycle",
+            "biological indicator",
+            "Bowie-Dick test"
+          ],
+          "semantic_concepts": [
+            "sterilization method",
+            "sterilization validation",
+            "sterilization monitoring",
+            "sterility assurance"
+          ],
+          "document_types": [
+            "SOP",
+            "Manual",
+            "Log"
+          ],
+          "expected_locations": [
+            "Section Sterilization",
+            "CSSD Procedures"
+          ],
+          "validation_rules": [
+            "sterilization_methods_listed",
+            "monitoring_documented",
+            "validation_frequency"
+          ]
+        },
+        "extraction_hints": {
+          "temperature_patterns": [
+            "121",
+            "134",
+            "temperature",
+            "pressure",
+            "exposure time"
+          ],
+          "method_patterns": [
+            "steam",
+            "ETO",
+            "plasma",
+            "dry heat",
+            "chemical"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R10-003",
+        "name": "Quality Assurance and Biological Indicator Records",
+        "type": "audit_record",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "biological indicator",
+            "Bowie-Dick",
+            "sterility test",
+            "CSSD quality",
+            "process challenge device",
+            "chemical indicator"
+          ],
+          "semantic_concepts": [
+            "sterilization validation",
+            "quality monitoring",
+            "CSSD quality assurance",
+            "sterility verification"
+          ],
+          "document_types": [
+            "Log",
+            "Report",
+            "Record"
+          ],
+          "expected_locations": [
+            "CSSD Records",
+            "Quality Department"
+          ],
+          "validation_rules": [
+            "biological_indicator_frequency",
+            "bowie_dick_daily",
+            "action_plan_for_failures"
+          ]
+        },
+        "extraction_hints": {
+          "frequency_patterns": [
+            "daily",
+            "weekly",
+            "every cycle",
+            "per cycle",
+            "monthly"
+          ],
+          "result_patterns": [
+            "pass",
+            "fail",
+            "negative",
+            "positive",
+            "acceptable"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R10-004",
+        "name": "Packing, Storage and Distribution Protocol",
+        "type": "procedure",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "sterile packing",
+            "packaging system",
+            "sterile storage",
+            "shelf life",
+            "sterile distribution",
+            "seal integrity"
+          ],
+          "semantic_concepts": [
+            "sterile packaging",
+            "sterile storage conditions",
+            "shelf life management",
+            "distribution protocol"
+          ],
+          "document_types": [
+            "SOP",
+            "Manual"
+          ],
+          "expected_locations": [
+            "Section Packaging",
+            "Section Storage"
+          ],
+          "validation_rules": [
+            "packaging_standards",
+            "storage_conditions",
+            "shelf_life_defined"
+          ]
+        },
+        "extraction_hints": {
+          "storage_patterns": [
+            "temperature",
+            "humidity",
+            "ventilation",
+            "dust-free",
+            "clean area"
+          ],
+          "shelf_patterns": [
+            "shelf life",
+            "expiry",
+            "sterile barrier",
+            "seal check"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-HIC-R10-005",
+        "name": "Traceability and Recall System",
+        "type": "process",
+        "required": true,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "sterilization traceability",
+            "recall system",
+            "tracking system",
+            "instrument tracing",
+            "lot tracking",
+            "sterile item tracking"
+          ],
+          "semantic_concepts": [
+            "traceability system",
+            "recall procedure",
+            "instrument tracking",
+            "batch tracing"
+          ],
+          "document_types": [
+            "Policy",
+            "SOP",
+            "System Manual"
+          ],
+          "expected_locations": [
+            "Section Traceability",
+            "Section Recall"
+          ],
+          "validation_rules": [
+            "traceability_system_documented",
+            "recall_procedure_defined",
+            "tracking_to_patient"
+          ]
+        },
+        "extraction_hints": {
+          "system_patterns": [
+            "barcode",
+            "RFID",
+            "tracking number",
+            "lot number",
+            "batch number"
+          ],
+          "recall_patterns": [
+            "recall procedure",
+            "notification",
+            "investigation",
+            "corrective action"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "CSSD Policy Document",
+    "Sterilization Process Log",
+    "Biological Indicator Records",
+    "Bowie-Dick Test Records",
+    "Sterile Supply Distribution Log"
+  ],
+  "related_requirements": [
+    "HIC-R08",
+    "HIC-R03"
+  ],
+  "tags": [
+    "CSSD",
+    "sterilization",
+    "sterile_supply",
+    "quality_assurance",
+    "traceability",
+    "decontamination"
+  ]
+}

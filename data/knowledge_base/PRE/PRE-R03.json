@@ -1,0 +1,333 @@
+{
+  "requirement_id": "PRE-R03",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Patient Identification",
+  "description": "The hospital must have a standardized patient identification process to ensure accurate identification of patients at every point of care. This includes using at least two unique identifiers before any procedure, medication administration, blood transfusion, or specimen collection to prevent errors and ensure patient safety.",
+  "business_objective": "To prevent patient misidentification errors, ensure correct patient-procedure matching, enhance patient safety, and comply with national patient safety goals and accreditation standards.",
+  "criticality": "Critical",
+  "confidence_weight": 0.94,
+  "source_reference": [
+    "WHO - Patient Safety Solutions: Patient Identification",
+    "NABH - Patient Safety Goals (Public Awareness Material)",
+    "Ministry of Health & Family Welfare - National Patient Safety Framework",
+    "Joint Commission International - Patient Identification Standards",
+    "NQAS - Patient Identification Requirements"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R03-E01",
+        "name": "Patient Identification Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient identification",
+            "patient ID policy",
+            "two identifier rule",
+            "patient verification"
+          ],
+          "semantic_concepts": [
+            "unique identifiers",
+            "patient verification",
+            "identification bands",
+            "name and UHID matching"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "clinical protocol",
+            "patient safety guideline"
+          ],
+          "expected_locations": [
+            "quality department",
+            "nursing office",
+            "medical administration",
+            "patient safety committee"
+          ],
+          "validation_rules": [
+            "Must specify minimum two unique identifiers",
+            "Must cover all points of care",
+            "Must include emergency identification procedures",
+            "Must be approved by hospital administration"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Nursing superintendent signature",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "Identification steps",
+            "Points of verification",
+            "Exception handling"
+          ],
+          "action_patterns": [
+            "Verification actions",
+            "Error reporting steps"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R03-E02",
+        "name": "Patient Identification Band",
+        "type": "physical_evidence",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient ID band",
+            "wristband",
+            "identification bracelet",
+            "patient tag"
+          ],
+          "semantic_concepts": [
+            "wrist identification",
+            "barcoded band",
+            "allergy alert band",
+            "fall risk band"
+          ],
+          "document_types": [
+            "photograph",
+            "specimen band",
+            "ID band template",
+            "procurement record"
+          ],
+          "expected_locations": [
+            "admission desk",
+            "wards",
+            "OT",
+            "emergency department",
+            "laboratory"
+          ],
+          "validation_rules": [
+            "Must contain at least two unique identifiers",
+            "Must be applied at admission",
+            "Must be checked before every procedure",
+            "Must be replaced if damaged or removed"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Application date",
+            "Replacement date"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R03-E03",
+        "name": "Patient Identification Checklist",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "patient ID checklist",
+            "verification checklist",
+            "patient confirm checklist",
+            "two identifier checklist"
+          ],
+          "semantic_concepts": [
+            "pre-procedure verification",
+            "time-out checklist",
+            "safety pause",
+            "final verification"
+          ],
+          "document_types": [
+            "checklist",
+            "verification form",
+            "surgical safety checklist",
+            "medication administration record"
+          ],
+          "expected_locations": [
+            "medical records",
+            "OT files",
+            "nursing stations",
+            "procedure rooms"
+          ],
+          "validation_rules": [
+            "Must document two identifiers verified",
+            "Must be signed by healthcare provider",
+            "Must be procedure-specific",
+            "Must be retained in patient record"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Verification date",
+            "Procedure date",
+            "Time of verification"
+          ],
+          "signature_patterns": [
+            "Nurse signature",
+            "Physician signature",
+            "Surgeon signature",
+            "Anesthetist signature"
+          ],
+          "numbered_lists": [
+            "Verification steps",
+            "Identifier fields",
+            "Confirmation statements"
+          ],
+          "timeline_patterns": [
+            "Pre-procedure time-out",
+            "Verification timestamp"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R03-E04",
+        "name": "Patient Identification Training Records",
+        "type": "training_record",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient ID training",
+            "identification protocol training",
+            "patient safety training",
+            "verification training"
+          ],
+          "semantic_concepts": [
+            "staff competency",
+            "identification protocol education",
+            "safety training",
+            "error prevention"
+          ],
+          "document_types": [
+            "training calendar",
+            "attendance sheet",
+            "competency assessment",
+            "e-learning record"
+          ],
+          "expected_locations": [
+            "HR department",
+            "training department",
+            "nursing education office"
+          ],
+          "validation_rules": [
+            "Must cover all clinical staff",
+            "Must include assessment",
+            "Must be refreshed annually",
+            "Must document competency"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Training date",
+            "Assessment date",
+            "Competency validation date"
+          ],
+          "signature_patterns": [
+            "Trainer signature",
+            "Trainee signature",
+            "Assessor signature"
+          ],
+          "numbered_lists": [
+            "Training modules",
+            "Competency criteria",
+            "Attendee list"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R03-E05",
+        "name": "Patient Identification Error Analysis Report",
+        "type": "incident_report",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient ID error",
+            "misidentification incident",
+            "wrong patient event",
+            "identification near miss"
+          ],
+          "semantic_concepts": [
+            "root cause analysis",
+            "sentinel event",
+            "near miss reporting",
+            "corrective action"
+          ],
+          "document_types": [
+            "incident report",
+            "root cause analysis",
+            "corrective action plan",
+            "quality review"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient safety office",
+            "risk management"
+          ],
+          "validation_rules": [
+            "Must document all identification errors",
+            "Must include root cause analysis",
+            "Must specify corrective actions",
+            "Must be reviewed by patient safety committee"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Incident date",
+            "Report date",
+            "Analysis completion date",
+            "Action deadline"
+          ],
+          "signature_patterns": [
+            "Reporter signature",
+            "Investigator signature",
+            "Committee chair signature"
+          ],
+          "numbered_lists": [
+            "Contributing factors",
+            "Corrective actions",
+            "Responsible persons"
+          ],
+          "timeline_patterns": [
+            "Incident timeline",
+            "Investigation timeline",
+            "Implementation timeline"
+          ],
+          "action_patterns": [
+            "Immediate actions",
+            "Long-term actions",
+            "Monitoring plan"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Patient Identification Policy",
+    "Patient Identification Band",
+    "Patient Identification Checklist",
+    "Staff Training Records",
+    "Error Analysis Reports"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R02",
+    "HIC-R05"
+  ],
+  "tags": [
+    "patient_identification",
+    "patient_safety",
+    "two_identifiers",
+    "verification",
+    "wristband",
+    "medication_safety",
+    "procedure_safety"
+  ]
+}

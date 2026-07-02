@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NAHB Compliance Analysis Engine — Upload hospital documents and check compliance against NABH standards.">
+  <title>ComplyScan — NABH Compliance Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="nav" role="banner">
+    <div class="nav-brand">
+      <span class="nav-brand-icon" aria-hidden="true">CS</span>
+      ComplyScan
+      <small>NABH</small>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions">
+      <button
+        id="theme-toggle"
+        class="icon-btn"
+        title="Toggle theme (T)"
+        aria-label="Toggle light/dark theme"
+      >
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+      </button>
+      <button
+        id="shortcuts-btn"
+        class="shortcut-hint-btn"
+        title="Keyboard shortcuts (?)"
+        aria-label="Show keyboard shortcuts"
+      >
+        <span class="label">Shortcuts</span>
+        <kbd>?</kbd>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main role="main">
+    <!-- View A: Chapter Selection -->
+    <section id="view-chapters" class="view active" role="tabpanel">
+      <div class="chapter-hero">
+        <h1>NABH Compliance Engine</h1>
+        <p>Upload or paste hospital policy documents and check compliance against NABH standards.</p>
+      </div>
+      <div class="chapter-grid" id="chapter-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- View B: Requirement List -->
+    <section id="view-requirements" class="view" role="tabpanel">
+      <nav class="breadcrumb" id="breadcrumb-reqs" aria-label="Breadcrumb">
+        <a data-action="go-chapters">Chapters</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span id="bc-chapter-name">HIC</span>
+      </nav>
+      <div class="req-header">
+        <h1 id="req-chapter-title">Hospital Infection Control</h1>
+        <div class="search-bar">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="req-search"
+            placeholder="Search by ID or title…"
+            aria-label="Search requirements"
+          >
+          <kbd>/</kbd>
+        </div>
+      </div>
+      <div id="req-list-container">
+        <!-- Requirement list or loading state injected by JS -->
+      </div>
+    </section>
+
+    <!-- View C: Analysis -->
+    <section id="view-analysis" class="view" role="tabpanel">
+      <nav class="breadcrumb" id="breadcrumb-analysis" aria-label="Breadcrumb">
+        <a data-action="go-chapters">Chapters</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <a id="bc-back-reqs" data-action="go-requirements">HIC</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span id="bc-req-name">HIC-R01: Hand Hygiene Policy</span>
+      </nav>
+
+      <div class="analysis-layout">
+        <!-- Left: Text Input -->
+        <div class="analysis-panel text-panel">
+          <h3>Document Text</h3>
+          <div class="file-upload-area" id="file-upload-area">
+            <div class="file-upload-dropzone" id="file-dropzone">
+              <span class="upload-icon" aria-hidden="true">📄</span>
+              <p class="upload-text">Drop a file here or <span class="upload-link" id="file-browse-link">browse</span></p>
+              <p class="upload-hint">Supports .txt, .pdf, .docx</p>
+              <input type="file" id="file-input" accept=".txt,.pdf,.docx" hidden>
+            </div>
+            <div class="file-upload-progress" id="file-upload-progress" style="display:none;">
+              <span class="spinner"></span>
+              <span id="file-upload-status">Extracting text...</span>
+            </div>
+            <div class="file-upload-success" id="file-upload-success" style="display:none;">
+              <span aria-hidden="true">✅</span>
+              <span id="file-upload-filename"></span>
+              <button class="btn btn-ghost btn-xs" id="file-upload-dismiss" title="Clear uploaded file">✕</button>
+            </div>
+          </div>
+          <textarea
+            id="analysis-text"
+            placeholder="Paste your document text here, or upload a file above…"
+            spellcheck="false"
+            aria-label="Document text for analysis"
+          ></textarea>
+          <div class="text-panel-actions">
+            <button id="btn-analyze-pass1" class="btn btn-primary" title="Run keyword analysis (1)">
+              Analyze (Pass 1)
+            </button>
+            <button id="btn-analyze-pass2" class="btn btn-secondary" title="Run LLM analysis (2)">
+              <span aria-hidden="true">✦</span> Analyze with LLM
+            </button>
+            <button id="btn-clear-text" class="btn btn-ghost btn-sm" title="Clear text (.)">
+              Clear
+            </button>
+            <button id="btn-sample-text" class="btn btn-ghost btn-sm">
+              Use Sample Text
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Results -->
+        <div class="analysis-panel results-panel">
+          <h3>Compliance Results</h3>
+          <div id="results-empty" class="results-panel-empty">
+            <div class="empty-icon" aria-hidden="true">📋</div>
+            <p>Run an analysis above to see compliance results.</p>
+          </div>
+          <div id="results-content" style="display:none;">
+            <!-- Score -->
+            <div class="score-section">
+              <div class="score-header">
+                <span class="score-label">Overall Score</span>
+                <span class="score-pct" id="score-pct">0%</span>
+              </div>
+              <div class="score-bar-track">
+                <div class="score-bar-fill" id="score-bar" style="width:0%;"></div>
+              </div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <span class="badge" id="status-badge">NOT FOUND</span>
+                <span style="font-size:11px;color:var(--ink-secondary);" id="analysis-meta"></span>
+              </div>
+            </div>
+
+            <!-- Evidence Table -->
+            <div class="evidence-section">
+              <table class="evidence-table" id="evidence-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Critical</th>
+                    <th>Status</th>
+                    <th>Justification</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="evidence-body">
+                  <!-- Injected by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="action-bar">
+              <button id="btn-download-pdf" class="btn btn-primary btn-sm" title="Download PDF report (P)">
+                ⬇ Download PDF Report
+              </button>
+              <span class="disclaimer" id="disclaimer-text">
+                Advisory tool only — not a substitute for an official NABH assessment.
+              </span>
+            </div>
+          </div>
+          <div id="results-loading" style="display:none;">
+            <div class="loading-container">
+              <div class="skeleton skeleton-bar" style="width:100%;"></div>
+              <div class="skeleton skeleton-text" style="width:40%;"></div>
+              <div class="skeleton skeleton-row"></div>
+              <div class="skeleton skeleton-row"></div>
+              <div class="skeleton skeleton-row"></div>
+              <div class="skeleton skeleton-row"></div>
+              <div class="skeleton skeleton-row"></div>
+            </div>
+          </div>
+          <div id="results-error" style="display:none;">
+            <div class="banner banner-error" id="error-banner">
+              <span class="banner-icon" aria-hidden="true">⚠</span>
+              <span id="error-message">Analysis failed. Please try again.</span>
+              <button class="banner-close" id="error-close" aria-label="Dismiss error">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Override Modal -->
+  <div id="override-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <h3 id="modal-title">Override Status</h3>
+      <p class="modal-evidence-name" id="modal-evidence-name">Evidence Item</p>
+
+      <label for="modal-status">New Status</label>
+      <select id="modal-status">
+        <option value="Compliant">Compliant</option>
+        <option value="Partial">Partial</option>
+        <option value="Non-Compliant">Non-Compliant</option>
+        <option value="Not Found">Not Found</option>
+      </select>
+
+      <label for="modal-reason">Reason for override (optional)</label>
+      <textarea id="modal-reason" placeholder="Why is this override necessary?"></textarea>
+
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn btn-secondary btn-sm">Cancel</button>
+        <button id="modal-confirm" class="btn btn-danger btn-sm">Confirm Override</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shortcuts Help Overlay -->
+  <div id="shortcuts-overlay" class="shortcuts-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
+    <div class="shortcuts-panel">
+      <h3 id="shortcuts-title">Keyboard Shortcuts</h3>
+      <div class="shortcut-grid">
+        <div class="shortcut-row"><kbd>j</kbd> <span>Next requirement</span></div>
+        <div class="shortcut-row"><kbd>k</kbd> <span>Previous requirement</span></div>
+        <div class="shortcut-row"><kbd>/</kbd> <span>Focus search</span></div>
+        <div class="shortcut-row"><kbd>Enter</kbd> <span>Analyze selected</span></div>
+        <div class="shortcut-row"><kbd>Escape</kbd> <span>Back / Close</span></div>
+        <div class="shortcut-row"><kbd>1</kbd> <span>Pass 1 analysis</span></div>
+        <div class="shortcut-row"><kbd>2</kbd> <span>Pass 2 (LLM) analysis</span></div>
+        <div class="shortcut-row"><kbd>o</kbd> <span>Open override</span></div>
+        <div class="shortcut-row"><kbd>p</kbd> <span>Download PDF</span></div>
+        <div class="shortcut-row"><kbd>t</kbd> <span>Toggle theme</span></div>
+        <div class="shortcut-row"><kbd>.</kbd> <span>Clear text</span></div>
+        <div class="shortcut-row"><kbd>?</kbd> <span>This overlay</span></div>
+      </div>
+      <div class="shortcut-dismiss">Press <kbd>?</kbd> or <kbd>Escape</kbd> to close</div>
+    </div>
+  </div>
+
+  <script src="/static/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+{
+  "requirement_id": "PRE-R07",
+  "chapter": "PRE",
+  "chapter_name": "Patient Rights & Education",
+  "title": "Grievance Redressal and Complaint Management",
+  "description": "The hospital must have a structured, accessible, and transparent grievance redressal mechanism that allows patients and their families to register complaints, provide feedback, and seek resolution without fear of discrimination or retaliation. The process must include timely acknowledgment, investigation, response, and documentation of all complaints.",
+  "business_objective": "To demonstrate accountability, improve service quality through patient feedback, resolve disputes promptly, maintain patient trust, and comply with regulatory requirements for patient grievance handling.",
+  "criticality": "High",
+  "confidence_weight": 0.9,
+  "source_reference": [
+    "WHO - Patient Safety and Quality of Care: Complaint Management",
+    "Ministry of Health & Family Welfare - Patient Rights Charter: Grievance Redressal",
+    "NABH - Complaint Management Standards (Public Training Resources)",
+    "Clinical Establishments Act, 2010 - India: Patient Grievance Provisions",
+    "Consumer Protection Act, 2019 - India: Healthcare Services"
+  ],
+  "evidence_schema": {
+    "total_evidence_items": 5,
+    "critical_items": 3,
+    "non_critical_items": 2,
+    "evidence": [
+      {
+        "evidence_id": "EV-PRE-R07-E01",
+        "name": "Grievance Redressal Policy",
+        "type": "policy",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "grievance policy",
+            "complaint management policy",
+            "patient complaint SOP",
+            "grievance redressal procedure",
+            "feedback handling policy"
+          ],
+          "semantic_concepts": [
+            "complaint registration",
+            "redressal mechanism",
+            "patient feedback",
+            "dispute resolution",
+            "grievance officer"
+          ],
+          "document_types": [
+            "policy manual",
+            "SOP",
+            "grievance guideline",
+            "patient rights document"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient relations office",
+            "hospital administration",
+            "medical superintendent office"
+          ],
+          "validation_rules": [
+            "Must define complaint categories and severity levels",
+            "Must specify timelines for acknowledgment and resolution",
+            "Must identify grievance officer and escalation path",
+            "Must prohibit retaliation against complainants",
+            "Must be approved by hospital administration"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Effective date",
+            "Review date",
+            "Approval date"
+          ],
+          "signature_patterns": [
+            "Medical superintendent signature",
+            "Grievance officer designation",
+            "Quality head signature"
+          ],
+          "numbered_lists": [
+            "Complaint categories",
+            "Redressal steps",
+            "Timelines",
+            "Escalation levels",
+            "Responsible officers"
+          ],
+          "timeline_patterns": [
+            "Acknowledgment timeline",
+            "Investigation timeline",
+            "Resolution timeline",
+            "Appeal timeline"
+          ],
+          "action_patterns": [
+            "Registration steps",
+            "Investigation procedures",
+            "Resolution actions",
+            "Appeal process"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R07-E02",
+        "name": "Complaint Register or Log",
+        "type": "form",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "complaint register",
+            "grievance log",
+            "complaint tracking sheet",
+            "patient feedback register",
+            "grievance database"
+          ],
+          "semantic_concepts": [
+            "complaint recording",
+            "grievance tracking",
+            "feedback documentation",
+            "incident logging",
+            "patient concern record"
+          ],
+          "document_types": [
+            "register",
+            "log sheet",
+            "tracking spreadsheet",
+            "database record",
+            "electronic grievance system"
+          ],
+          "expected_locations": [
+            "patient relations office",
+            "quality department",
+            "medical superintendent office",
+            "nursing superintendent office"
+          ],
+          "validation_rules": [
+            "Must contain sequential complaint numbers",
+            "Must record date, time, and nature of complaint",
+            "Must identify complainant contact details",
+            "Must track status from registration to closure",
+            "Must be tamper-proof and auditable"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Complaint date",
+            "Registration date",
+            "Acknowledgment date",
+            "Resolution date",
+            "Closure date"
+          ],
+          "signature_patterns": [
+            "Complainant signature",
+            "Receiving officer signature",
+            "Investigating officer signature",
+            "Resolution authority signature"
+          ],
+          "numbered_lists": [
+            "Complaint serial numbers",
+            "Action items",
+            "Corrective measures"
+          ],
+          "timeline_patterns": [
+            "Complaint lifecycle",
+            "Response deadlines",
+            "Escalation triggers"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R07-E03",
+        "name": "Complaint Analysis and Trend Report",
+        "type": "audit_report",
+        "required": true,
+        "critical": true,
+        "search_strategy": {
+          "keywords": [
+            "complaint analysis",
+            "grievance trend report",
+            "feedback analysis",
+            "patient satisfaction report",
+            "complaint statistics"
+          ],
+          "semantic_concepts": [
+            "root cause analysis",
+            "trend identification",
+            "recurring issues",
+            "systemic problems",
+            "quality improvement"
+          ],
+          "document_types": [
+            "analysis report",
+            "trend report",
+            "quality review",
+            "management review",
+            "committee minutes"
+          ],
+          "expected_locations": [
+            "quality department",
+            "patient safety committee",
+            "hospital administration",
+            "medical superintendent office"
+          ],
+          "validation_rules": [
+            "Must analyze complaints by category and department",
+            "Must identify trends and recurring issues",
+            "Must include corrective and preventive actions",
+            "Must be reviewed by quality committee",
+            "Must be generated at least quarterly"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Report period",
+            "Analysis date",
+            "Presentation date",
+            "Review date"
+          ],
+          "signature_patterns": [
+            "Analyst signature",
+            "Quality head signature",
+            "Committee chair signature"
+          ],
+          "numbered_lists": [
+            "Complaint categories",
+            "Department-wise breakdown",
+            "Trend findings",
+            "Corrective actions",
+            "Preventive measures"
+          ],
+          "timeline_patterns": [
+            "Quarterly reporting cycle",
+            "Annual review cycle"
+          ],
+          "action_patterns": [
+            "Improvement actions",
+            "Monitoring plan",
+            "Follow-up schedule"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R07-E04",
+        "name": "Patient Feedback Collection Mechanism",
+        "type": "form",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "patient feedback form",
+            "satisfaction survey",
+            "feedback box",
+            "patient suggestion form",
+            "discharge feedback"
+          ],
+          "semantic_concepts": [
+            "patient voice",
+            "satisfaction measurement",
+            "experience feedback",
+            "service evaluation",
+            "continuous improvement"
+          ],
+          "document_types": [
+            "feedback form",
+            "survey questionnaire",
+            "suggestion card",
+            "online feedback",
+            "discharge survey"
+          ],
+          "expected_locations": [
+            "OPD counters",
+            "ward entrances",
+            "discharge desk",
+            "patient relations office",
+            "website"
+          ],
+          "validation_rules": [
+            "Must be accessible and easy to use",
+            "Must allow anonymous submission",
+            "Must cover multiple service dimensions",
+            "Must be available in local language"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Survey period",
+            "Collection date",
+            "Analysis date"
+          ],
+          "signature_patterns": [
+            "Optional respondent signature"
+          ],
+          "numbered_lists": [
+            "Survey dimensions",
+            "Rating scales",
+            "Open-ended questions"
+          ]
+        }
+      },
+      {
+        "evidence_id": "EV-PRE-R07-E05",
+        "name": "Grievance Officer Appointment and Training Records",
+        "type": "training_record",
+        "required": false,
+        "critical": false,
+        "search_strategy": {
+          "keywords": [
+            "grievance officer appointment",
+            "complaint handler training",
+            "patient relations training",
+            "conflict resolution training",
+            "grievance management certification"
+          ],
+          "semantic_concepts": [
+            "designated officer",
+            "complaint handling skills",
+            "communication skills",
+            "conflict resolution",
+            "empathy training"
+          ],
+          "document_types": [
+            "appointment letter",
+            "training certificate",
+            "competency record",
+            "job description"
+          ],
+          "expected_locations": [
+            "HR department",
+            "patient relations office",
+            "quality department"
+          ],
+          "validation_rules": [
+            "Must designate specific grievance officer",
+            "Must document training on complaint handling",
+            "Must include communication and empathy skills",
+            "Must specify authority and reporting line"
+          ]
+        },
+        "extraction_hints": {
+          "date_patterns": [
+            "Appointment date",
+            "Training date",
+            "Certification date",
+            "Renewal date"
+          ],
+          "signature_patterns": [
+            "Appointing authority signature",
+            "Trainee signature",
+            "Certifying body signature"
+          ],
+          "numbered_lists": [
+            "Officer responsibilities",
+            "Training modules",
+            "Competency criteria"
+          ]
+        }
+      }
+    ]
+  },
+  "expected_documents": [
+    "Grievance Redressal Policy",
+    "Complaint Register or Log",
+    "Complaint Analysis and Trend Report",
+    "Patient Feedback Collection Mechanism",
+    "Grievance Officer Appointment and Training Records"
+  ],
+  "related_requirements": [
+    "PRE-R01",
+    "PRE-R05",
+    "PRE-R08"
+  ],
+  "tags": [
+    "grievance_redressal",
+    "complaint_management",
+    "patient_feedback",
+    "quality_improvement",
+    "patient_satisfaction",
+    "accountability",
+    "dispute_resolution"
+  ]
+}

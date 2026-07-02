@@ -118,9 +118,11 @@ The compliance knowledge base is built using publicly available secondary refere
 - Deploy MVP
 
 ---
-
 ## Authors
 
-Aakash Karna
+### Reuben Richard Lancer
+Project Co-Lead
 
+### Aakash Karna
+Project Co-Lead
 Healthcare Analytics • AI • Hospital Operations

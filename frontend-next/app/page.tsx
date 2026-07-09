@@ -257,7 +257,7 @@ export default function DashboardPage() {
                             <div
                               className="h-full rounded-full transition-all duration-700 ease-out"
                               style={{
-                                width: `${Math.max(ch.avgScore, 2)}%`,
+                                width: `${Math.max(Math.round(ch.avgScore * 100), 2)}%`,
                                 backgroundColor: getComplianceColor(ch.avgScore),
                               }}
                             />

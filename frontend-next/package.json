@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "cp public/favicon.ico out/favicon.ico",
     "start": "next start",
     "lint": "eslint"
   },

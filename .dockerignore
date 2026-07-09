@@ -1,0 +1,41 @@
+# Git
+.git/
+.gitignore
+
+# Python
+.venv/
+.venv-temp/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+frontend-next/node_modules/
+frontend-next/.next/
+frontend-next/out/
+
+# Env
+.env
+.env.example
+
+# Tests
+tests/
+.pytest_cache/
+
+# Project artifacts
+output/
+scan_paths_output/
+issues/
+assets/
+docs/
+scripts/
+files_from_glm/
+
+# Alternative frontends
+frontend-react/
+frontend-svelte/
+frontend-svelte-bak/
+
+# OS
+.DS_Store
+Thumbs.db

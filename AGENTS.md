@@ -81,7 +81,7 @@ ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI ba
   - Evidence override modal on requirement analysis page
   - Drag-and-drop PDF upload with progress indicator
   - Theme toggle (light/dark with localStorage persistence)
-- **[Render CI: Frontend Build Pipeline]**: Multi-stage Docker build — `node:20-alpine` builds the frontend (`npm ci && npm run build`), `python:3.12-slim` runs the backend. Dockerfile installs tesseract-ocr for pytesseract. `render.yaml` changed to `runtime: docker`. `.dockerignore` excludes unnecessary files from build context. This replaces the earlier `render-build.sh` approach which didn't work because Render's Blueprint `runtime: python` ignores custom `buildCommand`.
+- **[Render CI: Multi-stage Docker Build & Deploy]**: Successfully deployed to Render via Docker. Multi-stage `Dockerfile` — `node:20-alpine` builds frontend (`npm ci && npm run build`), `python:3.12-slim` runs backend with `tesseract-ocr` for OCR. `.dockerignore` minimizes build context. `render.yaml` uses `runtime: docker` (Render's Blueprint `runtime: python` ignores custom `buildCommand`). Live at https://complyscan-wgd4.onrender.com — frontend, favicon, progress bars, and theme toggle all confirmed working.
 - **[Favicon BasePath Fix]**: metadata icons/manifest paths now include `/app` prefix:
   - `layout.tsx` metadata: `icon`, `apple`, `manifest` paths changed from `/favicon.ico` → `/app/favicon.ico`, etc.
   - `site.webmanifest`: icon `src` paths changed from `/favicon-96x96.png` → `/app/favicon-96x96.png`, etc.
@@ -89,6 +89,7 @@ ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI ba
   - Root cause: Next.js `basePath` auto-prefixes framework-managed assets (JS/CSS) but NOT user-defined metadata `icons`/`manifest` paths
 
 ## Core Architecture
+- **Deployment**: Multi-stage `Dockerfile` (Node 20 build → Python 3.12 runtime). Render Blueprint via `render.yaml` with `runtime: docker`. `.dockerignore` for lean build context.
 - **Backend API**: backend/api/main.py (FastAPI) — serves from `frontend-next/out/`, mounts `_next` assets
 - **Frontend**: frontend-next/ (Next.js 16, App Router, Tailwind v3, Phosphor Icons)
 - **Matching engine**: backend/matcher/engine.py (exclusion keywords, validation_rules, confidence_weight scaling, fuzzy matching via difflib)
@@ -116,6 +117,7 @@ ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI ba
 - **Known quirk**: `basePath` does NOT auto-prefix metadata `icons`/`manifest` paths — these MUST be hardcoded with `/app` prefix in `layout.tsx` and `site.webmanifest`
 
 ## Verification Checklist
+- Run `docker build -t complyscan .` to verify Docker build locally before pushing
 - Run `npm run build` from `frontend-next/` to verify frontend compilation
 - Run `pytest tests/test_edge_cases.py` for backend edge-case tests
 - Run `pytest tests/test_analyze_e2e.py` when the local API server is running

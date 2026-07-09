@@ -269,7 +269,7 @@ User ──▶ Next.js Frontend ──▶ FastAPI Backend ──▶ Knowledge Ba
       </td>
       <td align="center">
         <strong>Aakash Karna</strong><br />
-        <em>Project Co-Lead — System Architecture, Knowledge Engineering, Testing & Documentation</em>
+        <em>Project Co-Lead — Healthcare Architecture, Knowledge Engineering, Testing, Reporting & Documentation</em>
       </td>
     </tr>
   </table>

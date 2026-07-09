@@ -4,6 +4,14 @@
 ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI backend (Python 3.12), **Next.js 16 frontend** (App Router, Tailwind v3, Phosphor icons), deterministic keyword matcher, optional LLM semantic pass, override workflow, and PDF export.
 
 ## What Changed Recently
+- **[Manual Text Input on Upload Page]**: Added a new `TextInput` component alongside `FileUpload` in a 2-column grid layout on `/upload`:
+  - Styled textarea (`border-2 border-dashed rounded-[2px]`) matching the drop zone's visual dimensions
+  - Placeholder: "Paste or type your compliance document text here..."
+  - Character counter + Ctrl+Enter shortcut to submit
+  - Calls the same `setExtractedText()` store action — no backend changes needed
+  - `FileUpload` updated to accept `.pdf`, `.txt`, `.docx` files (matching backend `/api/extract-text` support)
+  - Upload page subtitle/footer updated to reflect all supported formats
+
 - **[Tier 4: Matching Engine Intelligence]**: Threshold unification, fuzzy matching, cross-validation:
   - Centralized all score thresholds in `backend/core/config.py` Settings class (score_compliant=0.80, score_partial=0.50, score_noncompliant_floor=0.10, ui_compliant=0.70, ui_partial=0.40)
   - Fixed 7 threshold inconsistencies: engine.py, logic.py, analyzer.py, generator.py all now import from config instead of hardcoding

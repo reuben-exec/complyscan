@@ -8,6 +8,8 @@ import { useAppStore } from "@/lib/store";
 import { extractText } from "@/lib/api";
 import { toast } from "sonner";
 
+const SUPPORTED_EXTENSIONS = [".pdf", ".txt", ".docx"];
+
 export function FileUpload() {
   const router = useRouter();
   const { setExtractedText } = useAppStore();
@@ -18,10 +20,15 @@ export function FileUpload() {
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const isExtensionAllowed = useCallback((name: string) => {
+    const lower = name.toLowerCase();
+    return SUPPORTED_EXTENSIONS.some((ext) => lower.endsWith(ext));
+  }, []);
+
   const handleFile = useCallback(
     async (file: File) => {
-      if (!file.name.toLowerCase().endsWith(".pdf")) {
-        setError("Only PDF files are supported");
+      if (!isExtensionAllowed(file.name)) {
+        setError("Only PDF, TXT, and DOCX files are supported");
         return;
       }
       if (file.size > 50 * 1024 * 1024) {
@@ -58,7 +65,7 @@ export function FileUpload() {
         setIsUploading(false);
       }
     },
-    [setExtractedText, router]
+    [setExtractedText, router, isExtensionAllowed]
   );
 
   const handleDrop = useCallback(
@@ -81,14 +88,19 @@ export function FileUpload() {
   }, []);
 
   return (
-    <div className="w-full max-w-xl mx-auto">
+    <div className="w-full">
+      {/* Label */}
+      <p className="text-sm font-medium text-foreground mb-2">
+        Upload a File
+      </p>
+
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onClick={() => fileInputRef.current?.click()}
         className={`
-          relative border-2 border-dashed rounded-[2px] p-12 text-center cursor-pointer
+          relative border-2 border-dashed rounded-[2px] p-6 text-center cursor-pointer
           transition-all duration-200
           ${
             isDragging
@@ -101,7 +113,7 @@ export function FileUpload() {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".pdf"
+          accept=".pdf,.txt,.docx"
           className="hidden"
           onChange={(e) => {
             const file = e.target.files?.[0];
@@ -111,7 +123,7 @@ export function FileUpload() {
 
         {isUploading ? (
           <div className="space-y-4">
-            <FileText className="h-12 w-12 mx-auto text-primary animate-pulse" weight="fill" />
+            <FileText className="h-10 w-10 mx-auto text-primary animate-pulse" weight="fill" />
             <p className="text-sm font-medium">{fileName}</p>
             <div className="w-full max-w-xs mx-auto">
               <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -127,20 +139,20 @@ export function FileUpload() {
           </div>
         ) : fileName && !error ? (
           <div className="space-y-2">
-            <CheckCircle className="h-12 w-12 mx-auto text-status-compliant" weight="fill" />
+            <CheckCircle className="h-10 w-10 mx-auto text-status-compliant" weight="fill" />
             <p className="text-sm font-medium">{fileName}</p>
             <p className="text-xs text-muted-foreground">Uploaded successfully</p>
           </div>
         ) : (
           <div className="space-y-3">
-            <CloudArrowUp className="h-12 w-12 mx-auto text-muted-foreground" weight="light" />
+            <CloudArrowUp className="h-10 w-10 mx-auto text-muted-foreground" weight="light" />
             <div>
               <p className="text-sm font-medium">
-                Drop your PDF here, or{" "}
+                Drop your file here, or{" "}
                 <span className="text-primary underline">browse</span>
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                PDF files up to 50MB
+                PDF, TXT, DOCX — up to 50MB
               </p>
             </div>
           </div>
@@ -155,7 +167,7 @@ export function FileUpload() {
       </div>
 
       {fileName && !isUploading && !error && (
-        <div className="mt-4 text-center">
+        <div className="mt-3 text-center">
           <Button
             variant="ghost"
             size="sm"

@@ -1,4 +1,4 @@
 """Report package."""
-from .generator import ComplianceReport, save_report
+from .generator import ComplianceReport, generate_report, save_report
 
-__all__ = ["ComplianceReport", "save_report"]
+__all__ = ["ComplianceReport", "generate_report", "save_report"]

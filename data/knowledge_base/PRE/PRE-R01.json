@@ -29,7 +29,9 @@
             "patient rights",
             "charter of patient rights",
             "rights and responsibilities",
-            "patient bill of rights"
+            "patient bill of rights",
+            "patient charter",
+            "patient rights notice"
           ],
           "semantic_concepts": [
             "patient autonomy",
@@ -85,7 +87,9 @@
             "patient rights display",
             "charter display",
             "rights poster",
-            "patient information board"
+            "patient information board",
+            "rights display board",
+            "patient rights poster"
           ],
           "semantic_concepts": [
             "public display",

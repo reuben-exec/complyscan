@@ -37,7 +37,7 @@ def extract_text(pdf_path: str) -> str:
     return full_text, pages
 
 
-def test_single_requirement(
+def _run_single_requirement(
     client: httpx.Client, text: str, requirement_id: str
 ) -> dict:
     """Test a single requirement and return timing data."""
@@ -171,7 +171,7 @@ def test_nfr1(pass_name: str = "Pass 1", requirements: list[str] | None = None) 
     with httpx.Client(timeout=TIMEOUT) as client:
         for i, req_id in enumerate(reqs):
             print(f"\n  [{i+1}/{len(reqs)}] Testing {req_id}...", end=" ", flush=True)
-            result = test_single_requirement(client, text, req_id)
+            result = _run_single_requirement(client, text, req_id)
             result_str = (f"{result['elapsed']:.3f}s"
                           if result["status"] == "OK"
                           else result["status"])

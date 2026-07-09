@@ -1,40 +1,43 @@
-"""LLM client for Cloudflare Workers AI REST API."""
+"""LLM client for Cloudflare Workers AI REST API.
+
+Model-agnostic client with structured output validation, retry logic,
+and robust JSON parsing for the 70B model's response patterns.
+"""
 
 import json
+import re
 import logging
-from typing import Optional, Union
+from typing import Optional
 
 import httpx
+
+from .prompts import SYSTEM_PROMPT, validate_llm_response
 
 logger = logging.getLogger(__name__)
 
 # Cloudflare Workers AI REST endpoint template
 AI_RUN_URL = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/{model}"
 
-# Default system prompt for evidence analysis
-SYSTEM_PROMPT = (
-    "You are a precise NABH compliance audit assistant. "
-    "Analyze the given document text against the specified evidence requirement. "
-    "Respond with valid JSON only — no markdown, no extra text. "
-    "Use null for is_compliant when you are uncertain or the evidence is ambiguous."
-)
-
 
 class LLMClient:
     """Async client for Cloudflare Workers AI LLM inference.
 
     Wraps the Workers AI REST API to run structured evidence analysis
-    prompts and parse the JSON response. Handles the fact that Workers AI
-    auto-parses JSON model output — so response body may be a dict or a string.
+    prompts and parse the JSON response. Handles:
+    - Workers AI auto-parsing (response may be dict or string)
+    - Markdown code fences in model output
+    - Trailing commas in JSON
+    - Partial/malformed responses with schema enforcement
+    - Transient failures with retry logic
     """
 
     def __init__(
         self,
         api_token: str,
         account_id: str,
-        model: str = "@cf/meta/llama-3.1-8b-instruct",
-        timeout: int = 30,
-        max_concurrency: int = 3,
+        model: str = "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        timeout: int = 60,
+        max_concurrency: int = 5,
     ):
         """Initialize the LLM client.
 
@@ -64,17 +67,21 @@ class LLMClient:
         self._url = AI_RUN_URL.format(account_id=account_id, model=model)
         self._semaphore = __import__("asyncio").Semaphore(max_concurrency)
 
+        logger.info("LLM client initialized: model=%s, timeout=%ds, concurrency=%d",
+                     model, timeout, max_concurrency)
+
     async def analyze(self, prompt: str) -> dict:
         """Send a prompt to the LLM and parse the structured JSON response.
 
         Args:
-            prompt: The full prompt (system + user content) to send.
+            prompt: The full user prompt (evidence evaluation instructions).
 
         Returns:
-            A dict with keys:
-                - is_compliant (bool or None): Whether the evidence is met
-                - confidence (float): LLM's confidence (0.0–1.0)
-                - justification (str): Explanation from the LLM
+            A validated dict with keys:
+                - reasoning (str|None): Chain-of-thought analysis
+                - is_compliant (bool|None): Whether the evidence is met
+                - confidence (float): LLM's confidence (0.0-1.0)
+                - justification (str): Explanation with verbatim quotes
 
             On failure or invalid response, returns a safe fallback
             with is_compliant=None and confidence=0.0.
@@ -93,6 +100,8 @@ class LLMClient:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt},
             ],
+            "max_tokens": 1024,
+            "temperature": 0.1,  # Low temperature for consistent audit judgments
         }
 
         # One retry on transient failure
@@ -118,15 +127,23 @@ class LLMClient:
                 # Workers AI auto-parses JSON model output.
                 # When the model emits valid JSON, `response` is already a dict.
                 # When the model emits plain text, `response` is a string.
-                parsed = raw if isinstance(raw, dict) else self._parse_json_text(raw)
-                return self._extract_fields(parsed)
+                if isinstance(raw, dict):
+                    parsed = raw
+                elif isinstance(raw, str):
+                    parsed = self._parse_json_text(raw)
+                else:
+                    logger.warning("Unexpected response type: %s", type(raw).__name__)
+                    return self._fallback()
+
+                # Validate and normalize the response against our schema
+                return validate_llm_response(parsed)
 
             except httpx.TimeoutException:
                 logger.warning(
                     "LLM request timed out (attempt %d/2)", attempt + 1
                 )
                 if attempt == 0:
-                    continue  # retry once
+                    continue
                 return self._fallback()
 
             except httpx.HTTPStatusError as e:
@@ -137,7 +154,7 @@ class LLMClient:
                     e.response.text[:200],
                 )
                 if attempt == 0 and e.response.status_code >= 500:
-                    continue  # retry on server errors
+                    continue
                 return self._fallback()
 
             except (httpx.RequestError, json.JSONDecodeError) as e:
@@ -153,68 +170,66 @@ class LLMClient:
     def _parse_json_text(self, raw: str) -> dict:
         """Parse a JSON string from the LLM text response.
 
-        Handles common formatting quirks (markdown fences, trailing commas).
+        Multi-layer extraction strategy:
+        1. Direct json.loads()
+        2. Strip markdown code fences
+        3. Extract first {...} block via regex
+        4. Fix trailing commas
+
         Returns a dict (possibly empty on failure).
         """
         cleaned = raw.strip()
 
-        # Remove markdown code fences if present
-        if cleaned.startswith("```"):
-            start = cleaned.find("{")
-            if start == -1:
-                start = cleaned.find("[")
-            if start != -1:
-                end = cleaned.rfind("```")
-                if end > start:
-                    cleaned = cleaned[start:end]
-                else:
-                    cleaned = cleaned[start:]
-
-        # Remove trailing commas before closing braces (common LLM issue)
-        import re as _re
-        cleaned = _re.sub(r",\s*}", "}", cleaned)
-        cleaned = _re.sub(r",\s*\]", "]", cleaned)
-
+        # Layer 1: Try direct parse
         try:
             return json.loads(cleaned)
-        except json.JSONDecodeError as e:
-            logger.warning(
-                "Failed to parse LLM JSON response: %s\nRaw: %.200s", e, raw
-            )
-            return {}
+        except json.JSONDecodeError:
+            pass
 
-    def _extract_fields(self, parsed: dict) -> dict:
-        """Extract standard fields from a parsed JSON dict.
+        # Layer 2: Strip markdown code fences
+        if cleaned.startswith("```"):
+            # Remove opening fence line
+            cleaned = re.sub(r"^```(?:json)?\s*\n?", "", cleaned)
+            # Remove closing fence
+            cleaned = re.sub(r"\n?```\s*$", "", cleaned)
+            cleaned = cleaned.strip()
+            try:
+                return json.loads(cleaned)
+            except json.JSONDecodeError:
+                pass
 
-        Args:
-            parsed: Dict from LLM response (may be empty on failure).
+        # Layer 3: Extract first {...} block via regex
+        brace_match = re.search(r"\{[\s\S]*\}", raw)
+        if brace_match:
+            candidate = brace_match.group(0)
+            # Fix trailing commas before closing braces/brackets
+            candidate = re.sub(r",\s*}", "}", candidate)
+            candidate = re.sub(r",\s*\]", "]", candidate)
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                pass
 
-        Returns:
-            Normalized dict with is_compliant, confidence, justification.
-        """
-        if not parsed:
-            return self._fallback()
+        # Layer 4: Aggressive cleanup — fix all trailing commas in the brace match
+        if brace_match:
+            candidate = brace_match.group(0)
+            # More aggressive: remove all commas followed by whitespace and then } or ]
+            candidate = re.sub(r",(\s*[}\]])", r"\1", candidate)
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                pass
 
-        is_compliant = parsed.get("is_compliant")
-        # Preserve None (JSON null = uncertainty) — bool(None) is False which
-        # would conflate "uncertain" with "false". Only coerce true/false.
-        if is_compliant is not None:
-            is_compliant = bool(is_compliant)
-
-        confidence = float(parsed.get("confidence", 0.0))
-        confidence = max(0.0, min(1.0, confidence))
-
-        justification = str(parsed.get("justification", ""))[:500]
-
-        return {
-            "is_compliant": is_compliant,
-            "confidence": confidence,
-            "justification": justification,
-        }
+        logger.warning(
+            "Failed to parse LLM JSON response after all layers.\nRaw (first 300 chars): %.300s",
+            raw,
+        )
+        return {}
 
     def _fallback(self) -> dict:
         """Return a safe fallback response (no override)."""
         return {
+            "reasoning": None,
             "is_compliant": None,
             "confidence": 0.0,
             "justification": "",

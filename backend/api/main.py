@@ -1,6 +1,6 @@
 """FastAPI application entry point."""
-from fastapi import FastAPI, UploadFile, File, HTTPException, Body, Query
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi import FastAPI, UploadFile, File, HTTPException, Body, Query, Request
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
@@ -12,6 +12,12 @@ from backend.report.generator import save_report
 from backend.models.schemas import RequirementResult, EvidenceItem, OverrideRequest, OverrideResponse
 from backend.core.config import settings, DISCLAIMER
 from backend.semantic.analyzer import SemanticAnalyzer
+from backend.scorer.cross_validation import CrossValidator
+
+
+# ── Constants ────────────────────────────────────────────────────
+FRONTEND_DIR = Path("frontend-next/out")
+INDEX_HTML = FRONTEND_DIR / "index.html"
 
 
 app = FastAPI(
@@ -30,10 +36,12 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-async def root():
-    """Root endpoint."""
-    return {"message": "ComplyScan API - NABH Compliance Automation Engine", "disclaimer": DISCLAIMER}
+# ── API Routes ───────────────────────────────────────────────────
+
+@app.get("/api/health")
+async def health_check():
+    """Health check endpoint."""
+    return {"status": "ok", "version": "0.1.0"}
 
 
 @app.get("/api/chapters")
@@ -319,9 +327,104 @@ async def generate_report(result: dict = Body(...)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# Serve frontend SPA at /app
-app.mount("/static", StaticFiles(directory="backend/static"), name="static_files")
-app.mount("/app", StaticFiles(directory="backend/static", html=True), name="static_app")
+# ── Frontend SPA ────────────────────────────────────────────────
+# Mount immutable assets (JS/CSS) at /_app with cache headers
+if FRONTEND_DIR.exists():
+    # Mount Next.js _next assets
+    next_dir = FRONTEND_DIR / "_next"
+    if next_dir.exists():
+        app.mount(
+            "/app/_next",
+            StaticFiles(directory=str(next_dir)),
+            name="next_assets",
+        )
+
+
+# SPA catch-all: for any path under /app/* that isn't an API route
+# or a real static file, return index.html (SPA client-side routing)
+@app.get("/app/{path:path}")
+async def spa_serve(path: str):
+    """SPA catch-all - serve static files or index.html for client-side routing."""
+    # Try to serve the actual file first
+    file_path = FRONTEND_DIR / path
+    if file_path.is_file():
+        return FileResponse(str(file_path))
+
+    # Try with .html extension (e.g. /app/upload -> upload.html)
+    html_path = FRONTEND_DIR / (path + ".html")
+    if html_path.is_file():
+        return FileResponse(str(html_path))
+
+    # Try index.html in subdirectory
+    index_path = FRONTEND_DIR / path / "index.html"
+    if index_path.is_file():
+        return FileResponse(str(index_path))
+
+    # Fallback to root index.html for SPA routing
+    if INDEX_HTML.exists():
+        return HTMLResponse(content=INDEX_HTML.read_text(encoding="utf-8"))
+
+    return HTMLResponse(content="<h1>Frontend not built. Run: cd frontend-next && npm run build</h1>", status_code=501)
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon_ico():
+    """Serve favicon.ico."""
+    favicon_path = FRONTEND_DIR / "favicon.ico"
+    if favicon_path.is_file():
+        return FileResponse(str(favicon_path), media_type="image/x-icon")
+    raise HTTPException(status_code=404, detail="Favicon not found")
+
+
+@app.get("/apple-touch-icon.png", include_in_schema=False)
+async def apple_touch_icon():
+    """Serve apple-touch-icon.png."""
+    icon_path = FRONTEND_DIR / "apple-touch-icon.png"
+    if icon_path.is_file():
+        return FileResponse(str(icon_path), media_type="image/png")
+    raise HTTPException(status_code=404, detail="Icon not found")
+
+
+@app.get("/site.webmanifest", include_in_schema=False)
+async def webmanifest():
+    """Serve site.webmanifest."""
+    manifest_path = FRONTEND_DIR / "site.webmanifest"
+    if manifest_path.is_file():
+        return FileResponse(str(manifest_path), media_type="application/manifest+json")
+    raise HTTPException(status_code=404, detail="Manifest not found")
+
+
+@app.get("/favicon-96x96.png", include_in_schema=False)
+async def favicon_96():
+    """Serve favicon-96x96.png (referenced in webmanifest)."""
+    favicon_path = FRONTEND_DIR / "favicon-96x96.png"
+    if favicon_path.is_file():
+        return FileResponse(str(favicon_path), media_type="image/png")
+    raise HTTPException(status_code=404, detail="Favicon 96 not found")
+
+
+@app.get("/web-app-manifest-192x192.png", include_in_schema=False)
+async def manifest_icon_192():
+    """Serve web-app-manifest-192x192.png."""
+    icon_path = FRONTEND_DIR / "web-app-manifest-192x192.png"
+    if icon_path.is_file():
+        return FileResponse(str(icon_path), media_type="image/png")
+    raise HTTPException(status_code=404, detail="Manifest icon 192 not found")
+
+
+@app.get("/web-app-manifest-512x512.png", include_in_schema=False)
+async def manifest_icon_512():
+    """Serve web-app-manifest-512x512.png."""
+    icon_path = FRONTEND_DIR / "web-app-manifest-512x512.png"
+    if icon_path.is_file():
+        return FileResponse(str(icon_path), media_type="image/png")
+    raise HTTPException(status_code=404, detail="Manifest icon 512 not found")
+
+
+@app.get("/", include_in_schema=False)
+async def root_redirect():
+    """Redirect bare root to the SPA."""
+    return RedirectResponse(url="/app/", status_code=307)
 
 
 if __name__ == "__main__":

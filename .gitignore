@@ -20,18 +20,42 @@ env/
 .DS_Store
 Thumbs.db
 
-# Project-specific
-logs/
-output/reports/
-output/exports/
+# Project directories
+files_from_glm/
+frontend-react/
+frontend-svelte/
+frontend-svelte-bak/
+icons/
+issues/
+output/
+scan_paths_output/
+scripts/
+tests/
+
+# Project-specific files
+backend.log
+server.log
+ComplyScan Project Structure.txt
+DESIGN.md
+Healthcare_Career_Strategy_and_Project_Specs.docx
+hellcat-lightray-orphan.md
+HIC-R01_compliance_report_scanned.pdf
+kimi_config_proxy.toml
+start-kimi-auto-v7.ps1
+litellm_proxy_langfuse.yaml
+litellm_proxy_langfuse_cloud.yaml
+plan.jpeg
+PROGRESS_REPORT.md
+sample_hand_hygiene_policy.pdf
+sample_hand_hygiene_scanned.pdf
+Screenshot 2026-07-06 013418.png
+start_server.py
 
 # Sensitive/personal artifacts (not needed in repo)
 *.pdf
 *.docx
 *.jpeg
 *.ps1
-plan.jpeg
-start-kimi-auto-v7.ps1
 
 # Kimi
 kimi_config.toml

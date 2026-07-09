@@ -27,6 +27,7 @@ class EvidenceItem(BaseModel):
     manually_overridden: bool = False
     override_note: str = ""
     llm_disagreement: bool = False
+    llm_reasoning: Optional[str] = None  # Chain-of-thought reasoning from LLM
 
 
 class RequirementResult(BaseModel):
@@ -39,6 +40,7 @@ class RequirementResult(BaseModel):
     evidence_items: list[EvidenceItem]
     overall_status: ComplianceStatus = ComplianceStatus.NOT_FOUND
     compliance_score: float = 0.0
+    confidence_weight: Optional[float] = None
     disclaimer: str = "Advisory tool only \u2014 not a substitute for an official NABH assessment."
 
 
@@ -57,7 +59,7 @@ class UploadResponse(BaseModel):
     filename: str
     pages: int
     text_preview: str
-    disclaimer: str = "Advisory tool only — not a substitute for an official NABH assessment."
+    disclaimer: str = "Advisory tool only \u2014 not a substitute for an official NABH assessment."
 
 
 class OverrideRequest(BaseModel):

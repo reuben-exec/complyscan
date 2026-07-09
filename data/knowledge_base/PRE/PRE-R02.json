@@ -30,7 +30,9 @@
             "general consent",
             "admission consent",
             "treatment consent",
-            "hospitalization consent"
+            "hospitalization consent",
+            "patient consent form",
+            "admission consent form"
           ],
           "semantic_concepts": [
             "general treatment authorization",

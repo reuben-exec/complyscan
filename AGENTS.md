@@ -13,6 +13,8 @@ ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI ba
   - Created  — CrossValidator boosts COMPLIANT scores by +0.03 when >=50% of related requirements are also COMPLIANT
   - Added fuzzy config settings (fuzzy_enabled, fuzzy_threshold, fuzzy_discount) to config.py
   - Frontend utils.ts getScoreColor thresholds (0.7/0.4) documented as deliberately offset from backend (0.8/0.5)
+- **[Dashboard Chapter Progress Bars Fixed]**: Chapter progress bars now display a continuous red→amber→green temperature gradient instead of being invisible (the `getScoreColor` function was returning Tailwind class names used in inline `style` props, which don't resolve). Added `getComplianceColor()` in `utils.ts` — performs HSL interpolation through the same 3 color stops as the compliance gauge (red hsl(0,72%,51%) → amber hsl(38,92%,50%) → green hsl(142,71%,45%)). Updated `page.tsx` to use the new function for both the bar fill and percentage text color.
+
 - **[Dashboard Overhaul Complete]**: Comprehensive dashboard redesign with live data:
   - Installed `react-gauge-component` v2.0.29 — semicircle gauge with color zones (red 0-30, amber 30-70, green 70-100)
   - Rewrote `ComplianceGauge.tsx` with elastic needle, theme-aware CSS variable colors, dynamic import (SSR-safe)

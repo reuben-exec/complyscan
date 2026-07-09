@@ -18,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { ComplianceGauge } from "@/components/charts/ComplianceGauge";
 import { StatusDonut } from "@/components/charts/StatusDonut";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { formatScore, getScoreColor } from "@/lib/utils";
+import { formatScore, getComplianceColor } from "@/lib/utils";
 import { useAppStore } from "@/lib/store";
 import { getDashboardStats } from "@/lib/api";
 import type { DashboardStats } from "@/types";
@@ -248,7 +248,7 @@ export default function DashboardPage() {
                               <Badge variant="outline" className="text-[10px] font-mono">
                                 {ch.totalRequirements} items
                               </Badge>
-                              <span className="text-sm font-mono font-semibold" style={{ color: getScoreColor(ch.avgScore) }}>
+                              <span className="text-sm font-mono font-semibold" style={{ color: getComplianceColor(ch.avgScore) }}>
                                 {formatScore(ch.avgScore)}
                               </span>
                             </div>
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                               className="h-full rounded-full transition-all duration-700 ease-out"
                               style={{
                                 width: `${Math.max(ch.avgScore, 2)}%`,
-                                backgroundColor: getScoreColor(ch.avgScore),
+                                backgroundColor: getComplianceColor(ch.avgScore),
                               }}
                             />
                           </div>

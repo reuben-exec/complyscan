@@ -81,6 +81,7 @@ ComplyScan is an MVP-ready healthcare compliance analysis tool with a FastAPI ba
   - Evidence override modal on requirement analysis page
   - Drag-and-drop PDF upload with progress indicator
   - Theme toggle (light/dark with localStorage persistence)
+- **[Render CI: Frontend Build Pipeline]**: Added `render-build.sh` — installs Node.js 20 via nvm (pre-installed in Render Python images), runs `npm ci && npm run build` in `frontend-next/`, then `pip install -r requirements.txt`. Updated `render.yaml` build command from `pip install -r requirements.txt` → `bash render-build.sh`. Render now automatically builds the frontend on every deploy — no more manual local builds.
 - **[Favicon BasePath Fix]**: metadata icons/manifest paths now include `/app` prefix:
   - `layout.tsx` metadata: `icon`, `apple`, `manifest` paths changed from `/favicon.ico` → `/app/favicon.ico`, etc.
   - `site.webmanifest`: icon `src` paths changed from `/favicon-96x96.png` → `/app/favicon-96x96.png`, etc.
